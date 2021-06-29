@@ -1,0 +1,531 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Type representation of a cluster.\n\nA JSON representation of a cluster\n\n[source]\n----\n{\n  \"cluster\" : [ {\n    \"ballooning_enabled\" : \"false\",\n    \"cpu\" : {\n      \"architecture\" : \"x86_64\",\n      \"type\" : \"Intel SandyBridge Family\"\n    },\n    \"custom_scheduling_policy_properties\" : {\n      \"property\" : [ {\n        \"name\" : \"HighUtilization\",\n        \"value\" : \"80\"\n      }, {\n        \"name\" : \"CpuOverCommitDurationMinutes\",\n        \"value\" : \"2\"\n      } ]\n    },\n    \"error_handling\" : {\n      \"on_error\" : \"migrate\"\n    },\n    \"fencing_policy\" : {\n      \"enabled\" : \"true\",\n      \"skip_if_connectivity_broken\" : {\n        \"enabled\" : \"false\",\n        \"threshold\" : \"50\"\n      },\n      \"skip_if_gluster_bricks_up\" : \"false\",\n      \"skip_if_gluster_quorum_not_met\" : \"false\",\n      \"skip_if_sd_active\" : {\n        \"enabled\" : \"false\"\n      }\n    },\n    \"gluster_service\" : \"false\",\n    \"ha_reservation\" : \"false\",\n    \"ksm\" : {\n      \"enabled\" : \"true\",\n      \"merge_across_nodes\" : \"true\"\n    },\n    \"maintenance_reason_required\" : \"false\",\n    \"memory_policy\" : {\n      \"over_commit\" : {\n        \"percent\" : \"100\"\n      },\n      \"transparent_hugepages\" : {\n        \"enabled\" : \"true\"\n      }\n    },\n    \"migration\" : {\n      \"auto_converge\" : \"inherit\",\n      \"bandwidth\" : {\n        \"assignment_method\" : \"auto\"\n      },\n      \"compressed\" : \"inherit\",\n      \"policy\" : {\n        \"id\" : \"00000000-0000-0000-0000-000000000000\"\n      }\n    },\n    \"optional_reason\" : \"false\",\n    \"required_rng_sources\" : {\n      \"required_rng_source\" : [ \"random\" ]\n    },\n    \"switch_type\" : \"legacy\",\n    \"threads_as_cores\" : \"false\",\n    \"trusted_service\" : \"false\",\n    \"tunnel_migration\" : \"false\",\n    \"version\" : {\n      \"major\" : \"4\",\n      \"minor\" : \"1\"\n    },\n    \"virt_service\" : \"true\",\n    \"data_center\" : {\n      \"href\" : \"/ovirt-engine/api/datacenters/123\",\n      \"id\" : \"123\"\n    },\n    \"mac_pool\" : {\n      \"href\" : \"/ovirt-engine/api/macpools/456\",\n      \"id\" : \"456\"\n    },\n    \"scheduling_policy\" : {\n      \"href\" : \"/ovirt-engine/api/schedulingpolicies/789\",\n      \"id\" : \"789\"\n    },\n    \"actions\" : {\n      \"link\" : [ {\n        \"href\" : \"/ovirt-engine/api/clusters/234/resetemulatedmachine\",\n        \"rel\" : \"resetemulatedmachine\"\n      } ]\n    },\n    \"name\" : \"Default\",\n    \"description\" : \"The default server cluster\",\n    \"href\" : \"/ovirt-engine/api/clusters/234\",\n    \"id\" : \"234\",\n    \"link\" : [ {\n      \"href\" : \"/ovirt-engine/api/clusters/234/permissions\",\n      \"rel\" : \"permissions\"\n    }, {\n      \"href\" : \"/ovirt-engine/api/clusters/234/cpuprofiles\",\n      \"rel\" : \"cpuprofiles\"\n    }, {\n      \"href\" : \"/ovirt-engine/api/clusters/234/networkfilters\",\n      \"rel\" : \"networkfilters\"\n    }, {\n      \"href\" : \"/ovirt-engine/api/clusters/234/networks\",\n      \"rel\" : \"networks\"\n    }, {\n      \"href\" : \"/ovirt-engine/api/clusters/234/affinitygroups\",\n      \"rel\" : \"affinitygroups\"\n    }, {\n      \"href\" : \"/ovirt-engine/api/clusters/234/glusterhooks\",\n      \"rel\" : \"glusterhooks\"\n    }, {\n      \"href\" : \"/ovirt-engine/api/clusters/234/glustervolumes\",\n      \"rel\" : \"glustervolumes\"\n    } ]\n  } ]\n}\n----", 
+  "properties": {
+    "comment": {
+      "type": "string", 
+      "description": "Free text containing comments about this object."
+    }, 
+    "ha_reservation": {
+      "type": "boolean"
+    }, 
+    "custom_scheduling_policy_properties": {
+      "type": "object", 
+      "properties": {
+        "custom_scheduling_policy_property": {
+          "items": {
+            "type": "object", 
+            "properties": {
+              "name": {
+                "type": "string"
+              }, 
+              "value": {
+                "type": "string"
+              }
+            }
+          }, 
+          "type": "array", 
+          "description": "Custom scheduling policy properties of the cluster.\nThese optional properties override the properties of the\nscheduling policy specified by the `scheduling_policy` link,\nand apply only for this specific cluster.\n\nFor example, to update the custom properties of the cluster,\nsend a request:\n\n[source]\n----\nPUT /ovirt-engine/api/clusters/123\n----\n\nWith a request body:\n\n[source,xml]\n----\n<cluster>\n  <custom_scheduling_policy_properties>\n    <property>\n      <name>HighUtilization</name>\n      <value>70</value>\n    </property>\n  </custom_scheduling_policy_properties>\n</cluster>\n----\n\nUpdate operations using the `custom_scheduling_policy_properties` attribute\nwill not update the the properties of the scheduling policy specified by\nthe `scheduling_policy` link,\nthey will only be reflected on this specific cluster."
+        }
+      }
+    }, 
+    "threads_as_cores": {
+      "type": "boolean"
+    }, 
+    "migration": {
+      "type": "object", 
+      "description": "The type for migration options.", 
+      "properties": {
+        "auto_converge": {
+          "enum": [
+            "false", 
+            "inherit", 
+            "true"
+          ], 
+          "type": "string"
+        }, 
+        "bandwidth": {
+          "type": "object", 
+          "description": "Defines the bandwidth used by migration.", 
+          "properties": {
+            "custom_value": {
+              "type": "integer", 
+              "description": "Custom bandwidth in Mbps. Will be applied only if the `assignmentMethod` attribute is `custom`.", 
+              "format": "int32"
+            }, 
+            "assignment_method": {
+              "enum": [
+                "auto", 
+                "custom", 
+                "hypervisor_default"
+              ], 
+              "type": "string", 
+              "description": "The method used to assign the bandwidth."
+            }
+          }
+        }, 
+        "compressed": {
+          "enum": [
+            "false", 
+            "inherit", 
+            "true"
+          ], 
+          "type": "string"
+        }
+      }
+    }, 
+    "id": {
+      "type": "string", 
+      "description": "A unique identifier."
+    }, 
+    "fencing_policy": {
+      "type": "object", 
+      "description": "Type representing a cluster fencing policy.", 
+      "properties": {
+        "skip_if_gluster_bricks_up": {
+          "type": "boolean", 
+          "description": "A flag indicating if fencing should be skipped if Gluster bricks are up and running in the host being fenced.\nThis flag is optional, and the default value is `false`."
+        }, 
+        "enabled": {
+          "type": "boolean", 
+          "description": "Enable or disable fencing on this cluster."
+        }, 
+        "skip_if_connectivity_broken": {
+          "type": "object", 
+          "properties": {
+            "threshold": {
+              "type": "integer", 
+              "description": "Threshold for connectivity testing.\nIf at least the threshold percentage of hosts in the cluster\nlost connectivity then fencing will not take place.", 
+              "format": "int32"
+            }, 
+            "enabled": {
+              "type": "boolean", 
+              "description": "If enabled, we will not fence a host\nin case more than a configurable percentage\nof hosts in the cluster lost connectivity as well.\nThis comes to prevent fencing _storm_ in cases\nwhere there is a global networking issue in the\ncluster."
+            }
+          }
+        }, 
+        "skip_if_gluster_quorum_not_met": {
+          "type": "boolean", 
+          "description": "A flag indicating if fencing should be skipped if Gluster bricks are up and running and Gluster quorum will not\nbe met without those bricks.\nThis flag is optional, and the default value is `false`."
+        }, 
+        "skip_if_sd_active": {
+          "type": "object", 
+          "description": "This type represents the storage related\nconfiguration in the fencing policy.", 
+          "properties": {
+            "enabled": {
+              "type": "boolean", 
+              "description": "If enabled, we will skip fencing in case the host\nmaintains its lease in the storage. It means that\nif the host still has storage access then it won't\nget fenced."
+            }
+          }
+        }
+      }
+    }, 
+    "supported_versions": {
+      "type": "object", 
+      "properties": {
+        "supported_version": {
+          "items": {
+            "type": "object", 
+            "properties": {
+              "comment": {
+                "type": "string", 
+                "description": "Free text containing comments about this object."
+              }, 
+              "major": {
+                "type": "integer", 
+                "format": "int32"
+              }, 
+              "description": {
+                "type": "string", 
+                "description": "A human-readable description in plain text."
+              }, 
+              "full_version": {
+                "type": "string"
+              }, 
+              "name": {
+                "type": "string", 
+                "description": "A human-readable name in plain text."
+              }, 
+              "build": {
+                "type": "integer", 
+                "format": "int32"
+              }, 
+              "id": {
+                "type": "string", 
+                "description": "A unique identifier."
+              }, 
+              "minor": {
+                "type": "integer", 
+                "format": "int32"
+              }, 
+              "revision": {
+                "type": "integer", 
+                "format": "int32"
+              }
+            }
+          }, 
+          "type": "array"
+        }
+      }
+    }, 
+    "gluster_tuned_profile": {
+      "type": "string", 
+      "description": "The name of the https://fedorahosted.org/tuned[tuned] profile\nto set on all the hosts in the cluster. This is not mandatory\nand relevant only for clusters with gluster service."
+    }, 
+    "cpu": {
+      "type": "object", 
+      "properties": {
+        "name": {
+          "type": "string"
+        }, 
+        "level": {
+          "type": "integer", 
+          "format": "int32"
+        }, 
+        "speed": {
+          "type": "number", 
+          "format": "double"
+        }, 
+        "cpu_tune": {
+          "type": "object", 
+          "properties": {
+            "vcpu_pins": {
+              "items": {
+                "type": "object", 
+                "properties": {
+                  "cpu_set": {
+                    "type": "string"
+                  }, 
+                  "vcpu": {
+                    "type": "integer", 
+                    "format": "int32"
+                  }
+                }
+              }, 
+              "type": "array"
+            }
+          }
+        }, 
+        "architecture": {
+          "enum": [
+            "ppc64", 
+            "undefined", 
+            "x86_64"
+          ], 
+          "type": "string"
+        }, 
+        "mode": {
+          "enum": [
+            "custom", 
+            "host_model", 
+            "host_passthrough"
+          ], 
+          "type": "string"
+        }, 
+        "cores": {
+          "items": {
+            "type": "object", 
+            "properties": {
+              "index": {
+                "type": "integer", 
+                "format": "int32"
+              }, 
+              "socket": {
+                "type": "integer", 
+                "format": "int32"
+              }
+            }
+          }, 
+          "type": "array"
+        }, 
+        "type": {
+          "type": "string"
+        }, 
+        "topology": {
+          "type": "object", 
+          "properties": {
+            "cores": {
+              "type": "integer", 
+              "format": "int32"
+            }, 
+            "threads": {
+              "type": "integer", 
+              "format": "int32"
+            }, 
+            "sockets": {
+              "type": "integer", 
+              "format": "int32"
+            }
+          }
+        }
+      }
+    }, 
+    "ballooning_enabled": {
+      "type": "boolean"
+    }, 
+    "version": {
+      "type": "object", 
+      "properties": {
+        "comment": {
+          "type": "string", 
+          "description": "Free text containing comments about this object."
+        }, 
+        "major": {
+          "type": "integer", 
+          "format": "int32"
+        }, 
+        "description": {
+          "type": "string", 
+          "description": "A human-readable description in plain text."
+        }, 
+        "full_version": {
+          "type": "string"
+        }, 
+        "name": {
+          "type": "string", 
+          "description": "A human-readable name in plain text."
+        }, 
+        "build": {
+          "type": "integer", 
+          "format": "int32"
+        }, 
+        "id": {
+          "type": "string", 
+          "description": "A unique identifier."
+        }, 
+        "minor": {
+          "type": "integer", 
+          "format": "int32"
+        }, 
+        "revision": {
+          "type": "integer", 
+          "format": "int32"
+        }
+      }
+    }, 
+    "ksm": {
+      "type": "object", 
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }, 
+        "merge_across_nodes": {
+          "type": "boolean"
+        }
+      }
+    }, 
+    "serial_number": {
+      "type": "object", 
+      "properties": {
+        "policy": {
+          "enum": [
+            "custom", 
+            "host", 
+            "vm"
+          ], 
+          "type": "string"
+        }, 
+        "value": {
+          "type": "string"
+        }
+      }
+    }, 
+    "tunnel_migration": {
+      "type": "boolean"
+    }, 
+    "description": {
+      "type": "string", 
+      "description": "A human-readable description in plain text."
+    }, 
+    "optional_reason": {
+      "type": "boolean"
+    }, 
+    "gluster_service": {
+      "type": "boolean"
+    }, 
+    "memory_policy": {
+      "type": "object", 
+      "description": "Logical grouping of memory related properties of virtual machine-like entities.", 
+      "properties": {
+        "ballooning": {
+          "type": "boolean"
+        }, 
+        "max": {
+          "type": "integer", 
+          "description": "Maximum virtual machine's memory, in bytes.\n\nThe user provides the value in bytes, and the engine rounds the value down to the nearest lower MiB value.\n\nFor example, if the user enters a value of 1073741825 (1 GiB + 1 byte), then the {engine-name} will truncate\nthat value to the nearest lower MiB boundary: in this case 1073741824 (1 GiB).", 
+          "format": "int32"
+        }, 
+        "guaranteed": {
+          "type": "integer", 
+          "format": "int32"
+        }, 
+        "transparent_hugepages": {
+          "type": "object", 
+          "description": "Type representing a transparent huge pages (THP) support.", 
+          "properties": {
+            "enabled": {
+              "type": "boolean", 
+              "description": "Enable THP support."
+            }
+          }
+        }, 
+        "over_commit": {
+          "type": "object", 
+          "properties": {
+            "percent": {
+              "type": "integer", 
+              "format": "int32"
+            }
+          }
+        }
+      }
+    }, 
+    "error_handling": {
+      "type": "object", 
+      "properties": {
+        "on_error": {
+          "enum": [
+            "do_not_migrate", 
+            "migrate", 
+            "migrate_highly_available"
+          ], 
+          "type": "string"
+        }
+      }
+    }, 
+    "switch_type": {
+      "enum": [
+        "legacy", 
+        "ovs"
+      ], 
+      "type": "string", 
+      "description": "Type of switch to be used by all networks in given cluster."
+    }, 
+    "name": {
+      "type": "string", 
+      "description": "A human-readable name in plain text."
+    }, 
+    "required_rng_sources": {
+      "type": "object", 
+      "properties": {
+        "required_rng_source": {
+          "items": {
+            "enum": [
+              "hwrng", 
+              "random", 
+              "urandom"
+            ], 
+            "type": "string"
+          }, 
+          "type": "array", 
+          "description": "Set of random number generator (RNG) sources required from each host in the cluster.\n\nWhen read, it returns the implicit `urandom` (for cluster version 4.1 and higher) or `random` (for cluster\nversion 4.0 and lower) plus additional selected RNG sources. When written, the implicit `urandom` and `random`\nRNG sources cannot be removed.\n\n[IMPORTANT]\n====\nBefore version 4.1 of the engine, the set of required random number generators was completely controllable by the\nadministrator; any source could be added or removed, including the `random` source. But starting with version 4.1,\nthe `urandom` and `random` sources will always be part of the set, and can't be removed.\n====\n\n[IMPORTANT]\n====\nEngine version 4.1 introduces a new RNG source `urandom` that replaces `random` RNG source in clusters with\ncompatibility version 4.1 or higher.\n===="
+        }
+      }
+    }, 
+    "maintenance_reason_required": {
+      "type": "boolean"
+    }, 
+    "virt_service": {
+      "type": "boolean"
+    }, 
+    "trusted_service": {
+      "type": "boolean"
+    }, 
+    "display": {
+      "type": "object", 
+      "description": "Represents a graphic console configuration.", 
+      "properties": {
+        "allow_override": {
+          "type": "boolean", 
+          "description": "Indicates if to override the display address per host.\nRelevant only for the `Host.display` attribute.\nIf set, the graphical console address of a virtual machine will be overridden by the host specified display address.\nif not set, the graphical console address of a virtual machine will not be overridden."
+        }, 
+        "disconnect_action": {
+          "type": "string", 
+          "description": "Returns the action that will take place when the graphic console is disconnected.\nThe options are:\n\nnone:: No action is taken.\nlock_screen:: Locks the currently active user session.\nlogout:: Logs out the currently active user session.\nreboot:: Initiates a graceful virtual machine reboot.\nshutdown:: Initiates a graceful virtual machine shutdown.\n\nThis option is only available for the SPICE console type."
+        }, 
+        "certificate": {
+          "type": "object", 
+          "properties": {
+            "comment": {
+              "type": "string", 
+              "description": "Free text containing comments about this object."
+            }, 
+            "description": {
+              "type": "string", 
+              "description": "A human-readable description in plain text."
+            }, 
+            "name": {
+              "type": "string", 
+              "description": "A human-readable name in plain text."
+            }, 
+            "content": {
+              "type": "string"
+            }, 
+            "organization": {
+              "type": "string"
+            }, 
+            "id": {
+              "type": "string", 
+              "description": "A unique identifier."
+            }, 
+            "subject": {
+              "type": "string"
+            }
+          }
+        }, 
+        "monitors": {
+          "type": "integer", 
+          "description": "The number of monitors opened for this graphic console.\nThis option is only available for the SPICE console type.\nPossible values are 1, 2 or 4.", 
+          "format": "int32"
+        }, 
+        "single_qxl_pci": {
+          "type": "boolean", 
+          "description": "Indicates if to use one PCI slot for each monitor or to use a single PCI channel for all multiple monitors.\nThis option is only available for the SPICE console type and only for connecting a guest Linux based OS."
+        }, 
+        "copy_paste_enabled": {
+          "type": "boolean", 
+          "description": "Indicates whether a user is able to copy and paste content from an external host into the graphic console.\nThis option is only available for the SPICE console type."
+        }, 
+        "secure_port": {
+          "type": "integer", 
+          "description": "The secured port address on the guest, in case of using TLS, to connect the graphic console client to.\nIf TLS isn't enabled then it won't be reported.", 
+          "format": "int32"
+        }, 
+        "proxy": {
+          "type": "string", 
+          "description": "The proxy IP which will be used by the graphic console client to connect to the guest.\nIt is useful when the client is outside the guest's network.\nThis option is only available for the SPICE console type.\nThis proxy can be set in global configuration, cluster level, virtual machine pool level or disabled\nper virtual machine.\nIf the proxy is set in any of this mentioned places and not disabled for the virtual machine, it will be\nreturned by this method.\nIf the proxy is not set, nothing will be reported."
+        }, 
+        "smartcard_enabled": {
+          "type": "boolean", 
+          "description": "Indicates if to use smart card authentication.\nThis option is only available for the SPICE console type."
+        }, 
+        "file_transfer_enabled": {
+          "type": "boolean", 
+          "description": "Indicates if a user is able to drag and drop files from an external host into the graphic console.\nThis option is only available for the SPICE console type."
+        }, 
+        "keyboard_layout": {
+          "type": "string", 
+          "description": "The keyboard layout to use with this graphic console.\nThis option is only available for the VNC console type.\nIf no keyboard is enabled then it won't be reported."
+        }, 
+        "type": {
+          "enum": [
+            "spice", 
+            "vnc"
+          ], 
+          "type": "string", 
+          "description": "The graphic console protocol type."
+        }, 
+        "port": {
+          "type": "integer", 
+          "description": "The port address on the guest to connect the graphic console client to.", 
+          "format": "int32"
+        }, 
+        "address": {
+          "type": "string", 
+          "description": "The IP address of the guest to connect the graphic console client to."
+        }
+      }
+    }
+  }
+}

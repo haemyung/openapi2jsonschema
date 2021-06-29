@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Configuration of the boot sequence of a virtual machine.", 
+  "properties": {
+    "devices": {
+      "type": "object", 
+      "properties": {
+        "device": {
+          "items": {
+            "enum": [
+              "cdrom", 
+              "hd", 
+              "network"
+            ], 
+            "type": "string"
+          }, 
+          "type": "array", 
+          "description": "Ordered list of boot devices. The virtual machine will try to boot from the given boot devices, in the given\norder."
+        }
+      }
+    }
+  }
+}

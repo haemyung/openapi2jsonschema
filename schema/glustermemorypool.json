@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "comment": {
+      "type": "string", 
+      "description": "Free text containing comments about this object."
+    }, 
+    "hot_count": {
+      "type": "integer", 
+      "format": "int32"
+    }, 
+    "max_stdalloc": {
+      "type": "integer", 
+      "format": "int32"
+    }, 
+    "description": {
+      "type": "string", 
+      "description": "A human-readable description in plain text."
+    }, 
+    "max_alloc": {
+      "type": "integer", 
+      "format": "int32"
+    }, 
+    "cold_count": {
+      "type": "integer", 
+      "format": "int32"
+    }, 
+    "padded_size": {
+      "type": "integer", 
+      "format": "int32"
+    }, 
+    "alloc_count": {
+      "type": "integer", 
+      "format": "int32"
+    }, 
+    "type": {
+      "type": "string"
+    }, 
+    "id": {
+      "type": "string", 
+      "description": "A unique identifier."
+    }, 
+    "pool_misses": {
+      "type": "integer", 
+      "format": "int32"
+    }, 
+    "name": {
+      "type": "string", 
+      "description": "A human-readable name in plain text."
+    }
+  }
+}

@@ -1,0 +1,3251 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "org_name": {
+      "type": "string"
+    }, 
+    "custom_script": {
+      "type": "string"
+    }, 
+    "domain": {
+      "type": "string"
+    }, 
+    "dns_servers": {
+      "type": "string"
+    }, 
+    "authorized_ssh_keys": {
+      "type": "string"
+    }, 
+    "system_locale": {
+      "type": "string"
+    }, 
+    "cloud_init": {
+      "type": "object", 
+      "properties": {
+        "files": {
+          "items": {
+            "type": "object", 
+            "properties": {
+              "comment": {
+                "type": "string", 
+                "description": "Free text containing comments about this object."
+              }, 
+              "description": {
+                "type": "string", 
+                "description": "A human-readable description in plain text."
+              }, 
+              "content": {
+                "type": "string"
+              }, 
+              "type": {
+                "type": "string"
+              }, 
+              "id": {
+                "type": "string", 
+                "description": "A unique identifier."
+              }, 
+              "name": {
+                "type": "string", 
+                "description": "A human-readable name in plain text."
+              }
+            }
+          }, 
+          "type": "array"
+        }, 
+        "authorized_keys": {
+          "items": {
+            "type": "object", 
+            "properties": {
+              "comment": {
+                "type": "string", 
+                "description": "Free text containing comments about this object."
+              }, 
+              "name": {
+                "type": "string", 
+                "description": "A human-readable name in plain text."
+              }, 
+              "description": {
+                "type": "string", 
+                "description": "A human-readable description in plain text."
+              }, 
+              "key": {
+                "type": "string"
+              }, 
+              "id": {
+                "type": "string", 
+                "description": "A unique identifier."
+              }
+            }
+          }, 
+          "type": "array"
+        }, 
+        "network_configuration": {
+          "type": "object", 
+          "properties": {
+            "nics": {
+              "items": {
+                "type": "object", 
+                "description": "Represents a virtual machine NIC.\n\nFor example, the XML representation of a NIC will look like this:\n\n[source,xml]\n----\n<nic href=\"/ovirt-engine/api/vms/123/nics/456\" id=\"456\">\n  <name>nic1</name>\n  <vm href=\"/ovirt-engine/api/vms/123\" id=\"123\"/>\n  <interface>virtio</interface>\n  <linked>true</linked>\n  <mac>\n    <address>02:00:00:00:00:00</address>\n  </mac>\n  <plugged>true</plugged>\n  <vnic_profile href=\"/ovirt-engine/api/vnicprofiles/789\" id=\"789\"/>\n</nic>\n----", 
+                "properties": {
+                  "comment": {
+                    "type": "string", 
+                    "description": "Free text containing comments about this object."
+                  }, 
+                  "description": {
+                    "type": "string", 
+                    "description": "A human-readable description in plain text."
+                  }, 
+                  "linked": {
+                    "type": "boolean", 
+                    "description": "Defines if the NIC is linked to the virtual machine."
+                  }, 
+                  "boot_protocol": {
+                    "enum": [
+                      "autoconf", 
+                      "dhcp", 
+                      "none", 
+                      "static"
+                    ], 
+                    "type": "string", 
+                    "description": "Defines how an IP address is assigned to the NIC."
+                  }, 
+                  "plugged": {
+                    "type": "boolean", 
+                    "description": "Defines if the NIC is plugged in to the virtual machine."
+                  }, 
+                  "mac": {
+                    "type": "object", 
+                    "description": "Represents a MAC address of a virtual network interface.", 
+                    "properties": {
+                      "address": {
+                        "type": "string", 
+                        "description": "MAC address."
+                      }
+                    }
+                  }, 
+                  "on_boot": {
+                    "type": "boolean", 
+                    "description": "Defines if the network interface should be activated upon operation system startup."
+                  }, 
+                  "interface": {
+                    "enum": [
+                      "e1000", 
+                      "pci_passthrough", 
+                      "rtl8139", 
+                      "rtl8139_virtio", 
+                      "spapr_vlan", 
+                      "virtio"
+                    ], 
+                    "type": "string", 
+                    "description": "The type of driver used for the NIC."
+                  }, 
+                  "id": {
+                    "type": "string", 
+                    "description": "A unique identifier."
+                  }, 
+                  "name": {
+                    "type": "string", 
+                    "description": "A human-readable name in plain text."
+                  }
+                }
+              }, 
+              "type": "array"
+            }, 
+            "dns": {
+              "type": "object", 
+              "description": "Represents the DNS resolver configuration.", 
+              "properties": {
+                "search_domains": {
+                  "items": {
+                    "type": "object", 
+                    "description": "Type representing a host.", 
+                    "properties": {
+                      "comment": {
+                        "type": "string", 
+                        "description": "Free text containing comments about this object."
+                      }, 
+                      "update_available": {
+                        "type": "boolean", 
+                        "description": "Specifies whether there is an oVirt-related update on this host."
+                      }, 
+                      "protocol": {
+                        "enum": [
+                          "stomp", 
+                          "xml"
+                        ], 
+                        "type": "string", 
+                        "description": "The protocol that the engine uses to communicate with\nthe host.\n\nWARNING: Since version 4.1 of the engine the protocol\nis always set to `stomp` since `xml` was removed."
+                      }, 
+                      "version": {
+                        "type": "object", 
+                        "properties": {
+                          "comment": {
+                            "type": "string", 
+                            "description": "Free text containing comments about this object."
+                          }, 
+                          "major": {
+                            "type": "integer", 
+                            "format": "int32"
+                          }, 
+                          "description": {
+                            "type": "string", 
+                            "description": "A human-readable description in plain text."
+                          }, 
+                          "full_version": {
+                            "type": "string"
+                          }, 
+                          "name": {
+                            "type": "string", 
+                            "description": "A human-readable name in plain text."
+                          }, 
+                          "build": {
+                            "type": "integer", 
+                            "format": "int32"
+                          }, 
+                          "id": {
+                            "type": "string", 
+                            "description": "A unique identifier."
+                          }, 
+                          "minor": {
+                            "type": "integer", 
+                            "format": "int32"
+                          }, 
+                          "revision": {
+                            "type": "integer", 
+                            "format": "int32"
+                          }
+                        }
+                      }, 
+                      "spm": {
+                        "type": "object", 
+                        "properties": {
+                          "priority": {
+                            "type": "integer", 
+                            "format": "int32"
+                          }, 
+                          "status": {
+                            "enum": [
+                              "contending", 
+                              "none", 
+                              "spm"
+                            ], 
+                            "type": "string"
+                          }
+                        }
+                      }, 
+                      "hosted_engine": {
+                        "type": "object", 
+                        "properties": {
+                          "active": {
+                            "type": "boolean"
+                          }, 
+                          "local_maintenance": {
+                            "type": "boolean"
+                          }, 
+                          "configured": {
+                            "type": "boolean"
+                          }, 
+                          "score": {
+                            "type": "integer", 
+                            "format": "int32"
+                          }, 
+                          "global_maintenance": {
+                            "type": "boolean"
+                          }
+                        }
+                      }, 
+                      "id": {
+                        "type": "string", 
+                        "description": "A unique identifier."
+                      }, 
+                      "external_status": {
+                        "enum": [
+                          "error", 
+                          "failure", 
+                          "info", 
+                          "ok", 
+                          "warning"
+                        ], 
+                        "type": "string", 
+                        "description": "The host external status.\nThis can be used by third-party software to change the host external status\nin case of an issue.\nThis has no effect on the host lifecycle, unless a third-party software checks for this\nstatus and acts accordingly."
+                      }, 
+                      "certificate": {
+                        "type": "object", 
+                        "properties": {
+                          "comment": {
+                            "type": "string", 
+                            "description": "Free text containing comments about this object."
+                          }, 
+                          "description": {
+                            "type": "string", 
+                            "description": "A human-readable description in plain text."
+                          }, 
+                          "name": {
+                            "type": "string", 
+                            "description": "A human-readable name in plain text."
+                          }, 
+                          "content": {
+                            "type": "string"
+                          }, 
+                          "organization": {
+                            "type": "string"
+                          }, 
+                          "id": {
+                            "type": "string", 
+                            "description": "A unique identifier."
+                          }, 
+                          "subject": {
+                            "type": "string"
+                          }
+                        }
+                      }, 
+                      "display": {
+                        "type": "object", 
+                        "description": "Represents a graphic console configuration.", 
+                        "properties": {
+                          "allow_override": {
+                            "type": "boolean", 
+                            "description": "Indicates if to override the display address per host.\nRelevant only for the `Host.display` attribute.\nIf set, the graphical console address of a virtual machine will be overridden by the host specified display address.\nif not set, the graphical console address of a virtual machine will not be overridden."
+                          }, 
+                          "disconnect_action": {
+                            "type": "string", 
+                            "description": "Returns the action that will take place when the graphic console is disconnected.\nThe options are:\n\nnone:: No action is taken.\nlock_screen:: Locks the currently active user session.\nlogout:: Logs out the currently active user session.\nreboot:: Initiates a graceful virtual machine reboot.\nshutdown:: Initiates a graceful virtual machine shutdown.\n\nThis option is only available for the SPICE console type."
+                          }, 
+                          "certificate": {
+                            "type": "object", 
+                            "properties": {
+                              "comment": {
+                                "type": "string", 
+                                "description": "Free text containing comments about this object."
+                              }, 
+                              "description": {
+                                "type": "string", 
+                                "description": "A human-readable description in plain text."
+                              }, 
+                              "name": {
+                                "type": "string", 
+                                "description": "A human-readable name in plain text."
+                              }, 
+                              "content": {
+                                "type": "string"
+                              }, 
+                              "organization": {
+                                "type": "string"
+                              }, 
+                              "id": {
+                                "type": "string", 
+                                "description": "A unique identifier."
+                              }, 
+                              "subject": {
+                                "type": "string"
+                              }
+                            }
+                          }, 
+                          "monitors": {
+                            "type": "integer", 
+                            "description": "The number of monitors opened for this graphic console.\nThis option is only available for the SPICE console type.\nPossible values are 1, 2 or 4.", 
+                            "format": "int32"
+                          }, 
+                          "single_qxl_pci": {
+                            "type": "boolean", 
+                            "description": "Indicates if to use one PCI slot for each monitor or to use a single PCI channel for all multiple monitors.\nThis option is only available for the SPICE console type and only for connecting a guest Linux based OS."
+                          }, 
+                          "copy_paste_enabled": {
+                            "type": "boolean", 
+                            "description": "Indicates whether a user is able to copy and paste content from an external host into the graphic console.\nThis option is only available for the SPICE console type."
+                          }, 
+                          "secure_port": {
+                            "type": "integer", 
+                            "description": "The secured port address on the guest, in case of using TLS, to connect the graphic console client to.\nIf TLS isn't enabled then it won't be reported.", 
+                            "format": "int32"
+                          }, 
+                          "proxy": {
+                            "type": "string", 
+                            "description": "The proxy IP which will be used by the graphic console client to connect to the guest.\nIt is useful when the client is outside the guest's network.\nThis option is only available for the SPICE console type.\nThis proxy can be set in global configuration, cluster level, virtual machine pool level or disabled\nper virtual machine.\nIf the proxy is set in any of this mentioned places and not disabled for the virtual machine, it will be\nreturned by this method.\nIf the proxy is not set, nothing will be reported."
+                          }, 
+                          "smartcard_enabled": {
+                            "type": "boolean", 
+                            "description": "Indicates if to use smart card authentication.\nThis option is only available for the SPICE console type."
+                          }, 
+                          "file_transfer_enabled": {
+                            "type": "boolean", 
+                            "description": "Indicates if a user is able to drag and drop files from an external host into the graphic console.\nThis option is only available for the SPICE console type."
+                          }, 
+                          "keyboard_layout": {
+                            "type": "string", 
+                            "description": "The keyboard layout to use with this graphic console.\nThis option is only available for the VNC console type.\nIf no keyboard is enabled then it won't be reported."
+                          }, 
+                          "type": {
+                            "enum": [
+                              "spice", 
+                              "vnc"
+                            ], 
+                            "type": "string", 
+                            "description": "The graphic console protocol type."
+                          }, 
+                          "port": {
+                            "type": "integer", 
+                            "description": "The port address on the guest to connect the graphic console client to.", 
+                            "format": "int32"
+                          }, 
+                          "address": {
+                            "type": "string", 
+                            "description": "The IP address of the guest to connect the graphic console client to."
+                          }
+                        }
+                      }, 
+                      "iscsi": {
+                        "type": "object", 
+                        "properties": {
+                          "status": {
+                            "type": "string"
+                          }, 
+                          "username": {
+                            "type": "string"
+                          }, 
+                          "initiator": {
+                            "type": "string"
+                          }, 
+                          "vendor_id": {
+                            "type": "string"
+                          }, 
+                          "volume_group_id": {
+                            "type": "string"
+                          }, 
+                          "paths": {
+                            "type": "integer", 
+                            "format": "int32"
+                          }, 
+                          "storage_domain_id": {
+                            "type": "string"
+                          }, 
+                          "disk_id": {
+                            "type": "string"
+                          }, 
+                          "password": {
+                            "type": "string"
+                          }, 
+                          "portal": {
+                            "type": "string"
+                          }, 
+                          "address": {
+                            "type": "string"
+                          }, 
+                          "lun_mapping": {
+                            "type": "integer", 
+                            "format": "int32"
+                          }, 
+                          "serial": {
+                            "type": "string"
+                          }, 
+                          "size": {
+                            "type": "integer", 
+                            "format": "int32"
+                          }, 
+                          "target": {
+                            "type": "string"
+                          }, 
+                          "port": {
+                            "type": "integer", 
+                            "format": "int32"
+                          }, 
+                          "product_id": {
+                            "type": "string"
+                          }
+                        }
+                      }, 
+                      "port": {
+                        "type": "integer", 
+                        "description": "The host port.", 
+                        "format": "int32"
+                      }, 
+                      "hardware_information": {
+                        "type": "object", 
+                        "description": "Represents hardware information of host.\n\nTo get that information send a request like this:\n\n....\nGET /ovirt-engine/api/hosts/123\n....\n\nThe result will be like this:\n\n[source,xml]\n----\n<host href=\"/ovirt-engine/api/hosts/123\" id=\"123\">\n  ...\n  <hardware_information>\n    <family>Red Hat Enterprise Linux</family>\n    <manufacturer>Red Hat</manufacturer>\n    <product_name>RHEV Hypervisor</product_name>\n    <serial_number>01234567-89AB-CDEF-0123-456789ABCDEF</serial_number>\n    <supported_rng_sources>\n      <supported_rng_source>random</supported_rng_source>\n    </supported_rng_sources>\n    <uuid>12345678-9ABC-DEF0-1234-56789ABCDEF0</uuid>\n    <version>1.2-34.5.el7ev</version>\n  </hardware_information>\n  ...\n</application>\n----", 
+                        "properties": {
+                          "uuid": {
+                            "type": "string", 
+                            "description": "Unique ID for each host."
+                          }, 
+                          "family": {
+                            "type": "string", 
+                            "description": "Type of host's CPU."
+                          }, 
+                          "supported_rng_sources": {
+                            "items": {
+                              "enum": [
+                                "hwrng", 
+                                "random", 
+                                "urandom"
+                              ], 
+                              "type": "string"
+                            }, 
+                            "type": "array", 
+                            "description": "Supported sources of random number generator."
+                          }, 
+                          "version": {
+                            "type": "string", 
+                            "description": "Unique name for each of the manufacturer."
+                          }, 
+                          "serial_number": {
+                            "type": "string", 
+                            "description": "Unique ID for host's chassis."
+                          }, 
+                          "product_name": {
+                            "type": "string", 
+                            "description": "Host's product name (for example `RHEV Hypervisor`)."
+                          }, 
+                          "manufacturer": {
+                            "type": "string", 
+                            "description": "Manufacturer of the host's machine and hardware vendor."
+                          }
+                        }
+                      }, 
+                      "memory": {
+                        "type": "integer", 
+                        "description": "The amount of physical memory on this host in bytes.", 
+                        "format": "int32"
+                      }, 
+                      "ksm": {
+                        "type": "object", 
+                        "properties": {
+                          "enabled": {
+                            "type": "boolean"
+                          }, 
+                          "merge_across_nodes": {
+                            "type": "boolean"
+                          }
+                        }
+                      }, 
+                      "se_linux": {
+                        "type": "object", 
+                        "description": "Represents SELinux in the system.", 
+                        "properties": {
+                          "mode": {
+                            "enum": [
+                              "disabled", 
+                              "enforcing", 
+                              "permissive"
+                            ], 
+                            "type": "string", 
+                            "description": "SELinux current mode."
+                          }
+                        }
+                      }, 
+                      "type": {
+                        "enum": [
+                          "ovirt_node", 
+                          "rhel", 
+                          "rhev_h"
+                        ], 
+                        "type": "string", 
+                        "description": "Indicates if the host contains a full installation of the operating system or a scaled-down version intended\nonly to host virtual machines."
+                      }, 
+                      "status": {
+                        "enum": [
+                          "connecting", 
+                          "down", 
+                          "error", 
+                          "initializing", 
+                          "install_failed", 
+                          "installing", 
+                          "installing_os", 
+                          "kdumping", 
+                          "maintenance", 
+                          "non_operational", 
+                          "non_responsive", 
+                          "pending_approval", 
+                          "preparing_for_maintenance", 
+                          "reboot", 
+                          "unassigned", 
+                          "up"
+                        ], 
+                        "type": "string", 
+                        "description": "The host status."
+                      }, 
+                      "description": {
+                        "type": "string", 
+                        "description": "A human-readable description in plain text."
+                      }, 
+                      "status_detail": {
+                        "type": "string", 
+                        "description": "The host status details. Relevant for Gluster hosts."
+                      }, 
+                      "transparent_hugepages": {
+                        "type": "object", 
+                        "description": "Type representing a transparent huge pages (THP) support.", 
+                        "properties": {
+                          "enabled": {
+                            "type": "boolean", 
+                            "description": "Enable THP support."
+                          }
+                        }
+                      }, 
+                      "address": {
+                        "type": "string", 
+                        "description": "The host address (FQDN/IP)."
+                      }, 
+                      "override_iptables": {
+                        "type": "boolean", 
+                        "description": "Specifies whether we should override firewall definitions.\nThis applies only when the host is installed or re-installed."
+                      }, 
+                      "device_passthrough": {
+                        "type": "object", 
+                        "properties": {
+                          "enabled": {
+                            "type": "boolean"
+                          }
+                        }
+                      }, 
+                      "ssh": {
+                        "type": "object", 
+                        "properties": {
+                          "comment": {
+                            "type": "string", 
+                            "description": "Free text containing comments about this object."
+                          }, 
+                          "description": {
+                            "type": "string", 
+                            "description": "A human-readable description in plain text."
+                          }, 
+                          "authentication_method": {
+                            "enum": [
+                              "password", 
+                              "publickey"
+                            ], 
+                            "type": "string"
+                          }, 
+                          "id": {
+                            "type": "string", 
+                            "description": "A unique identifier."
+                          }, 
+                          "user": {
+                            "type": "object", 
+                            "description": "Represents a user in the system.", 
+                            "properties": {
+                              "comment": {
+                                "type": "string", 
+                                "description": "Free text containing comments about this object."
+                              }, 
+                              "last_name": {
+                                "type": "string"
+                              }, 
+                              "description": {
+                                "type": "string", 
+                                "description": "A human-readable description in plain text."
+                              }, 
+                              "name": {
+                                "type": "string", 
+                                "description": "A human-readable name in plain text."
+                              }, 
+                              "domain_entry_id": {
+                                "type": "string"
+                              }, 
+                              "namespace": {
+                                "type": "string", 
+                                "description": "Namespace where the user resides. When using the authorization provider that stores users in the LDAP server,\nthis attribute equals the naming context of the LDAP server.\nSee https://github.com/oVirt/ovirt-engine-extension-aaa-ldap for more information.\nWhen using the built-in authorization provider that stores users in the database this attribute is ignored.\nSee https://github.com/oVirt/ovirt-engine-extension-aaa-jdbc for more information."
+                              }, 
+                              "id": {
+                                "type": "string", 
+                                "description": "A unique identifier."
+                              }, 
+                              "department": {
+                                "type": "string"
+                              }, 
+                              "logged_in": {
+                                "type": "boolean"
+                              }, 
+                              "password": {
+                                "type": "string"
+                              }, 
+                              "user_name": {
+                                "type": "string", 
+                                "description": "The user's username. The format depends on authorization provider type. In most LDAP providers it is the\nvalue of the `uid` LDAP attribute. In Active Directory it is the User Principal Name (UPN). `UPN` or\n`uid` must be followed by the authorization provider name. For example, in the case of LDAP's `uid` attribute it is:\n`myuser@myextension-authz`. In the case of Active Directory using `UPN` it is:\n`myuser@mysubdomain.mydomain.com@myextension-authz`. This attribute is a required parameter when adding a new user."
+                              }, 
+                              "email": {
+                                "type": "string"
+                              }, 
+                              "principal": {
+                                "type": "string", 
+                                "description": "Similar to `user_name`. The format depends on the LDAP provider. With most LDAP providers it is the\nvalue of the `uid` LDAP attribute. In the case of Active Directory it is the User Principal Name (UPN)."
+                              }
+                            }
+                          }, 
+                          "fingerprint": {
+                            "type": "string"
+                          }, 
+                          "port": {
+                            "type": "integer", 
+                            "format": "int32"
+                          }, 
+                          "name": {
+                            "type": "string", 
+                            "description": "A human-readable name in plain text."
+                          }
+                        }
+                      }, 
+                      "numa_supported": {
+                        "type": "boolean", 
+                        "description": "Specifies whether _non uniform memory access_ (NUMA) is supported on this host."
+                      }, 
+                      "libvirt_version": {
+                        "type": "object", 
+                        "properties": {
+                          "comment": {
+                            "type": "string", 
+                            "description": "Free text containing comments about this object."
+                          }, 
+                          "major": {
+                            "type": "integer", 
+                            "format": "int32"
+                          }, 
+                          "description": {
+                            "type": "string", 
+                            "description": "A human-readable description in plain text."
+                          }, 
+                          "full_version": {
+                            "type": "string"
+                          }, 
+                          "name": {
+                            "type": "string", 
+                            "description": "A human-readable name in plain text."
+                          }, 
+                          "build": {
+                            "type": "integer", 
+                            "format": "int32"
+                          }, 
+                          "id": {
+                            "type": "string", 
+                            "description": "A unique identifier."
+                          }, 
+                          "minor": {
+                            "type": "integer", 
+                            "format": "int32"
+                          }, 
+                          "revision": {
+                            "type": "integer", 
+                            "format": "int32"
+                          }
+                        }
+                      }, 
+                      "power_management": {
+                        "type": "object", 
+                        "properties": {
+                          "status": {
+                            "enum": [
+                              "off", 
+                              "on", 
+                              "unknown"
+                            ], 
+                            "type": "string", 
+                            "description": "Determines the power status of the host."
+                          }, 
+                          "username": {
+                            "type": "string", 
+                            "description": "A valid user name for power management."
+                          }, 
+                          "kdump_detection": {
+                            "type": "boolean", 
+                            "description": "Toggles whether to determine if kdump is running on the host before it is shut down.\nWhen set to `true`, the host will not shut down during a kdump process.\nThis is set to `true` when a host has power management enabled, unless disabled by the user."
+                          }, 
+                          "automatic_pm_enabled": {
+                            "type": "boolean", 
+                            "description": "Toggles the automated power control of the host in order to save energy.\nWhen set to true, the host will be automatically powered down if the cluster's load is low,\nand powered on again when required. This is set to true when a host is created, unless disabled by the user."
+                          }, 
+                          "enabled": {
+                            "type": "boolean", 
+                            "description": "Indicates whether power management configuration is enabled or disabled."
+                          }, 
+                          "pm_proxies": {
+                            "items": {
+                              "type": "object", 
+                              "properties": {
+                                "type": {
+                                  "enum": [
+                                    "cluster", 
+                                    "dc", 
+                                    "other_dc"
+                                  ], 
+                                  "type": "string"
+                                }
+                              }
+                            }, 
+                            "type": "array", 
+                            "description": "Determines the power management proxy."
+                          }, 
+                          "agents": {
+                            "items": {
+                              "type": "object", 
+                              "description": "Type representing a fence agent.", 
+                              "properties": {
+                                "comment": {
+                                  "type": "string", 
+                                  "description": "Free text containing comments about this object."
+                                }, 
+                                "username": {
+                                  "type": "string", 
+                                  "description": "Fence agent user name."
+                                }, 
+                                "encrypt_options": {
+                                  "type": "boolean", 
+                                  "description": "Specifies whether the options should be encrypted."
+                                }, 
+                                "description": {
+                                  "type": "string", 
+                                  "description": "A human-readable description in plain text."
+                                }, 
+                                "options": {
+                                  "items": {
+                                    "type": "object", 
+                                    "properties": {
+                                      "type": {
+                                        "type": "string"
+                                      }, 
+                                      "name": {
+                                        "type": "string"
+                                      }, 
+                                      "value": {
+                                        "type": "string"
+                                      }
+                                    }
+                                  }, 
+                                  "type": "array", 
+                                  "description": "Fence agent options (comma-delimited list of\nkey-value pairs)."
+                                }, 
+                                "order": {
+                                  "type": "integer", 
+                                  "description": "The order of this agent if used with other agents.", 
+                                  "format": "int32"
+                                }, 
+                                "concurrent": {
+                                  "type": "boolean", 
+                                  "description": "Specifies whether the agent should be used concurrently\nor sequentially."
+                                }, 
+                                "address": {
+                                  "type": "string", 
+                                  "description": "Fence agent address."
+                                }, 
+                                "id": {
+                                  "type": "string", 
+                                  "description": "A unique identifier."
+                                }, 
+                                "password": {
+                                  "type": "string", 
+                                  "description": "Fence agent password."
+                                }, 
+                                "type": {
+                                  "type": "string", 
+                                  "description": "Fence agent type."
+                                }, 
+                                "port": {
+                                  "type": "integer", 
+                                  "description": "Fence agent port.", 
+                                  "format": "int32"
+                                }, 
+                                "name": {
+                                  "type": "string", 
+                                  "description": "A human-readable name in plain text."
+                                }
+                              }
+                            }, 
+                            "type": "array", 
+                            "description": "Specifies fence agent options when multiple fences are used.\n\nUse the order sub-element to prioritize the fence agents. Agents are run sequentially according to their\norder until the fence action succeeds. When two or more fence agents have the same order,\nthey are run concurrently. Other sub-elements include type, ip, user, password, and options."
+                          }, 
+                          "address": {
+                            "type": "string", 
+                            "description": "The host name or IP address of the host."
+                          }, 
+                          "password": {
+                            "type": "string", 
+                            "description": "A valid, robust password for power management."
+                          }, 
+                          "type": {
+                            "type": "string", 
+                            "description": "Fencing device code.\n\nA list of valid fencing device codes are available in the `capabilities` collection."
+                          }, 
+                          "options": {
+                            "items": {
+                              "type": "object", 
+                              "properties": {
+                                "type": {
+                                  "type": "string"
+                                }, 
+                                "name": {
+                                  "type": "string"
+                                }, 
+                                "value": {
+                                  "type": "string"
+                                }
+                              }
+                            }, 
+                            "type": "array", 
+                            "description": "Fencing options for the selected type= specified with the option name=\"\" and value=\"\" strings."
+                          }
+                        }
+                      }, 
+                      "name": {
+                        "type": "string", 
+                        "description": "A human-readable name in plain text."
+                      }, 
+                      "max_scheduling_memory": {
+                        "type": "integer", 
+                        "description": "The max scheduling memory on this host in bytes.", 
+                        "format": "int32"
+                      }, 
+                      "summary": {
+                        "type": "object", 
+                        "description": "Type containing information related to virtual machines on a particular host.", 
+                        "properties": {
+                          "active": {
+                            "type": "integer", 
+                            "description": "The number of virtual machines active on the host.", 
+                            "format": "int32"
+                          }, 
+                          "migrating": {
+                            "type": "integer", 
+                            "description": "The number of virtual machines migrating to or from the host.", 
+                            "format": "int32"
+                          }, 
+                          "total": {
+                            "type": "integer", 
+                            "description": "The number of virtual machines present on the host.", 
+                            "format": "int32"
+                          }
+                        }
+                      }, 
+                      "auto_numa_status": {
+                        "enum": [
+                          "disable", 
+                          "enable", 
+                          "unknown"
+                        ], 
+                        "type": "string", 
+                        "description": "The host auto _non uniform memory access_ (NUMA) status."
+                      }, 
+                      "os": {
+                        "type": "object", 
+                        "description": "Information describing the operating system. This is used for both virtual machines and hosts.", 
+                        "properties": {
+                          "kernel": {
+                            "type": "string", 
+                            "description": "Path to custom kernel on ISO storage domain if Linux operating system is used.\n\nFor example `iso://vmlinuz-3.10.0-514.6.1.el7.x86_64`.\n\nNOTE: Not used for hosts."
+                          }, 
+                          "reported_kernel_cmdline": {
+                            "type": "string", 
+                            "description": "The host kernel command line as reported by a running host.\n\nThis is a read-only attribute. Attempts to change this attribute are silently ignored.\n\nNOTE: This attribute is currently only used for hosts."
+                          }, 
+                          "boot": {
+                            "type": "object", 
+                            "description": "Configuration of the boot sequence of a virtual machine.", 
+                            "properties": {
+                              "devices": {
+                                "items": {
+                                  "enum": [
+                                    "cdrom", 
+                                    "hd", 
+                                    "network"
+                                  ], 
+                                  "type": "string"
+                                }, 
+                                "type": "array", 
+                                "description": "Ordered list of boot devices. The virtual machine will try to boot from the given boot devices, in the given\norder."
+                              }
+                            }
+                          }, 
+                          "cmdline": {
+                            "type": "string", 
+                            "description": "Custom kernel parameters for start the virtual machine with if Linux operating system is used.\n\nNOTE: Not used for hosts."
+                          }, 
+                          "initrd": {
+                            "type": "string", 
+                            "description": "Path to custom initial ramdisk on ISO storage domain if Linux operating system is used.\n\nFor example `iso://initramfs-3.10.0-514.6.1.el7.x86_64.img`.\n\nNOTE: Not used for hosts."
+                          }, 
+                          "version": {
+                            "type": "object", 
+                            "properties": {
+                              "comment": {
+                                "type": "string", 
+                                "description": "Free text containing comments about this object."
+                              }, 
+                              "major": {
+                                "type": "integer", 
+                                "format": "int32"
+                              }, 
+                              "description": {
+                                "type": "string", 
+                                "description": "A human-readable description in plain text."
+                              }, 
+                              "full_version": {
+                                "type": "string"
+                              }, 
+                              "name": {
+                                "type": "string", 
+                                "description": "A human-readable name in plain text."
+                              }, 
+                              "build": {
+                                "type": "integer", 
+                                "format": "int32"
+                              }, 
+                              "id": {
+                                "type": "string", 
+                                "description": "A unique identifier."
+                              }, 
+                              "minor": {
+                                "type": "integer", 
+                                "format": "int32"
+                              }, 
+                              "revision": {
+                                "type": "integer", 
+                                "format": "int32"
+                              }
+                            }
+                          }, 
+                          "custom_kernel_cmdline": {
+                            "type": "string", 
+                            "description": "A custom part of the host kernel command line. This will be merged with the existing kernel command line.\n\nYou must reinstall and then reboot the host to apply the changes implemented by this attribute.\n\nDuring each host deploy procedure, kernel parameters that were added\nin the previous host deploy procedure are removed using\n`grubby --update-kernel DEFAULT --remove-args <previous_custom_params>`, and the current\nkernel command line customization is applied using\n`grubby --update-kernel DEFAULT --args <custom_params>`. The Manager internally keeps track of the\nlast-applied kernel parameters customization.\n\nNOTE: This attribute is currently only used for hosts."
+                          }, 
+                          "type": {
+                            "type": "string", 
+                            "description": "Operating system name in human readable form.\n\nFor example `Fedora` or `RHEL`. In general one of the names returned by the <<services/operating_systems,\noperating system>> service.\n\nNOTE: Read only for hosts."
+                          }
+                        }
+                      }, 
+                      "cpu": {
+                        "type": "object", 
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          }, 
+                          "level": {
+                            "type": "integer", 
+                            "format": "int32"
+                          }, 
+                          "speed": {
+                            "type": "number", 
+                            "format": "double"
+                          }, 
+                          "cpu_tune": {
+                            "type": "object", 
+                            "properties": {
+                              "vcpu_pins": {
+                                "items": {
+                                  "type": "object", 
+                                  "properties": {
+                                    "cpu_set": {
+                                      "type": "string"
+                                    }, 
+                                    "vcpu": {
+                                      "type": "integer", 
+                                      "format": "int32"
+                                    }
+                                  }
+                                }, 
+                                "type": "array"
+                              }
+                            }
+                          }, 
+                          "architecture": {
+                            "enum": [
+                              "ppc64", 
+                              "undefined", 
+                              "x86_64"
+                            ], 
+                            "type": "string"
+                          }, 
+                          "mode": {
+                            "enum": [
+                              "custom", 
+                              "host_model", 
+                              "host_passthrough"
+                            ], 
+                            "type": "string"
+                          }, 
+                          "cores": {
+                            "items": {
+                              "type": "object", 
+                              "properties": {
+                                "index": {
+                                  "type": "integer", 
+                                  "format": "int32"
+                                }, 
+                                "socket": {
+                                  "type": "integer", 
+                                  "format": "int32"
+                                }
+                              }
+                            }, 
+                            "type": "array"
+                          }, 
+                          "type": {
+                            "type": "string"
+                          }, 
+                          "topology": {
+                            "type": "object", 
+                            "properties": {
+                              "cores": {
+                                "type": "integer", 
+                                "format": "int32"
+                              }, 
+                              "threads": {
+                                "type": "integer", 
+                                "format": "int32"
+                              }, 
+                              "sockets": {
+                                "type": "integer", 
+                                "format": "int32"
+                              }
+                            }
+                          }
+                        }
+                      }, 
+                      "kdump_status": {
+                        "enum": [
+                          "disabled", 
+                          "enabled", 
+                          "unknown"
+                        ], 
+                        "type": "string", 
+                        "description": "The host KDUMP status.\nKDUMP happens when the host kernel has crashed and it is now going through memory dumping."
+                      }, 
+                      "root_password": {
+                        "type": "string", 
+                        "description": "When creating a new host, a root password is required if the password authentication method is chosen,\nbut this is not subsequently included in the representation."
+                      }
+                    }
+                  }, 
+                  "type": "array", 
+                  "description": "Array of hosts serving as search domains."
+                }, 
+                "servers": {
+                  "items": {
+                    "type": "object", 
+                    "description": "Type representing a host.", 
+                    "properties": {
+                      "comment": {
+                        "type": "string", 
+                        "description": "Free text containing comments about this object."
+                      }, 
+                      "update_available": {
+                        "type": "boolean", 
+                        "description": "Specifies whether there is an oVirt-related update on this host."
+                      }, 
+                      "protocol": {
+                        "enum": [
+                          "stomp", 
+                          "xml"
+                        ], 
+                        "type": "string", 
+                        "description": "The protocol that the engine uses to communicate with\nthe host.\n\nWARNING: Since version 4.1 of the engine the protocol\nis always set to `stomp` since `xml` was removed."
+                      }, 
+                      "version": {
+                        "type": "object", 
+                        "properties": {
+                          "comment": {
+                            "type": "string", 
+                            "description": "Free text containing comments about this object."
+                          }, 
+                          "major": {
+                            "type": "integer", 
+                            "format": "int32"
+                          }, 
+                          "description": {
+                            "type": "string", 
+                            "description": "A human-readable description in plain text."
+                          }, 
+                          "full_version": {
+                            "type": "string"
+                          }, 
+                          "name": {
+                            "type": "string", 
+                            "description": "A human-readable name in plain text."
+                          }, 
+                          "build": {
+                            "type": "integer", 
+                            "format": "int32"
+                          }, 
+                          "id": {
+                            "type": "string", 
+                            "description": "A unique identifier."
+                          }, 
+                          "minor": {
+                            "type": "integer", 
+                            "format": "int32"
+                          }, 
+                          "revision": {
+                            "type": "integer", 
+                            "format": "int32"
+                          }
+                        }
+                      }, 
+                      "spm": {
+                        "type": "object", 
+                        "properties": {
+                          "priority": {
+                            "type": "integer", 
+                            "format": "int32"
+                          }, 
+                          "status": {
+                            "enum": [
+                              "contending", 
+                              "none", 
+                              "spm"
+                            ], 
+                            "type": "string"
+                          }
+                        }
+                      }, 
+                      "hosted_engine": {
+                        "type": "object", 
+                        "properties": {
+                          "active": {
+                            "type": "boolean"
+                          }, 
+                          "local_maintenance": {
+                            "type": "boolean"
+                          }, 
+                          "configured": {
+                            "type": "boolean"
+                          }, 
+                          "score": {
+                            "type": "integer", 
+                            "format": "int32"
+                          }, 
+                          "global_maintenance": {
+                            "type": "boolean"
+                          }
+                        }
+                      }, 
+                      "id": {
+                        "type": "string", 
+                        "description": "A unique identifier."
+                      }, 
+                      "external_status": {
+                        "enum": [
+                          "error", 
+                          "failure", 
+                          "info", 
+                          "ok", 
+                          "warning"
+                        ], 
+                        "type": "string", 
+                        "description": "The host external status.\nThis can be used by third-party software to change the host external status\nin case of an issue.\nThis has no effect on the host lifecycle, unless a third-party software checks for this\nstatus and acts accordingly."
+                      }, 
+                      "certificate": {
+                        "type": "object", 
+                        "properties": {
+                          "comment": {
+                            "type": "string", 
+                            "description": "Free text containing comments about this object."
+                          }, 
+                          "description": {
+                            "type": "string", 
+                            "description": "A human-readable description in plain text."
+                          }, 
+                          "name": {
+                            "type": "string", 
+                            "description": "A human-readable name in plain text."
+                          }, 
+                          "content": {
+                            "type": "string"
+                          }, 
+                          "organization": {
+                            "type": "string"
+                          }, 
+                          "id": {
+                            "type": "string", 
+                            "description": "A unique identifier."
+                          }, 
+                          "subject": {
+                            "type": "string"
+                          }
+                        }
+                      }, 
+                      "display": {
+                        "type": "object", 
+                        "description": "Represents a graphic console configuration.", 
+                        "properties": {
+                          "allow_override": {
+                            "type": "boolean", 
+                            "description": "Indicates if to override the display address per host.\nRelevant only for the `Host.display` attribute.\nIf set, the graphical console address of a virtual machine will be overridden by the host specified display address.\nif not set, the graphical console address of a virtual machine will not be overridden."
+                          }, 
+                          "disconnect_action": {
+                            "type": "string", 
+                            "description": "Returns the action that will take place when the graphic console is disconnected.\nThe options are:\n\nnone:: No action is taken.\nlock_screen:: Locks the currently active user session.\nlogout:: Logs out the currently active user session.\nreboot:: Initiates a graceful virtual machine reboot.\nshutdown:: Initiates a graceful virtual machine shutdown.\n\nThis option is only available for the SPICE console type."
+                          }, 
+                          "certificate": {
+                            "type": "object", 
+                            "properties": {
+                              "comment": {
+                                "type": "string", 
+                                "description": "Free text containing comments about this object."
+                              }, 
+                              "description": {
+                                "type": "string", 
+                                "description": "A human-readable description in plain text."
+                              }, 
+                              "name": {
+                                "type": "string", 
+                                "description": "A human-readable name in plain text."
+                              }, 
+                              "content": {
+                                "type": "string"
+                              }, 
+                              "organization": {
+                                "type": "string"
+                              }, 
+                              "id": {
+                                "type": "string", 
+                                "description": "A unique identifier."
+                              }, 
+                              "subject": {
+                                "type": "string"
+                              }
+                            }
+                          }, 
+                          "monitors": {
+                            "type": "integer", 
+                            "description": "The number of monitors opened for this graphic console.\nThis option is only available for the SPICE console type.\nPossible values are 1, 2 or 4.", 
+                            "format": "int32"
+                          }, 
+                          "single_qxl_pci": {
+                            "type": "boolean", 
+                            "description": "Indicates if to use one PCI slot for each monitor or to use a single PCI channel for all multiple monitors.\nThis option is only available for the SPICE console type and only for connecting a guest Linux based OS."
+                          }, 
+                          "copy_paste_enabled": {
+                            "type": "boolean", 
+                            "description": "Indicates whether a user is able to copy and paste content from an external host into the graphic console.\nThis option is only available for the SPICE console type."
+                          }, 
+                          "secure_port": {
+                            "type": "integer", 
+                            "description": "The secured port address on the guest, in case of using TLS, to connect the graphic console client to.\nIf TLS isn't enabled then it won't be reported.", 
+                            "format": "int32"
+                          }, 
+                          "proxy": {
+                            "type": "string", 
+                            "description": "The proxy IP which will be used by the graphic console client to connect to the guest.\nIt is useful when the client is outside the guest's network.\nThis option is only available for the SPICE console type.\nThis proxy can be set in global configuration, cluster level, virtual machine pool level or disabled\nper virtual machine.\nIf the proxy is set in any of this mentioned places and not disabled for the virtual machine, it will be\nreturned by this method.\nIf the proxy is not set, nothing will be reported."
+                          }, 
+                          "smartcard_enabled": {
+                            "type": "boolean", 
+                            "description": "Indicates if to use smart card authentication.\nThis option is only available for the SPICE console type."
+                          }, 
+                          "file_transfer_enabled": {
+                            "type": "boolean", 
+                            "description": "Indicates if a user is able to drag and drop files from an external host into the graphic console.\nThis option is only available for the SPICE console type."
+                          }, 
+                          "keyboard_layout": {
+                            "type": "string", 
+                            "description": "The keyboard layout to use with this graphic console.\nThis option is only available for the VNC console type.\nIf no keyboard is enabled then it won't be reported."
+                          }, 
+                          "type": {
+                            "enum": [
+                              "spice", 
+                              "vnc"
+                            ], 
+                            "type": "string", 
+                            "description": "The graphic console protocol type."
+                          }, 
+                          "port": {
+                            "type": "integer", 
+                            "description": "The port address on the guest to connect the graphic console client to.", 
+                            "format": "int32"
+                          }, 
+                          "address": {
+                            "type": "string", 
+                            "description": "The IP address of the guest to connect the graphic console client to."
+                          }
+                        }
+                      }, 
+                      "iscsi": {
+                        "type": "object", 
+                        "properties": {
+                          "status": {
+                            "type": "string"
+                          }, 
+                          "username": {
+                            "type": "string"
+                          }, 
+                          "initiator": {
+                            "type": "string"
+                          }, 
+                          "vendor_id": {
+                            "type": "string"
+                          }, 
+                          "volume_group_id": {
+                            "type": "string"
+                          }, 
+                          "paths": {
+                            "type": "integer", 
+                            "format": "int32"
+                          }, 
+                          "storage_domain_id": {
+                            "type": "string"
+                          }, 
+                          "disk_id": {
+                            "type": "string"
+                          }, 
+                          "password": {
+                            "type": "string"
+                          }, 
+                          "portal": {
+                            "type": "string"
+                          }, 
+                          "address": {
+                            "type": "string"
+                          }, 
+                          "lun_mapping": {
+                            "type": "integer", 
+                            "format": "int32"
+                          }, 
+                          "serial": {
+                            "type": "string"
+                          }, 
+                          "size": {
+                            "type": "integer", 
+                            "format": "int32"
+                          }, 
+                          "target": {
+                            "type": "string"
+                          }, 
+                          "port": {
+                            "type": "integer", 
+                            "format": "int32"
+                          }, 
+                          "product_id": {
+                            "type": "string"
+                          }
+                        }
+                      }, 
+                      "port": {
+                        "type": "integer", 
+                        "description": "The host port.", 
+                        "format": "int32"
+                      }, 
+                      "hardware_information": {
+                        "type": "object", 
+                        "description": "Represents hardware information of host.\n\nTo get that information send a request like this:\n\n....\nGET /ovirt-engine/api/hosts/123\n....\n\nThe result will be like this:\n\n[source,xml]\n----\n<host href=\"/ovirt-engine/api/hosts/123\" id=\"123\">\n  ...\n  <hardware_information>\n    <family>Red Hat Enterprise Linux</family>\n    <manufacturer>Red Hat</manufacturer>\n    <product_name>RHEV Hypervisor</product_name>\n    <serial_number>01234567-89AB-CDEF-0123-456789ABCDEF</serial_number>\n    <supported_rng_sources>\n      <supported_rng_source>random</supported_rng_source>\n    </supported_rng_sources>\n    <uuid>12345678-9ABC-DEF0-1234-56789ABCDEF0</uuid>\n    <version>1.2-34.5.el7ev</version>\n  </hardware_information>\n  ...\n</application>\n----", 
+                        "properties": {
+                          "uuid": {
+                            "type": "string", 
+                            "description": "Unique ID for each host."
+                          }, 
+                          "family": {
+                            "type": "string", 
+                            "description": "Type of host's CPU."
+                          }, 
+                          "supported_rng_sources": {
+                            "items": {
+                              "enum": [
+                                "hwrng", 
+                                "random", 
+                                "urandom"
+                              ], 
+                              "type": "string"
+                            }, 
+                            "type": "array", 
+                            "description": "Supported sources of random number generator."
+                          }, 
+                          "version": {
+                            "type": "string", 
+                            "description": "Unique name for each of the manufacturer."
+                          }, 
+                          "serial_number": {
+                            "type": "string", 
+                            "description": "Unique ID for host's chassis."
+                          }, 
+                          "product_name": {
+                            "type": "string", 
+                            "description": "Host's product name (for example `RHEV Hypervisor`)."
+                          }, 
+                          "manufacturer": {
+                            "type": "string", 
+                            "description": "Manufacturer of the host's machine and hardware vendor."
+                          }
+                        }
+                      }, 
+                      "memory": {
+                        "type": "integer", 
+                        "description": "The amount of physical memory on this host in bytes.", 
+                        "format": "int32"
+                      }, 
+                      "ksm": {
+                        "type": "object", 
+                        "properties": {
+                          "enabled": {
+                            "type": "boolean"
+                          }, 
+                          "merge_across_nodes": {
+                            "type": "boolean"
+                          }
+                        }
+                      }, 
+                      "se_linux": {
+                        "type": "object", 
+                        "description": "Represents SELinux in the system.", 
+                        "properties": {
+                          "mode": {
+                            "enum": [
+                              "disabled", 
+                              "enforcing", 
+                              "permissive"
+                            ], 
+                            "type": "string", 
+                            "description": "SELinux current mode."
+                          }
+                        }
+                      }, 
+                      "type": {
+                        "enum": [
+                          "ovirt_node", 
+                          "rhel", 
+                          "rhev_h"
+                        ], 
+                        "type": "string", 
+                        "description": "Indicates if the host contains a full installation of the operating system or a scaled-down version intended\nonly to host virtual machines."
+                      }, 
+                      "status": {
+                        "enum": [
+                          "connecting", 
+                          "down", 
+                          "error", 
+                          "initializing", 
+                          "install_failed", 
+                          "installing", 
+                          "installing_os", 
+                          "kdumping", 
+                          "maintenance", 
+                          "non_operational", 
+                          "non_responsive", 
+                          "pending_approval", 
+                          "preparing_for_maintenance", 
+                          "reboot", 
+                          "unassigned", 
+                          "up"
+                        ], 
+                        "type": "string", 
+                        "description": "The host status."
+                      }, 
+                      "description": {
+                        "type": "string", 
+                        "description": "A human-readable description in plain text."
+                      }, 
+                      "status_detail": {
+                        "type": "string", 
+                        "description": "The host status details. Relevant for Gluster hosts."
+                      }, 
+                      "transparent_hugepages": {
+                        "type": "object", 
+                        "description": "Type representing a transparent huge pages (THP) support.", 
+                        "properties": {
+                          "enabled": {
+                            "type": "boolean", 
+                            "description": "Enable THP support."
+                          }
+                        }
+                      }, 
+                      "address": {
+                        "type": "string", 
+                        "description": "The host address (FQDN/IP)."
+                      }, 
+                      "override_iptables": {
+                        "type": "boolean", 
+                        "description": "Specifies whether we should override firewall definitions.\nThis applies only when the host is installed or re-installed."
+                      }, 
+                      "device_passthrough": {
+                        "type": "object", 
+                        "properties": {
+                          "enabled": {
+                            "type": "boolean"
+                          }
+                        }
+                      }, 
+                      "ssh": {
+                        "type": "object", 
+                        "properties": {
+                          "comment": {
+                            "type": "string", 
+                            "description": "Free text containing comments about this object."
+                          }, 
+                          "description": {
+                            "type": "string", 
+                            "description": "A human-readable description in plain text."
+                          }, 
+                          "authentication_method": {
+                            "enum": [
+                              "password", 
+                              "publickey"
+                            ], 
+                            "type": "string"
+                          }, 
+                          "id": {
+                            "type": "string", 
+                            "description": "A unique identifier."
+                          }, 
+                          "user": {
+                            "type": "object", 
+                            "description": "Represents a user in the system.", 
+                            "properties": {
+                              "comment": {
+                                "type": "string", 
+                                "description": "Free text containing comments about this object."
+                              }, 
+                              "last_name": {
+                                "type": "string"
+                              }, 
+                              "description": {
+                                "type": "string", 
+                                "description": "A human-readable description in plain text."
+                              }, 
+                              "name": {
+                                "type": "string", 
+                                "description": "A human-readable name in plain text."
+                              }, 
+                              "domain_entry_id": {
+                                "type": "string"
+                              }, 
+                              "namespace": {
+                                "type": "string", 
+                                "description": "Namespace where the user resides. When using the authorization provider that stores users in the LDAP server,\nthis attribute equals the naming context of the LDAP server.\nSee https://github.com/oVirt/ovirt-engine-extension-aaa-ldap for more information.\nWhen using the built-in authorization provider that stores users in the database this attribute is ignored.\nSee https://github.com/oVirt/ovirt-engine-extension-aaa-jdbc for more information."
+                              }, 
+                              "id": {
+                                "type": "string", 
+                                "description": "A unique identifier."
+                              }, 
+                              "department": {
+                                "type": "string"
+                              }, 
+                              "logged_in": {
+                                "type": "boolean"
+                              }, 
+                              "password": {
+                                "type": "string"
+                              }, 
+                              "user_name": {
+                                "type": "string", 
+                                "description": "The user's username. The format depends on authorization provider type. In most LDAP providers it is the\nvalue of the `uid` LDAP attribute. In Active Directory it is the User Principal Name (UPN). `UPN` or\n`uid` must be followed by the authorization provider name. For example, in the case of LDAP's `uid` attribute it is:\n`myuser@myextension-authz`. In the case of Active Directory using `UPN` it is:\n`myuser@mysubdomain.mydomain.com@myextension-authz`. This attribute is a required parameter when adding a new user."
+                              }, 
+                              "email": {
+                                "type": "string"
+                              }, 
+                              "principal": {
+                                "type": "string", 
+                                "description": "Similar to `user_name`. The format depends on the LDAP provider. With most LDAP providers it is the\nvalue of the `uid` LDAP attribute. In the case of Active Directory it is the User Principal Name (UPN)."
+                              }
+                            }
+                          }, 
+                          "fingerprint": {
+                            "type": "string"
+                          }, 
+                          "port": {
+                            "type": "integer", 
+                            "format": "int32"
+                          }, 
+                          "name": {
+                            "type": "string", 
+                            "description": "A human-readable name in plain text."
+                          }
+                        }
+                      }, 
+                      "numa_supported": {
+                        "type": "boolean", 
+                        "description": "Specifies whether _non uniform memory access_ (NUMA) is supported on this host."
+                      }, 
+                      "libvirt_version": {
+                        "type": "object", 
+                        "properties": {
+                          "comment": {
+                            "type": "string", 
+                            "description": "Free text containing comments about this object."
+                          }, 
+                          "major": {
+                            "type": "integer", 
+                            "format": "int32"
+                          }, 
+                          "description": {
+                            "type": "string", 
+                            "description": "A human-readable description in plain text."
+                          }, 
+                          "full_version": {
+                            "type": "string"
+                          }, 
+                          "name": {
+                            "type": "string", 
+                            "description": "A human-readable name in plain text."
+                          }, 
+                          "build": {
+                            "type": "integer", 
+                            "format": "int32"
+                          }, 
+                          "id": {
+                            "type": "string", 
+                            "description": "A unique identifier."
+                          }, 
+                          "minor": {
+                            "type": "integer", 
+                            "format": "int32"
+                          }, 
+                          "revision": {
+                            "type": "integer", 
+                            "format": "int32"
+                          }
+                        }
+                      }, 
+                      "power_management": {
+                        "type": "object", 
+                        "properties": {
+                          "status": {
+                            "enum": [
+                              "off", 
+                              "on", 
+                              "unknown"
+                            ], 
+                            "type": "string", 
+                            "description": "Determines the power status of the host."
+                          }, 
+                          "username": {
+                            "type": "string", 
+                            "description": "A valid user name for power management."
+                          }, 
+                          "kdump_detection": {
+                            "type": "boolean", 
+                            "description": "Toggles whether to determine if kdump is running on the host before it is shut down.\nWhen set to `true`, the host will not shut down during a kdump process.\nThis is set to `true` when a host has power management enabled, unless disabled by the user."
+                          }, 
+                          "automatic_pm_enabled": {
+                            "type": "boolean", 
+                            "description": "Toggles the automated power control of the host in order to save energy.\nWhen set to true, the host will be automatically powered down if the cluster's load is low,\nand powered on again when required. This is set to true when a host is created, unless disabled by the user."
+                          }, 
+                          "enabled": {
+                            "type": "boolean", 
+                            "description": "Indicates whether power management configuration is enabled or disabled."
+                          }, 
+                          "pm_proxies": {
+                            "items": {
+                              "type": "object", 
+                              "properties": {
+                                "type": {
+                                  "enum": [
+                                    "cluster", 
+                                    "dc", 
+                                    "other_dc"
+                                  ], 
+                                  "type": "string"
+                                }
+                              }
+                            }, 
+                            "type": "array", 
+                            "description": "Determines the power management proxy."
+                          }, 
+                          "agents": {
+                            "items": {
+                              "type": "object", 
+                              "description": "Type representing a fence agent.", 
+                              "properties": {
+                                "comment": {
+                                  "type": "string", 
+                                  "description": "Free text containing comments about this object."
+                                }, 
+                                "username": {
+                                  "type": "string", 
+                                  "description": "Fence agent user name."
+                                }, 
+                                "encrypt_options": {
+                                  "type": "boolean", 
+                                  "description": "Specifies whether the options should be encrypted."
+                                }, 
+                                "description": {
+                                  "type": "string", 
+                                  "description": "A human-readable description in plain text."
+                                }, 
+                                "options": {
+                                  "items": {
+                                    "type": "object", 
+                                    "properties": {
+                                      "type": {
+                                        "type": "string"
+                                      }, 
+                                      "name": {
+                                        "type": "string"
+                                      }, 
+                                      "value": {
+                                        "type": "string"
+                                      }
+                                    }
+                                  }, 
+                                  "type": "array", 
+                                  "description": "Fence agent options (comma-delimited list of\nkey-value pairs)."
+                                }, 
+                                "order": {
+                                  "type": "integer", 
+                                  "description": "The order of this agent if used with other agents.", 
+                                  "format": "int32"
+                                }, 
+                                "concurrent": {
+                                  "type": "boolean", 
+                                  "description": "Specifies whether the agent should be used concurrently\nor sequentially."
+                                }, 
+                                "address": {
+                                  "type": "string", 
+                                  "description": "Fence agent address."
+                                }, 
+                                "id": {
+                                  "type": "string", 
+                                  "description": "A unique identifier."
+                                }, 
+                                "password": {
+                                  "type": "string", 
+                                  "description": "Fence agent password."
+                                }, 
+                                "type": {
+                                  "type": "string", 
+                                  "description": "Fence agent type."
+                                }, 
+                                "port": {
+                                  "type": "integer", 
+                                  "description": "Fence agent port.", 
+                                  "format": "int32"
+                                }, 
+                                "name": {
+                                  "type": "string", 
+                                  "description": "A human-readable name in plain text."
+                                }
+                              }
+                            }, 
+                            "type": "array", 
+                            "description": "Specifies fence agent options when multiple fences are used.\n\nUse the order sub-element to prioritize the fence agents. Agents are run sequentially according to their\norder until the fence action succeeds. When two or more fence agents have the same order,\nthey are run concurrently. Other sub-elements include type, ip, user, password, and options."
+                          }, 
+                          "address": {
+                            "type": "string", 
+                            "description": "The host name or IP address of the host."
+                          }, 
+                          "password": {
+                            "type": "string", 
+                            "description": "A valid, robust password for power management."
+                          }, 
+                          "type": {
+                            "type": "string", 
+                            "description": "Fencing device code.\n\nA list of valid fencing device codes are available in the `capabilities` collection."
+                          }, 
+                          "options": {
+                            "items": {
+                              "type": "object", 
+                              "properties": {
+                                "type": {
+                                  "type": "string"
+                                }, 
+                                "name": {
+                                  "type": "string"
+                                }, 
+                                "value": {
+                                  "type": "string"
+                                }
+                              }
+                            }, 
+                            "type": "array", 
+                            "description": "Fencing options for the selected type= specified with the option name=\"\" and value=\"\" strings."
+                          }
+                        }
+                      }, 
+                      "name": {
+                        "type": "string", 
+                        "description": "A human-readable name in plain text."
+                      }, 
+                      "max_scheduling_memory": {
+                        "type": "integer", 
+                        "description": "The max scheduling memory on this host in bytes.", 
+                        "format": "int32"
+                      }, 
+                      "summary": {
+                        "type": "object", 
+                        "description": "Type containing information related to virtual machines on a particular host.", 
+                        "properties": {
+                          "active": {
+                            "type": "integer", 
+                            "description": "The number of virtual machines active on the host.", 
+                            "format": "int32"
+                          }, 
+                          "migrating": {
+                            "type": "integer", 
+                            "description": "The number of virtual machines migrating to or from the host.", 
+                            "format": "int32"
+                          }, 
+                          "total": {
+                            "type": "integer", 
+                            "description": "The number of virtual machines present on the host.", 
+                            "format": "int32"
+                          }
+                        }
+                      }, 
+                      "auto_numa_status": {
+                        "enum": [
+                          "disable", 
+                          "enable", 
+                          "unknown"
+                        ], 
+                        "type": "string", 
+                        "description": "The host auto _non uniform memory access_ (NUMA) status."
+                      }, 
+                      "os": {
+                        "type": "object", 
+                        "description": "Information describing the operating system. This is used for both virtual machines and hosts.", 
+                        "properties": {
+                          "kernel": {
+                            "type": "string", 
+                            "description": "Path to custom kernel on ISO storage domain if Linux operating system is used.\n\nFor example `iso://vmlinuz-3.10.0-514.6.1.el7.x86_64`.\n\nNOTE: Not used for hosts."
+                          }, 
+                          "reported_kernel_cmdline": {
+                            "type": "string", 
+                            "description": "The host kernel command line as reported by a running host.\n\nThis is a read-only attribute. Attempts to change this attribute are silently ignored.\n\nNOTE: This attribute is currently only used for hosts."
+                          }, 
+                          "boot": {
+                            "type": "object", 
+                            "description": "Configuration of the boot sequence of a virtual machine.", 
+                            "properties": {
+                              "devices": {
+                                "items": {
+                                  "enum": [
+                                    "cdrom", 
+                                    "hd", 
+                                    "network"
+                                  ], 
+                                  "type": "string"
+                                }, 
+                                "type": "array", 
+                                "description": "Ordered list of boot devices. The virtual machine will try to boot from the given boot devices, in the given\norder."
+                              }
+                            }
+                          }, 
+                          "cmdline": {
+                            "type": "string", 
+                            "description": "Custom kernel parameters for start the virtual machine with if Linux operating system is used.\n\nNOTE: Not used for hosts."
+                          }, 
+                          "initrd": {
+                            "type": "string", 
+                            "description": "Path to custom initial ramdisk on ISO storage domain if Linux operating system is used.\n\nFor example `iso://initramfs-3.10.0-514.6.1.el7.x86_64.img`.\n\nNOTE: Not used for hosts."
+                          }, 
+                          "version": {
+                            "type": "object", 
+                            "properties": {
+                              "comment": {
+                                "type": "string", 
+                                "description": "Free text containing comments about this object."
+                              }, 
+                              "major": {
+                                "type": "integer", 
+                                "format": "int32"
+                              }, 
+                              "description": {
+                                "type": "string", 
+                                "description": "A human-readable description in plain text."
+                              }, 
+                              "full_version": {
+                                "type": "string"
+                              }, 
+                              "name": {
+                                "type": "string", 
+                                "description": "A human-readable name in plain text."
+                              }, 
+                              "build": {
+                                "type": "integer", 
+                                "format": "int32"
+                              }, 
+                              "id": {
+                                "type": "string", 
+                                "description": "A unique identifier."
+                              }, 
+                              "minor": {
+                                "type": "integer", 
+                                "format": "int32"
+                              }, 
+                              "revision": {
+                                "type": "integer", 
+                                "format": "int32"
+                              }
+                            }
+                          }, 
+                          "custom_kernel_cmdline": {
+                            "type": "string", 
+                            "description": "A custom part of the host kernel command line. This will be merged with the existing kernel command line.\n\nYou must reinstall and then reboot the host to apply the changes implemented by this attribute.\n\nDuring each host deploy procedure, kernel parameters that were added\nin the previous host deploy procedure are removed using\n`grubby --update-kernel DEFAULT --remove-args <previous_custom_params>`, and the current\nkernel command line customization is applied using\n`grubby --update-kernel DEFAULT --args <custom_params>`. The Manager internally keeps track of the\nlast-applied kernel parameters customization.\n\nNOTE: This attribute is currently only used for hosts."
+                          }, 
+                          "type": {
+                            "type": "string", 
+                            "description": "Operating system name in human readable form.\n\nFor example `Fedora` or `RHEL`. In general one of the names returned by the <<services/operating_systems,\noperating system>> service.\n\nNOTE: Read only for hosts."
+                          }
+                        }
+                      }, 
+                      "cpu": {
+                        "type": "object", 
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          }, 
+                          "level": {
+                            "type": "integer", 
+                            "format": "int32"
+                          }, 
+                          "speed": {
+                            "type": "number", 
+                            "format": "double"
+                          }, 
+                          "cpu_tune": {
+                            "type": "object", 
+                            "properties": {
+                              "vcpu_pins": {
+                                "items": {
+                                  "type": "object", 
+                                  "properties": {
+                                    "cpu_set": {
+                                      "type": "string"
+                                    }, 
+                                    "vcpu": {
+                                      "type": "integer", 
+                                      "format": "int32"
+                                    }
+                                  }
+                                }, 
+                                "type": "array"
+                              }
+                            }
+                          }, 
+                          "architecture": {
+                            "enum": [
+                              "ppc64", 
+                              "undefined", 
+                              "x86_64"
+                            ], 
+                            "type": "string"
+                          }, 
+                          "mode": {
+                            "enum": [
+                              "custom", 
+                              "host_model", 
+                              "host_passthrough"
+                            ], 
+                            "type": "string"
+                          }, 
+                          "cores": {
+                            "items": {
+                              "type": "object", 
+                              "properties": {
+                                "index": {
+                                  "type": "integer", 
+                                  "format": "int32"
+                                }, 
+                                "socket": {
+                                  "type": "integer", 
+                                  "format": "int32"
+                                }
+                              }
+                            }, 
+                            "type": "array"
+                          }, 
+                          "type": {
+                            "type": "string"
+                          }, 
+                          "topology": {
+                            "type": "object", 
+                            "properties": {
+                              "cores": {
+                                "type": "integer", 
+                                "format": "int32"
+                              }, 
+                              "threads": {
+                                "type": "integer", 
+                                "format": "int32"
+                              }, 
+                              "sockets": {
+                                "type": "integer", 
+                                "format": "int32"
+                              }
+                            }
+                          }
+                        }
+                      }, 
+                      "kdump_status": {
+                        "enum": [
+                          "disabled", 
+                          "enabled", 
+                          "unknown"
+                        ], 
+                        "type": "string", 
+                        "description": "The host KDUMP status.\nKDUMP happens when the host kernel has crashed and it is now going through memory dumping."
+                      }, 
+                      "root_password": {
+                        "type": "string", 
+                        "description": "When creating a new host, a root password is required if the password authentication method is chosen,\nbut this is not subsequently included in the representation."
+                      }
+                    }
+                  }, 
+                  "type": "array", 
+                  "description": "Array of hosts serving as DNS servers."
+                }
+              }
+            }
+          }
+        }, 
+        "users": {
+          "items": {
+            "type": "object", 
+            "description": "Represents a user in the system.", 
+            "properties": {
+              "comment": {
+                "type": "string", 
+                "description": "Free text containing comments about this object."
+              }, 
+              "last_name": {
+                "type": "string"
+              }, 
+              "description": {
+                "type": "string", 
+                "description": "A human-readable description in plain text."
+              }, 
+              "name": {
+                "type": "string", 
+                "description": "A human-readable name in plain text."
+              }, 
+              "domain_entry_id": {
+                "type": "string"
+              }, 
+              "namespace": {
+                "type": "string", 
+                "description": "Namespace where the user resides. When using the authorization provider that stores users in the LDAP server,\nthis attribute equals the naming context of the LDAP server.\nSee https://github.com/oVirt/ovirt-engine-extension-aaa-ldap for more information.\nWhen using the built-in authorization provider that stores users in the database this attribute is ignored.\nSee https://github.com/oVirt/ovirt-engine-extension-aaa-jdbc for more information."
+              }, 
+              "id": {
+                "type": "string", 
+                "description": "A unique identifier."
+              }, 
+              "department": {
+                "type": "string"
+              }, 
+              "logged_in": {
+                "type": "boolean"
+              }, 
+              "password": {
+                "type": "string"
+              }, 
+              "user_name": {
+                "type": "string", 
+                "description": "The user's username. The format depends on authorization provider type. In most LDAP providers it is the\nvalue of the `uid` LDAP attribute. In Active Directory it is the User Principal Name (UPN). `UPN` or\n`uid` must be followed by the authorization provider name. For example, in the case of LDAP's `uid` attribute it is:\n`myuser@myextension-authz`. In the case of Active Directory using `UPN` it is:\n`myuser@mysubdomain.mydomain.com@myextension-authz`. This attribute is a required parameter when adding a new user."
+              }, 
+              "email": {
+                "type": "string"
+              }, 
+              "principal": {
+                "type": "string", 
+                "description": "Similar to `user_name`. The format depends on the LDAP provider. With most LDAP providers it is the\nvalue of the `uid` LDAP attribute. In the case of Active Directory it is the User Principal Name (UPN)."
+              }
+            }
+          }, 
+          "type": "array"
+        }, 
+        "regenerate_ssh_keys": {
+          "type": "boolean"
+        }, 
+        "host": {
+          "type": "object", 
+          "description": "Type representing a host.", 
+          "properties": {
+            "comment": {
+              "type": "string", 
+              "description": "Free text containing comments about this object."
+            }, 
+            "update_available": {
+              "type": "boolean", 
+              "description": "Specifies whether there is an oVirt-related update on this host."
+            }, 
+            "protocol": {
+              "enum": [
+                "stomp", 
+                "xml"
+              ], 
+              "type": "string", 
+              "description": "The protocol that the engine uses to communicate with\nthe host.\n\nWARNING: Since version 4.1 of the engine the protocol\nis always set to `stomp` since `xml` was removed."
+            }, 
+            "version": {
+              "type": "object", 
+              "properties": {
+                "comment": {
+                  "type": "string", 
+                  "description": "Free text containing comments about this object."
+                }, 
+                "major": {
+                  "type": "integer", 
+                  "format": "int32"
+                }, 
+                "description": {
+                  "type": "string", 
+                  "description": "A human-readable description in plain text."
+                }, 
+                "full_version": {
+                  "type": "string"
+                }, 
+                "name": {
+                  "type": "string", 
+                  "description": "A human-readable name in plain text."
+                }, 
+                "build": {
+                  "type": "integer", 
+                  "format": "int32"
+                }, 
+                "id": {
+                  "type": "string", 
+                  "description": "A unique identifier."
+                }, 
+                "minor": {
+                  "type": "integer", 
+                  "format": "int32"
+                }, 
+                "revision": {
+                  "type": "integer", 
+                  "format": "int32"
+                }
+              }
+            }, 
+            "spm": {
+              "type": "object", 
+              "properties": {
+                "priority": {
+                  "type": "integer", 
+                  "format": "int32"
+                }, 
+                "status": {
+                  "enum": [
+                    "contending", 
+                    "none", 
+                    "spm"
+                  ], 
+                  "type": "string"
+                }
+              }
+            }, 
+            "hosted_engine": {
+              "type": "object", 
+              "properties": {
+                "active": {
+                  "type": "boolean"
+                }, 
+                "local_maintenance": {
+                  "type": "boolean"
+                }, 
+                "configured": {
+                  "type": "boolean"
+                }, 
+                "score": {
+                  "type": "integer", 
+                  "format": "int32"
+                }, 
+                "global_maintenance": {
+                  "type": "boolean"
+                }
+              }
+            }, 
+            "id": {
+              "type": "string", 
+              "description": "A unique identifier."
+            }, 
+            "external_status": {
+              "enum": [
+                "error", 
+                "failure", 
+                "info", 
+                "ok", 
+                "warning"
+              ], 
+              "type": "string", 
+              "description": "The host external status.\nThis can be used by third-party software to change the host external status\nin case of an issue.\nThis has no effect on the host lifecycle, unless a third-party software checks for this\nstatus and acts accordingly."
+            }, 
+            "certificate": {
+              "type": "object", 
+              "properties": {
+                "comment": {
+                  "type": "string", 
+                  "description": "Free text containing comments about this object."
+                }, 
+                "description": {
+                  "type": "string", 
+                  "description": "A human-readable description in plain text."
+                }, 
+                "name": {
+                  "type": "string", 
+                  "description": "A human-readable name in plain text."
+                }, 
+                "content": {
+                  "type": "string"
+                }, 
+                "organization": {
+                  "type": "string"
+                }, 
+                "id": {
+                  "type": "string", 
+                  "description": "A unique identifier."
+                }, 
+                "subject": {
+                  "type": "string"
+                }
+              }
+            }, 
+            "display": {
+              "type": "object", 
+              "description": "Represents a graphic console configuration.", 
+              "properties": {
+                "allow_override": {
+                  "type": "boolean", 
+                  "description": "Indicates if to override the display address per host.\nRelevant only for the `Host.display` attribute.\nIf set, the graphical console address of a virtual machine will be overridden by the host specified display address.\nif not set, the graphical console address of a virtual machine will not be overridden."
+                }, 
+                "disconnect_action": {
+                  "type": "string", 
+                  "description": "Returns the action that will take place when the graphic console is disconnected.\nThe options are:\n\nnone:: No action is taken.\nlock_screen:: Locks the currently active user session.\nlogout:: Logs out the currently active user session.\nreboot:: Initiates a graceful virtual machine reboot.\nshutdown:: Initiates a graceful virtual machine shutdown.\n\nThis option is only available for the SPICE console type."
+                }, 
+                "certificate": {
+                  "type": "object", 
+                  "properties": {
+                    "comment": {
+                      "type": "string", 
+                      "description": "Free text containing comments about this object."
+                    }, 
+                    "description": {
+                      "type": "string", 
+                      "description": "A human-readable description in plain text."
+                    }, 
+                    "name": {
+                      "type": "string", 
+                      "description": "A human-readable name in plain text."
+                    }, 
+                    "content": {
+                      "type": "string"
+                    }, 
+                    "organization": {
+                      "type": "string"
+                    }, 
+                    "id": {
+                      "type": "string", 
+                      "description": "A unique identifier."
+                    }, 
+                    "subject": {
+                      "type": "string"
+                    }
+                  }
+                }, 
+                "monitors": {
+                  "type": "integer", 
+                  "description": "The number of monitors opened for this graphic console.\nThis option is only available for the SPICE console type.\nPossible values are 1, 2 or 4.", 
+                  "format": "int32"
+                }, 
+                "single_qxl_pci": {
+                  "type": "boolean", 
+                  "description": "Indicates if to use one PCI slot for each monitor or to use a single PCI channel for all multiple monitors.\nThis option is only available for the SPICE console type and only for connecting a guest Linux based OS."
+                }, 
+                "copy_paste_enabled": {
+                  "type": "boolean", 
+                  "description": "Indicates whether a user is able to copy and paste content from an external host into the graphic console.\nThis option is only available for the SPICE console type."
+                }, 
+                "secure_port": {
+                  "type": "integer", 
+                  "description": "The secured port address on the guest, in case of using TLS, to connect the graphic console client to.\nIf TLS isn't enabled then it won't be reported.", 
+                  "format": "int32"
+                }, 
+                "proxy": {
+                  "type": "string", 
+                  "description": "The proxy IP which will be used by the graphic console client to connect to the guest.\nIt is useful when the client is outside the guest's network.\nThis option is only available for the SPICE console type.\nThis proxy can be set in global configuration, cluster level, virtual machine pool level or disabled\nper virtual machine.\nIf the proxy is set in any of this mentioned places and not disabled for the virtual machine, it will be\nreturned by this method.\nIf the proxy is not set, nothing will be reported."
+                }, 
+                "smartcard_enabled": {
+                  "type": "boolean", 
+                  "description": "Indicates if to use smart card authentication.\nThis option is only available for the SPICE console type."
+                }, 
+                "file_transfer_enabled": {
+                  "type": "boolean", 
+                  "description": "Indicates if a user is able to drag and drop files from an external host into the graphic console.\nThis option is only available for the SPICE console type."
+                }, 
+                "keyboard_layout": {
+                  "type": "string", 
+                  "description": "The keyboard layout to use with this graphic console.\nThis option is only available for the VNC console type.\nIf no keyboard is enabled then it won't be reported."
+                }, 
+                "type": {
+                  "enum": [
+                    "spice", 
+                    "vnc"
+                  ], 
+                  "type": "string", 
+                  "description": "The graphic console protocol type."
+                }, 
+                "port": {
+                  "type": "integer", 
+                  "description": "The port address on the guest to connect the graphic console client to.", 
+                  "format": "int32"
+                }, 
+                "address": {
+                  "type": "string", 
+                  "description": "The IP address of the guest to connect the graphic console client to."
+                }
+              }
+            }, 
+            "iscsi": {
+              "type": "object", 
+              "properties": {
+                "status": {
+                  "type": "string"
+                }, 
+                "username": {
+                  "type": "string"
+                }, 
+                "initiator": {
+                  "type": "string"
+                }, 
+                "vendor_id": {
+                  "type": "string"
+                }, 
+                "volume_group_id": {
+                  "type": "string"
+                }, 
+                "paths": {
+                  "type": "integer", 
+                  "format": "int32"
+                }, 
+                "storage_domain_id": {
+                  "type": "string"
+                }, 
+                "disk_id": {
+                  "type": "string"
+                }, 
+                "password": {
+                  "type": "string"
+                }, 
+                "portal": {
+                  "type": "string"
+                }, 
+                "address": {
+                  "type": "string"
+                }, 
+                "lun_mapping": {
+                  "type": "integer", 
+                  "format": "int32"
+                }, 
+                "serial": {
+                  "type": "string"
+                }, 
+                "size": {
+                  "type": "integer", 
+                  "format": "int32"
+                }, 
+                "target": {
+                  "type": "string"
+                }, 
+                "port": {
+                  "type": "integer", 
+                  "format": "int32"
+                }, 
+                "product_id": {
+                  "type": "string"
+                }
+              }
+            }, 
+            "port": {
+              "type": "integer", 
+              "description": "The host port.", 
+              "format": "int32"
+            }, 
+            "hardware_information": {
+              "type": "object", 
+              "description": "Represents hardware information of host.\n\nTo get that information send a request like this:\n\n....\nGET /ovirt-engine/api/hosts/123\n....\n\nThe result will be like this:\n\n[source,xml]\n----\n<host href=\"/ovirt-engine/api/hosts/123\" id=\"123\">\n  ...\n  <hardware_information>\n    <family>Red Hat Enterprise Linux</family>\n    <manufacturer>Red Hat</manufacturer>\n    <product_name>RHEV Hypervisor</product_name>\n    <serial_number>01234567-89AB-CDEF-0123-456789ABCDEF</serial_number>\n    <supported_rng_sources>\n      <supported_rng_source>random</supported_rng_source>\n    </supported_rng_sources>\n    <uuid>12345678-9ABC-DEF0-1234-56789ABCDEF0</uuid>\n    <version>1.2-34.5.el7ev</version>\n  </hardware_information>\n  ...\n</application>\n----", 
+              "properties": {
+                "uuid": {
+                  "type": "string", 
+                  "description": "Unique ID for each host."
+                }, 
+                "family": {
+                  "type": "string", 
+                  "description": "Type of host's CPU."
+                }, 
+                "supported_rng_sources": {
+                  "items": {
+                    "enum": [
+                      "hwrng", 
+                      "random", 
+                      "urandom"
+                    ], 
+                    "type": "string"
+                  }, 
+                  "type": "array", 
+                  "description": "Supported sources of random number generator."
+                }, 
+                "version": {
+                  "type": "string", 
+                  "description": "Unique name for each of the manufacturer."
+                }, 
+                "serial_number": {
+                  "type": "string", 
+                  "description": "Unique ID for host's chassis."
+                }, 
+                "product_name": {
+                  "type": "string", 
+                  "description": "Host's product name (for example `RHEV Hypervisor`)."
+                }, 
+                "manufacturer": {
+                  "type": "string", 
+                  "description": "Manufacturer of the host's machine and hardware vendor."
+                }
+              }
+            }, 
+            "memory": {
+              "type": "integer", 
+              "description": "The amount of physical memory on this host in bytes.", 
+              "format": "int32"
+            }, 
+            "ksm": {
+              "type": "object", 
+              "properties": {
+                "enabled": {
+                  "type": "boolean"
+                }, 
+                "merge_across_nodes": {
+                  "type": "boolean"
+                }
+              }
+            }, 
+            "se_linux": {
+              "type": "object", 
+              "description": "Represents SELinux in the system.", 
+              "properties": {
+                "mode": {
+                  "enum": [
+                    "disabled", 
+                    "enforcing", 
+                    "permissive"
+                  ], 
+                  "type": "string", 
+                  "description": "SELinux current mode."
+                }
+              }
+            }, 
+            "type": {
+              "enum": [
+                "ovirt_node", 
+                "rhel", 
+                "rhev_h"
+              ], 
+              "type": "string", 
+              "description": "Indicates if the host contains a full installation of the operating system or a scaled-down version intended\nonly to host virtual machines."
+            }, 
+            "status": {
+              "enum": [
+                "connecting", 
+                "down", 
+                "error", 
+                "initializing", 
+                "install_failed", 
+                "installing", 
+                "installing_os", 
+                "kdumping", 
+                "maintenance", 
+                "non_operational", 
+                "non_responsive", 
+                "pending_approval", 
+                "preparing_for_maintenance", 
+                "reboot", 
+                "unassigned", 
+                "up"
+              ], 
+              "type": "string", 
+              "description": "The host status."
+            }, 
+            "description": {
+              "type": "string", 
+              "description": "A human-readable description in plain text."
+            }, 
+            "status_detail": {
+              "type": "string", 
+              "description": "The host status details. Relevant for Gluster hosts."
+            }, 
+            "transparent_hugepages": {
+              "type": "object", 
+              "description": "Type representing a transparent huge pages (THP) support.", 
+              "properties": {
+                "enabled": {
+                  "type": "boolean", 
+                  "description": "Enable THP support."
+                }
+              }
+            }, 
+            "address": {
+              "type": "string", 
+              "description": "The host address (FQDN/IP)."
+            }, 
+            "override_iptables": {
+              "type": "boolean", 
+              "description": "Specifies whether we should override firewall definitions.\nThis applies only when the host is installed or re-installed."
+            }, 
+            "device_passthrough": {
+              "type": "object", 
+              "properties": {
+                "enabled": {
+                  "type": "boolean"
+                }
+              }
+            }, 
+            "ssh": {
+              "type": "object", 
+              "properties": {
+                "comment": {
+                  "type": "string", 
+                  "description": "Free text containing comments about this object."
+                }, 
+                "description": {
+                  "type": "string", 
+                  "description": "A human-readable description in plain text."
+                }, 
+                "authentication_method": {
+                  "enum": [
+                    "password", 
+                    "publickey"
+                  ], 
+                  "type": "string"
+                }, 
+                "id": {
+                  "type": "string", 
+                  "description": "A unique identifier."
+                }, 
+                "user": {
+                  "type": "object", 
+                  "description": "Represents a user in the system.", 
+                  "properties": {
+                    "comment": {
+                      "type": "string", 
+                      "description": "Free text containing comments about this object."
+                    }, 
+                    "last_name": {
+                      "type": "string"
+                    }, 
+                    "description": {
+                      "type": "string", 
+                      "description": "A human-readable description in plain text."
+                    }, 
+                    "name": {
+                      "type": "string", 
+                      "description": "A human-readable name in plain text."
+                    }, 
+                    "domain_entry_id": {
+                      "type": "string"
+                    }, 
+                    "namespace": {
+                      "type": "string", 
+                      "description": "Namespace where the user resides. When using the authorization provider that stores users in the LDAP server,\nthis attribute equals the naming context of the LDAP server.\nSee https://github.com/oVirt/ovirt-engine-extension-aaa-ldap for more information.\nWhen using the built-in authorization provider that stores users in the database this attribute is ignored.\nSee https://github.com/oVirt/ovirt-engine-extension-aaa-jdbc for more information."
+                    }, 
+                    "id": {
+                      "type": "string", 
+                      "description": "A unique identifier."
+                    }, 
+                    "department": {
+                      "type": "string"
+                    }, 
+                    "logged_in": {
+                      "type": "boolean"
+                    }, 
+                    "password": {
+                      "type": "string"
+                    }, 
+                    "user_name": {
+                      "type": "string", 
+                      "description": "The user's username. The format depends on authorization provider type. In most LDAP providers it is the\nvalue of the `uid` LDAP attribute. In Active Directory it is the User Principal Name (UPN). `UPN` or\n`uid` must be followed by the authorization provider name. For example, in the case of LDAP's `uid` attribute it is:\n`myuser@myextension-authz`. In the case of Active Directory using `UPN` it is:\n`myuser@mysubdomain.mydomain.com@myextension-authz`. This attribute is a required parameter when adding a new user."
+                    }, 
+                    "email": {
+                      "type": "string"
+                    }, 
+                    "principal": {
+                      "type": "string", 
+                      "description": "Similar to `user_name`. The format depends on the LDAP provider. With most LDAP providers it is the\nvalue of the `uid` LDAP attribute. In the case of Active Directory it is the User Principal Name (UPN)."
+                    }
+                  }
+                }, 
+                "fingerprint": {
+                  "type": "string"
+                }, 
+                "port": {
+                  "type": "integer", 
+                  "format": "int32"
+                }, 
+                "name": {
+                  "type": "string", 
+                  "description": "A human-readable name in plain text."
+                }
+              }
+            }, 
+            "numa_supported": {
+              "type": "boolean", 
+              "description": "Specifies whether _non uniform memory access_ (NUMA) is supported on this host."
+            }, 
+            "libvirt_version": {
+              "type": "object", 
+              "properties": {
+                "comment": {
+                  "type": "string", 
+                  "description": "Free text containing comments about this object."
+                }, 
+                "major": {
+                  "type": "integer", 
+                  "format": "int32"
+                }, 
+                "description": {
+                  "type": "string", 
+                  "description": "A human-readable description in plain text."
+                }, 
+                "full_version": {
+                  "type": "string"
+                }, 
+                "name": {
+                  "type": "string", 
+                  "description": "A human-readable name in plain text."
+                }, 
+                "build": {
+                  "type": "integer", 
+                  "format": "int32"
+                }, 
+                "id": {
+                  "type": "string", 
+                  "description": "A unique identifier."
+                }, 
+                "minor": {
+                  "type": "integer", 
+                  "format": "int32"
+                }, 
+                "revision": {
+                  "type": "integer", 
+                  "format": "int32"
+                }
+              }
+            }, 
+            "power_management": {
+              "type": "object", 
+              "properties": {
+                "status": {
+                  "enum": [
+                    "off", 
+                    "on", 
+                    "unknown"
+                  ], 
+                  "type": "string", 
+                  "description": "Determines the power status of the host."
+                }, 
+                "username": {
+                  "type": "string", 
+                  "description": "A valid user name for power management."
+                }, 
+                "kdump_detection": {
+                  "type": "boolean", 
+                  "description": "Toggles whether to determine if kdump is running on the host before it is shut down.\nWhen set to `true`, the host will not shut down during a kdump process.\nThis is set to `true` when a host has power management enabled, unless disabled by the user."
+                }, 
+                "automatic_pm_enabled": {
+                  "type": "boolean", 
+                  "description": "Toggles the automated power control of the host in order to save energy.\nWhen set to true, the host will be automatically powered down if the cluster's load is low,\nand powered on again when required. This is set to true when a host is created, unless disabled by the user."
+                }, 
+                "enabled": {
+                  "type": "boolean", 
+                  "description": "Indicates whether power management configuration is enabled or disabled."
+                }, 
+                "pm_proxies": {
+                  "items": {
+                    "type": "object", 
+                    "properties": {
+                      "type": {
+                        "enum": [
+                          "cluster", 
+                          "dc", 
+                          "other_dc"
+                        ], 
+                        "type": "string"
+                      }
+                    }
+                  }, 
+                  "type": "array", 
+                  "description": "Determines the power management proxy."
+                }, 
+                "agents": {
+                  "items": {
+                    "type": "object", 
+                    "description": "Type representing a fence agent.", 
+                    "properties": {
+                      "comment": {
+                        "type": "string", 
+                        "description": "Free text containing comments about this object."
+                      }, 
+                      "username": {
+                        "type": "string", 
+                        "description": "Fence agent user name."
+                      }, 
+                      "encrypt_options": {
+                        "type": "boolean", 
+                        "description": "Specifies whether the options should be encrypted."
+                      }, 
+                      "description": {
+                        "type": "string", 
+                        "description": "A human-readable description in plain text."
+                      }, 
+                      "options": {
+                        "items": {
+                          "type": "object", 
+                          "properties": {
+                            "type": {
+                              "type": "string"
+                            }, 
+                            "name": {
+                              "type": "string"
+                            }, 
+                            "value": {
+                              "type": "string"
+                            }
+                          }
+                        }, 
+                        "type": "array", 
+                        "description": "Fence agent options (comma-delimited list of\nkey-value pairs)."
+                      }, 
+                      "order": {
+                        "type": "integer", 
+                        "description": "The order of this agent if used with other agents.", 
+                        "format": "int32"
+                      }, 
+                      "concurrent": {
+                        "type": "boolean", 
+                        "description": "Specifies whether the agent should be used concurrently\nor sequentially."
+                      }, 
+                      "address": {
+                        "type": "string", 
+                        "description": "Fence agent address."
+                      }, 
+                      "id": {
+                        "type": "string", 
+                        "description": "A unique identifier."
+                      }, 
+                      "password": {
+                        "type": "string", 
+                        "description": "Fence agent password."
+                      }, 
+                      "type": {
+                        "type": "string", 
+                        "description": "Fence agent type."
+                      }, 
+                      "port": {
+                        "type": "integer", 
+                        "description": "Fence agent port.", 
+                        "format": "int32"
+                      }, 
+                      "name": {
+                        "type": "string", 
+                        "description": "A human-readable name in plain text."
+                      }
+                    }
+                  }, 
+                  "type": "array", 
+                  "description": "Specifies fence agent options when multiple fences are used.\n\nUse the order sub-element to prioritize the fence agents. Agents are run sequentially according to their\norder until the fence action succeeds. When two or more fence agents have the same order,\nthey are run concurrently. Other sub-elements include type, ip, user, password, and options."
+                }, 
+                "address": {
+                  "type": "string", 
+                  "description": "The host name or IP address of the host."
+                }, 
+                "password": {
+                  "type": "string", 
+                  "description": "A valid, robust password for power management."
+                }, 
+                "type": {
+                  "type": "string", 
+                  "description": "Fencing device code.\n\nA list of valid fencing device codes are available in the `capabilities` collection."
+                }, 
+                "options": {
+                  "items": {
+                    "type": "object", 
+                    "properties": {
+                      "type": {
+                        "type": "string"
+                      }, 
+                      "name": {
+                        "type": "string"
+                      }, 
+                      "value": {
+                        "type": "string"
+                      }
+                    }
+                  }, 
+                  "type": "array", 
+                  "description": "Fencing options for the selected type= specified with the option name=\"\" and value=\"\" strings."
+                }
+              }
+            }, 
+            "name": {
+              "type": "string", 
+              "description": "A human-readable name in plain text."
+            }, 
+            "max_scheduling_memory": {
+              "type": "integer", 
+              "description": "The max scheduling memory on this host in bytes.", 
+              "format": "int32"
+            }, 
+            "summary": {
+              "type": "object", 
+              "description": "Type containing information related to virtual machines on a particular host.", 
+              "properties": {
+                "active": {
+                  "type": "integer", 
+                  "description": "The number of virtual machines active on the host.", 
+                  "format": "int32"
+                }, 
+                "migrating": {
+                  "type": "integer", 
+                  "description": "The number of virtual machines migrating to or from the host.", 
+                  "format": "int32"
+                }, 
+                "total": {
+                  "type": "integer", 
+                  "description": "The number of virtual machines present on the host.", 
+                  "format": "int32"
+                }
+              }
+            }, 
+            "auto_numa_status": {
+              "enum": [
+                "disable", 
+                "enable", 
+                "unknown"
+              ], 
+              "type": "string", 
+              "description": "The host auto _non uniform memory access_ (NUMA) status."
+            }, 
+            "os": {
+              "type": "object", 
+              "description": "Information describing the operating system. This is used for both virtual machines and hosts.", 
+              "properties": {
+                "kernel": {
+                  "type": "string", 
+                  "description": "Path to custom kernel on ISO storage domain if Linux operating system is used.\n\nFor example `iso://vmlinuz-3.10.0-514.6.1.el7.x86_64`.\n\nNOTE: Not used for hosts."
+                }, 
+                "reported_kernel_cmdline": {
+                  "type": "string", 
+                  "description": "The host kernel command line as reported by a running host.\n\nThis is a read-only attribute. Attempts to change this attribute are silently ignored.\n\nNOTE: This attribute is currently only used for hosts."
+                }, 
+                "boot": {
+                  "type": "object", 
+                  "description": "Configuration of the boot sequence of a virtual machine.", 
+                  "properties": {
+                    "devices": {
+                      "items": {
+                        "enum": [
+                          "cdrom", 
+                          "hd", 
+                          "network"
+                        ], 
+                        "type": "string"
+                      }, 
+                      "type": "array", 
+                      "description": "Ordered list of boot devices. The virtual machine will try to boot from the given boot devices, in the given\norder."
+                    }
+                  }
+                }, 
+                "cmdline": {
+                  "type": "string", 
+                  "description": "Custom kernel parameters for start the virtual machine with if Linux operating system is used.\n\nNOTE: Not used for hosts."
+                }, 
+                "initrd": {
+                  "type": "string", 
+                  "description": "Path to custom initial ramdisk on ISO storage domain if Linux operating system is used.\n\nFor example `iso://initramfs-3.10.0-514.6.1.el7.x86_64.img`.\n\nNOTE: Not used for hosts."
+                }, 
+                "version": {
+                  "type": "object", 
+                  "properties": {
+                    "comment": {
+                      "type": "string", 
+                      "description": "Free text containing comments about this object."
+                    }, 
+                    "major": {
+                      "type": "integer", 
+                      "format": "int32"
+                    }, 
+                    "description": {
+                      "type": "string", 
+                      "description": "A human-readable description in plain text."
+                    }, 
+                    "full_version": {
+                      "type": "string"
+                    }, 
+                    "name": {
+                      "type": "string", 
+                      "description": "A human-readable name in plain text."
+                    }, 
+                    "build": {
+                      "type": "integer", 
+                      "format": "int32"
+                    }, 
+                    "id": {
+                      "type": "string", 
+                      "description": "A unique identifier."
+                    }, 
+                    "minor": {
+                      "type": "integer", 
+                      "format": "int32"
+                    }, 
+                    "revision": {
+                      "type": "integer", 
+                      "format": "int32"
+                    }
+                  }
+                }, 
+                "custom_kernel_cmdline": {
+                  "type": "string", 
+                  "description": "A custom part of the host kernel command line. This will be merged with the existing kernel command line.\n\nYou must reinstall and then reboot the host to apply the changes implemented by this attribute.\n\nDuring each host deploy procedure, kernel parameters that were added\nin the previous host deploy procedure are removed using\n`grubby --update-kernel DEFAULT --remove-args <previous_custom_params>`, and the current\nkernel command line customization is applied using\n`grubby --update-kernel DEFAULT --args <custom_params>`. The Manager internally keeps track of the\nlast-applied kernel parameters customization.\n\nNOTE: This attribute is currently only used for hosts."
+                }, 
+                "type": {
+                  "type": "string", 
+                  "description": "Operating system name in human readable form.\n\nFor example `Fedora` or `RHEL`. In general one of the names returned by the <<services/operating_systems,\noperating system>> service.\n\nNOTE: Read only for hosts."
+                }
+              }
+            }, 
+            "cpu": {
+              "type": "object", 
+              "properties": {
+                "name": {
+                  "type": "string"
+                }, 
+                "level": {
+                  "type": "integer", 
+                  "format": "int32"
+                }, 
+                "speed": {
+                  "type": "number", 
+                  "format": "double"
+                }, 
+                "cpu_tune": {
+                  "type": "object", 
+                  "properties": {
+                    "vcpu_pins": {
+                      "items": {
+                        "type": "object", 
+                        "properties": {
+                          "cpu_set": {
+                            "type": "string"
+                          }, 
+                          "vcpu": {
+                            "type": "integer", 
+                            "format": "int32"
+                          }
+                        }
+                      }, 
+                      "type": "array"
+                    }
+                  }
+                }, 
+                "architecture": {
+                  "enum": [
+                    "ppc64", 
+                    "undefined", 
+                    "x86_64"
+                  ], 
+                  "type": "string"
+                }, 
+                "mode": {
+                  "enum": [
+                    "custom", 
+                    "host_model", 
+                    "host_passthrough"
+                  ], 
+                  "type": "string"
+                }, 
+                "cores": {
+                  "items": {
+                    "type": "object", 
+                    "properties": {
+                      "index": {
+                        "type": "integer", 
+                        "format": "int32"
+                      }, 
+                      "socket": {
+                        "type": "integer", 
+                        "format": "int32"
+                      }
+                    }
+                  }, 
+                  "type": "array"
+                }, 
+                "type": {
+                  "type": "string"
+                }, 
+                "topology": {
+                  "type": "object", 
+                  "properties": {
+                    "cores": {
+                      "type": "integer", 
+                      "format": "int32"
+                    }, 
+                    "threads": {
+                      "type": "integer", 
+                      "format": "int32"
+                    }, 
+                    "sockets": {
+                      "type": "integer", 
+                      "format": "int32"
+                    }
+                  }
+                }
+              }
+            }, 
+            "kdump_status": {
+              "enum": [
+                "disabled", 
+                "enabled", 
+                "unknown"
+              ], 
+              "type": "string", 
+              "description": "The host KDUMP status.\nKDUMP happens when the host kernel has crashed and it is now going through memory dumping."
+            }, 
+            "root_password": {
+              "type": "string", 
+              "description": "When creating a new host, a root password is required if the password authentication method is chosen,\nbut this is not subsequently included in the representation."
+            }
+          }
+        }, 
+        "timezone": {
+          "type": "string"
+        }
+      }
+    }, 
+    "regenerate_ssh_keys": {
+      "type": "boolean"
+    }, 
+    "dns_search": {
+      "type": "string"
+    }, 
+    "input_locale": {
+      "type": "string"
+    }, 
+    "windows_license_key": {
+      "type": "string"
+    }, 
+    "user_locale": {
+      "type": "string"
+    }, 
+    "root_password": {
+      "type": "string"
+    }, 
+    "regenerate_ids": {
+      "type": "boolean"
+    }, 
+    "ui_language": {
+      "type": "string"
+    }, 
+    "timezone": {
+      "type": "string"
+    }, 
+    "nic_configurations": {
+      "type": "object", 
+      "properties": {
+        "nic_configuration": {
+          "items": {
+            "type": "object", 
+            "description": "The type describes the configuration of a virtual network interface.", 
+            "properties": {
+              "name": {
+                "type": "string", 
+                "description": "Network interface name."
+              }, 
+              "ipv6_boot_protocol": {
+                "enum": [
+                  "autoconf", 
+                  "dhcp", 
+                  "none", 
+                  "static"
+                ], 
+                "type": "string", 
+                "description": "IPv6 boot protocol."
+              }, 
+              "ip": {
+                "type": "object", 
+                "description": "Represents the IP configuration of a network interface.", 
+                "properties": {
+                  "netmask": {
+                    "type": "string", 
+                    "description": "The network mask.\n\nFor IPv6 addresses the value is an integer in the range of 0-128, which represents the subnet prefix."
+                  }, 
+                  "version": {
+                    "enum": [
+                      "v4", 
+                      "v6"
+                    ], 
+                    "type": "string", 
+                    "description": "The version of the IP protocol.\n\nNOTE: From version 4.1 of the Manager this attribute will be optional, and when a value is not provided, it will\nbe inferred from the value of the `address` attribute."
+                  }, 
+                  "gateway": {
+                    "type": "string", 
+                    "description": "The address of the default gateway."
+                  }, 
+                  "address": {
+                    "type": "string", 
+                    "description": "The text representation of the IP address.\n\nFor example, an IPv4 address will be represented as follows:\n\n[source,xml]\n----\n<ip>\n  <address>192.168.0.1</address>\n  ...\n</ip>\n----\n\nAn IPv6 address will be represented as follows:\n\n[source,xml]\n----\n<ip>\n  <address>2620:52:0:20f0:4216:7eff:feaa:1b50</address>\n  ...\n</ip>\n----"
+                  }
+                }
+              }, 
+              "boot_protocol": {
+                "enum": [
+                  "autoconf", 
+                  "dhcp", 
+                  "none", 
+                  "static"
+                ], 
+                "type": "string", 
+                "description": "IPv4 boot protocol."
+              }, 
+              "on_boot": {
+                "type": "boolean", 
+                "description": "Specifies whether the network interface should be activated on the virtual machine guest operating system boot."
+              }, 
+              "ipv6": {
+                "type": "object", 
+                "description": "Represents the IP configuration of a network interface.", 
+                "properties": {
+                  "netmask": {
+                    "type": "string", 
+                    "description": "The network mask.\n\nFor IPv6 addresses the value is an integer in the range of 0-128, which represents the subnet prefix."
+                  }, 
+                  "version": {
+                    "enum": [
+                      "v4", 
+                      "v6"
+                    ], 
+                    "type": "string", 
+                    "description": "The version of the IP protocol.\n\nNOTE: From version 4.1 of the Manager this attribute will be optional, and when a value is not provided, it will\nbe inferred from the value of the `address` attribute."
+                  }, 
+                  "gateway": {
+                    "type": "string", 
+                    "description": "The address of the default gateway."
+                  }, 
+                  "address": {
+                    "type": "string", 
+                    "description": "The text representation of the IP address.\n\nFor example, an IPv4 address will be represented as follows:\n\n[source,xml]\n----\n<ip>\n  <address>192.168.0.1</address>\n  ...\n</ip>\n----\n\nAn IPv6 address will be represented as follows:\n\n[source,xml]\n----\n<ip>\n  <address>2620:52:0:20f0:4216:7eff:feaa:1b50</address>\n  ...\n</ip>\n----"
+                  }
+                }
+              }
+            }
+          }, 
+          "type": "array"
+        }
+      }
+    }, 
+    "configuration": {
+      "type": "object", 
+      "properties": {
+        "data": {
+          "type": "string", 
+          "description": "The document describing the virtual machine.\n\nExample of the OVF document:\n\n[source,xml]\n----\n<?xml version='1.0' encoding='UTF-8'?>\n<ovf:Envelope xmlns:ovf=\"http://schemas.dmtf.org/ovf/envelope/1/\"\n  xmlns:rasd=\"http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_ResourceAllocationSettingData\"\n  xmlns:vssd=\"http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_VirtualSystemSettingData\"\n  xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n  ovf:version=\"3.5.0.0\">\n  <References/>\n  <Section xsi:type=\"ovf:NetworkSection_Type\">\n    <Info>List of networks</Info>\n    <Network ovf:name=\"Network 1\"/>\n  </Section>\n  <Section xsi:type=\"ovf:DiskSection_Type\">\n    <Info>List of Virtual Disks</Info>\n  </Section>\n  <Content ovf:id=\"out\" xsi:type=\"ovf:VirtualSystem_Type\">\n    <CreationDate>2014/12/03 04:25:45</CreationDate>\n    <ExportDate>2015/02/09 14:12:24</ExportDate>\n    <DeleteProtected>false</DeleteProtected>\n    <SsoMethod>guest_agent</SsoMethod>\n    <IsSmartcardEnabled>false</IsSmartcardEnabled>\n    <TimeZone>Etc/GMT</TimeZone>\n    <default_boot_sequence>0</default_boot_sequence>\n    <Generation>1</Generation>\n    <VmType>1</VmType>\n    <MinAllocatedMem>1024</MinAllocatedMem>\n    <IsStateless>false</IsStateless>\n    <IsRunAndPause>false</IsRunAndPause>\n    <AutoStartup>false</AutoStartup>\n    <Priority>1</Priority>\n    <CreatedByUserId>fdfc627c-d875-11e0-90f0-83df133b58cc</CreatedByUserId>\n    <IsBootMenuEnabled>false</IsBootMenuEnabled>\n    <IsSpiceFileTransferEnabled>true</IsSpiceFileTransferEnabled>\n    <IsSpiceCopyPasteEnabled>true</IsSpiceCopyPasteEnabled>\n    <Name>VM_export</Name>\n    <TemplateId>00000000-0000-0000-0000-000000000000</TemplateId>\n    <TemplateName>Blank</TemplateName>\n    <IsInitilized>false</IsInitilized>\n    <Origin>3</Origin>\n    <DefaultDisplayType>1</DefaultDisplayType>\n    <TrustedService>false</TrustedService>\n    <OriginalTemplateId>00000000-0000-0000-0000-000000000000</OriginalTemplateId>\n    <OriginalTemplateName>Blank</OriginalTemplateName>\n    <UseLatestVersion>false</UseLatestVersion>\n    <Section ovf:id=\"70b4d9a7-4f73-4def-89ca-24fc5f60e01a\"\n      ovf:required=\"false\"\n      xsi:type=\"ovf:OperatingSystemSection_Type\">\n      <Info>Guest Operating System</Info>\n      <Description>other</Description>\n    </Section>\n    <Section xsi:type=\"ovf:VirtualHardwareSection_Type\">\n      <Info>1 CPU, 1024 Memory</Info>\n      <System>\n        <vssd:VirtualSystemType>ENGINE 3.5.0.0</vssd:VirtualSystemType>\n      </System>\n      <Item>\n        <rasd:Caption>1 virtual cpu</rasd:Caption>\n        <rasd:Description>Number of virtual CPU</rasd:Description>\n        <rasd:InstanceId>1</rasd:InstanceId>\n        <rasd:ResourceType>3</rasd:ResourceType>\n        <rasd:num_of_sockets>1</rasd:num_of_sockets>\n        <rasd:cpu_per_socket>1</rasd:cpu_per_socket>\n      </Item>\n      <Item>\n        <rasd:Caption>1024 MB of memory</rasd:Caption>\n        <rasd:Description>Memory Size</rasd:Description>\n        <rasd:InstanceId>2</rasd:InstanceId>\n        <rasd:ResourceType>4</rasd:ResourceType>\n        <rasd:AllocationUnits>MegaBytes</rasd:AllocationUnits>\n        <rasd:VirtualQuantity>1024</rasd:VirtualQuantity>\n      </Item>\n      <Item>\n        <rasd:Caption>USB Controller</rasd:Caption>\n        <rasd:InstanceId>3</rasd:InstanceId>\n        <rasd:ResourceType>23</rasd:ResourceType>\n        <rasd:UsbPolicy>DISABLED</rasd:UsbPolicy>\n      </Item>\n    </Section>\n  </Content>\n</ovf:Envelope>\n----"
+        }, 
+        "type": {
+          "enum": [
+            "ovf"
+          ], 
+          "type": "string"
+        }
+      }
+    }, 
+    "user_name": {
+      "type": "string"
+    }, 
+    "active_directory_ou": {
+      "type": "string"
+    }, 
+    "host_name": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Type representing a Katello erratum.", 
+  "properties": {
+    "comment": {
+      "type": "string", 
+      "description": "Free text containing comments about this object."
+    }, 
+    "description": {
+      "type": "string", 
+      "description": "A human-readable description in plain text."
+    }, 
+    "name": {
+      "type": "string", 
+      "description": "A human-readable name in plain text."
+    }, 
+    "title": {
+      "type": "string", 
+      "description": "The title of the Katello erratum."
+    }, 
+    "issued": {
+      "type": "string", 
+      "description": "The date when the Katello erratum was issued.", 
+      "format": "epoch"
+    }, 
+    "solution": {
+      "type": "string", 
+      "description": "The solution for the issue described by the Katello erratum."
+    }, 
+    "summary": {
+      "type": "string", 
+      "description": "The summary of the Katello erratum."
+    }, 
+    "packages": {
+      "type": "object", 
+      "properties": {
+        "package": {
+          "items": {
+            "type": "object", 
+            "description": "Type representing a package.\n\nThis is an example of the package element:\n\n[source,xml]\n----\n<package>\n  <name>libipa_hbac-1.9.2-82.11.el6_4.i686</name>\n</package>\n----", 
+            "properties": {
+              "name": {
+                "type": "string", 
+                "description": "The name of the package."
+              }
+            }
+          }, 
+          "type": "array", 
+          "description": "The list of packages which solve the issue reported by the Katello erratum."
+        }
+      }
+    }, 
+    "type": {
+      "type": "string", 
+      "description": "The type of the Katello erratum.\n\nThe supported types are `bugfix`, `enhancement` or `security`."
+    }, 
+    "id": {
+      "type": "string", 
+      "description": "A unique identifier."
+    }, 
+    "severity": {
+      "type": "string", 
+      "description": "The severity of the Katello erratum.\n\nThe supported severities are `moderate`, `important` or `critical`."
+    }
+  }
+}

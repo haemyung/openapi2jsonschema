@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Represents a host provisioned by a host\nprovider (such as Foreman/Satellite).\n\nSee https://www.theforeman.org/ for more details on Foreman.\nSee https://access.redhat.com/products/red-hat-satellite\nfor more details on Red Hat Satellite.", 
+  "properties": {
+    "comment": {
+      "type": "string", 
+      "description": "Free text containing comments about this object."
+    }, 
+    "address": {
+      "type": "string", 
+      "description": "The address of the host, either IP address\nof FQDN (Fully Qualified Domain Name)."
+    }, 
+    "description": {
+      "type": "string", 
+      "description": "A human-readable description in plain text."
+    }, 
+    "name": {
+      "type": "string", 
+      "description": "A human-readable name in plain text."
+    }, 
+    "id": {
+      "type": "string", 
+      "description": "A unique identifier."
+    }
+  }
+}

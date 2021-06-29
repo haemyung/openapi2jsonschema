@@ -1,0 +1,589 @@
+{
+  "oneOf": [
+    {
+      "$ref": "_definitions.json#/definitions/Console"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/GuestOperatingSystem"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/NetworkLabel"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/ApiSummary"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Role"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Template"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/DnsResolverConfiguration"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Ksm"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/FencingPolicy"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/ClusterLevel"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/HostDevicePassthrough"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/ReportedConfiguration"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Vlan"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/AgentConfiguration"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Display"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/IpAddressAssignment"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Host"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Ssh"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Cdrom"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/ExternalProvider"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/TemplateVersion"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Icon"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/SshPublicKey"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/ExternalVmImport"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/SkipIfConnectivityBroken"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/GlusterBrickAdvancedDetails"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/PowerManagement"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/HostedEngine"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/NfsProfileDetail"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/NetworkFilter"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/AffinityRule"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/ApiSummaryItem"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/BaseDevice"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Core"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Agent"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Hook"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/StorageDomain"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Tag"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Spm"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Statistic"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Disk"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/NicConfiguration"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Event"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/CpuTopology"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/VirtioScsi"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/DiskSnapshot"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/MigrationBandwidth"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/BlockStatistic"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/NetworkAttachment"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Bios"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/KatelloErratum"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Version"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/DiskAttachment"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/ExternalHostGroup"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/StorageConnection"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/AffinityGroup"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Step"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Vendor"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Option"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Permission"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/GracePeriod"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/OpenStackImageProvider"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Package"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Method"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Job"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/DiskProfile"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/MemoryOverCommit"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Configuration"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/OpenStackNetwork"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/IscsiDetails"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/ErrorHandling"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/CpuProfile"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/GraphicsConsole"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Identified"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/OpenStackImage"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Range"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/StorageDomainLease"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Property"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/PmProxy"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Cpu"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/DataCenter"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Domain"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/CpuTune"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Qos"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/SchedulingPolicyUnit"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/CustomProperty"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Image"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/VolumeGroup"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/TransparentHugePages"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Session"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/IscsiBond"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/HostDevice"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/ExternalHost"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/GlusterHook"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/MemoryPolicy"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Payload"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/VmPool"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/OpenStackVolumeType"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Group"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Usb"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Certificate"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/VnicProfile"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Boot"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/VmSummary"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/HardwareInformation"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/EntityProfileDetail"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/NumaNodePin"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Dns"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/PortMirroring"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Network"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/OperatingSystemInfo"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/StorageConnectionExtension"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Initialization"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Sso"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/BootMenu"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/GlusterBrickMemoryInfo"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/User"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Application"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/InstanceType"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/BrickProfileDetail"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/ExternalComputeResource"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Kernel"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/NumaNode"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/CloudInit"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/GlusterClient"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/MigrationOptions"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Filter"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/OpenStackSubnet"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/NetworkFilterParameter"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Snapshot"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Permit"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Action"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Floppy"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Balance"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/NetworkConfiguration"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Weight"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/HostStorage"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/ProxyTicket"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/AffinityLabel"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/OpenStackVolumeProvider"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/HostNicVirtualFunctionsConfiguration"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Bonding"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Cluster"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/VirtualNumaNode"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/ProductInfo"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Watchdog"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/OpenStackProvider"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/AuthorizedKey"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Bookmark"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/QuotaStorageLimit"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/SerialNumber"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/VnicPassThrough"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/FopStatistic"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/GlusterMemoryPool"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/TimeZone"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/OperatingSystem"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/ProfileDetail"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Product"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/HostNic"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Nic"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/SeLinux"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Quota"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/VnicProfileMapping"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Mac"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/ExternalDiscoveredHost"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/HighAvailability"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/VcpuPin"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/CpuType"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Ticket"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/GlusterServerHook"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/GlusterVolumeProfileDetails"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/GlusterVolume"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/GlusterBrick"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/QuotaClusterLimit"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/File"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/VmPlacementPolicy"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/SchedulingPolicy"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/OpenStackNetworkProvider"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/OpenstackVolumeAuthenticationKey"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Value"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/ExternalHostProvider"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/MigrationPolicy"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/RngDevice"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/UnmanagedNetwork"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/VmBase"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Ip"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/ImageTransfer"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Vm"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/LogicalUnit"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/SkipIfSdActive"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Rate"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Fault"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/Io"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/MacPool"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/ReportedDevice"
+    }
+  ]
+}

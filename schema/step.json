@@ -1,0 +1,78 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Represents a step, which is part of `job` execution.\nStep is used to describe and track a specific execution unit which is part of a wider sequence.\nSome steps support reporting their progress.", 
+  "properties": {
+    "comment": {
+      "type": "string", 
+      "description": "Free text containing comments about this object."
+    }, 
+    "status": {
+      "enum": [
+        "aborted", 
+        "failed", 
+        "finished", 
+        "started", 
+        "unknown"
+      ], 
+      "type": "string", 
+      "description": "The status of the step."
+    }, 
+    "description": {
+      "type": "string", 
+      "description": "A human-readable description in plain text."
+    }, 
+    "external": {
+      "type": "boolean", 
+      "description": "Indicates if the step is originated by an external system.\nExternal steps are managed externally, by the creator of the step."
+    }, 
+    "start_time": {
+      "type": "string", 
+      "description": "The start time of the step.", 
+      "format": "epoch"
+    }, 
+    "number": {
+      "type": "integer", 
+      "description": "The order of the step in current hierarchy level.", 
+      "format": "int32"
+    }, 
+    "external_type": {
+      "enum": [
+        "gluster", 
+        "vdsm"
+      ], 
+      "type": "string", 
+      "description": "The external system which is referenced by the step."
+    }, 
+    "end_time": {
+      "type": "string", 
+      "description": "The end time of the step.", 
+      "format": "epoch"
+    }, 
+    "progress": {
+      "type": "integer", 
+      "description": "The step progress (if reported) in percentages.", 
+      "format": "int32"
+    }, 
+    "type": {
+      "enum": [
+        "executing", 
+        "finalizing", 
+        "rebalancing_volume", 
+        "removing_bricks", 
+        "unknown", 
+        "validating"
+      ], 
+      "type": "string", 
+      "description": "The type of the step."
+    }, 
+    "id": {
+      "type": "string", 
+      "description": "A unique identifier."
+    }, 
+    "name": {
+      "type": "string", 
+      "description": "A human-readable name in plain text."
+    }
+  }
+}

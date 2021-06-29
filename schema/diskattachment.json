@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Describes how a disk is attached to a virtual machine.", 
+  "properties": {
+    "comment": {
+      "type": "string", 
+      "description": "Free text containing comments about this object."
+    }, 
+    "logical_name": {
+      "type": "string", 
+      "description": "The logical name of the virtual machine's disk, as seen from inside the virtual machine.\n\nThe logical name of a disk is reported only when the guest agent is installed and running inside the virtual\nmachine.\n\nFor example, if the guest operating system is Linux and the disk is connected via a VirtIO interface, the\nlogical name will be reported as `/dev/vda`:\n\n[source,xml]\n----\n<disk_attachment>\n  ...\n  <logical_name>/dev/vda</logical_name>\n</disk_attachment>\n----\n\nIf the guest operating system is Windows, the logical name will be reported as `\\\\.\\PHYSICALDRIVE0`."
+    }, 
+    "description": {
+      "type": "string", 
+      "description": "A human-readable description in plain text."
+    }, 
+    "bootable": {
+      "type": "boolean", 
+      "description": "Defines whether the disk is bootable."
+    }, 
+    "active": {
+      "type": "boolean", 
+      "description": "Defines whether the disk is active in the virtual machine it's attached to.\n\nA disk attached to a virtual machine in an active status is connected to the virtual machine at run time and\ncan be used."
+    }, 
+    "interface": {
+      "enum": [
+        "ide", 
+        "spapr_vscsi", 
+        "virtio", 
+        "virtio_scsi"
+      ], 
+      "type": "string", 
+      "description": "The type of interface driver used to connect the disk device to the virtual machine."
+    }, 
+    "id": {
+      "type": "string", 
+      "description": "A unique identifier."
+    }, 
+    "name": {
+      "type": "string", 
+      "description": "A human-readable name in plain text."
+    }
+  }
+}

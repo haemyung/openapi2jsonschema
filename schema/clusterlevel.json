@@ -1,0 +1,91 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Describes the capabilities supported by a specific cluster level.", 
+  "properties": {
+    "comment": {
+      "type": "string", 
+      "description": "Free text containing comments about this object."
+    }, 
+    "description": {
+      "type": "string", 
+      "description": "A human-readable description in plain text."
+    }, 
+    "permits": {
+      "type": "object", 
+      "properties": {
+        "permit": {
+          "items": {
+            "type": "object", 
+            "description": "Type represents a permit.", 
+            "properties": {
+              "comment": {
+                "type": "string", 
+                "description": "Free text containing comments about this object."
+              }, 
+              "description": {
+                "type": "string", 
+                "description": "A human-readable description in plain text."
+              }, 
+              "administrative": {
+                "type": "boolean", 
+                "description": "Specifies whether permit is administrative or not."
+              }, 
+              "id": {
+                "type": "string", 
+                "description": "A unique identifier."
+              }, 
+              "name": {
+                "type": "string", 
+                "description": "A human-readable name in plain text."
+              }
+            }
+          }, 
+          "type": "array", 
+          "description": "The permits supported by this cluster level."
+        }
+      }
+    }, 
+    "cpu_types": {
+      "type": "object", 
+      "properties": {
+        "cpu_type": {
+          "items": {
+            "type": "object", 
+            "description": "Describes a supported CPU type.", 
+            "properties": {
+              "level": {
+                "type": "integer", 
+                "description": "The level of the CPU type.", 
+                "format": "int32"
+              }, 
+              "architecture": {
+                "enum": [
+                  "ppc64", 
+                  "undefined", 
+                  "x86_64"
+                ], 
+                "type": "string", 
+                "description": "The architecture of the CPU."
+              }, 
+              "name": {
+                "type": "string", 
+                "description": "The name of the CPU type, for example `Intel Conroe Family`."
+              }
+            }
+          }, 
+          "type": "array", 
+          "description": "The CPU types supported by this cluster level."
+        }
+      }
+    }, 
+    "id": {
+      "type": "string", 
+      "description": "A unique identifier."
+    }, 
+    "name": {
+      "type": "string", 
+      "description": "A human-readable name in plain text."
+    }
+  }
+}

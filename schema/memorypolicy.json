@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Logical grouping of memory related properties of virtual machine-like entities.", 
+  "properties": {
+    "ballooning": {
+      "type": "boolean"
+    }, 
+    "max": {
+      "type": "integer", 
+      "description": "Maximum virtual machine's memory, in bytes.\n\nThe user provides the value in bytes, and the engine rounds the value down to the nearest lower MiB value.\n\nFor example, if the user enters a value of 1073741825 (1 GiB + 1 byte), then the {engine-name} will truncate\nthat value to the nearest lower MiB boundary: in this case 1073741824 (1 GiB).", 
+      "format": "int32"
+    }, 
+    "guaranteed": {
+      "type": "integer", 
+      "format": "int32"
+    }, 
+    "transparent_hugepages": {
+      "type": "object", 
+      "description": "Type representing a transparent huge pages (THP) support.", 
+      "properties": {
+        "enabled": {
+          "type": "boolean", 
+          "description": "Enable THP support."
+        }
+      }
+    }, 
+    "over_commit": {
+      "type": "object", 
+      "properties": {
+        "percent": {
+          "type": "integer", 
+          "format": "int32"
+        }
+      }
+    }
+  }
+}

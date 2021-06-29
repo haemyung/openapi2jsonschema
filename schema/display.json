@@ -1,0 +1,96 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Represents a graphic console configuration.", 
+  "properties": {
+    "allow_override": {
+      "type": "boolean", 
+      "description": "Indicates if to override the display address per host.\nRelevant only for the `Host.display` attribute.\nIf set, the graphical console address of a virtual machine will be overridden by the host specified display address.\nif not set, the graphical console address of a virtual machine will not be overridden."
+    }, 
+    "disconnect_action": {
+      "type": "string", 
+      "description": "Returns the action that will take place when the graphic console is disconnected.\nThe options are:\n\nnone:: No action is taken.\nlock_screen:: Locks the currently active user session.\nlogout:: Logs out the currently active user session.\nreboot:: Initiates a graceful virtual machine reboot.\nshutdown:: Initiates a graceful virtual machine shutdown.\n\nThis option is only available for the SPICE console type."
+    }, 
+    "certificate": {
+      "type": "object", 
+      "properties": {
+        "comment": {
+          "type": "string", 
+          "description": "Free text containing comments about this object."
+        }, 
+        "description": {
+          "type": "string", 
+          "description": "A human-readable description in plain text."
+        }, 
+        "name": {
+          "type": "string", 
+          "description": "A human-readable name in plain text."
+        }, 
+        "content": {
+          "type": "string"
+        }, 
+        "organization": {
+          "type": "string"
+        }, 
+        "id": {
+          "type": "string", 
+          "description": "A unique identifier."
+        }, 
+        "subject": {
+          "type": "string"
+        }
+      }
+    }, 
+    "monitors": {
+      "type": "integer", 
+      "description": "The number of monitors opened for this graphic console.\nThis option is only available for the SPICE console type.\nPossible values are 1, 2 or 4.", 
+      "format": "int32"
+    }, 
+    "single_qxl_pci": {
+      "type": "boolean", 
+      "description": "Indicates if to use one PCI slot for each monitor or to use a single PCI channel for all multiple monitors.\nThis option is only available for the SPICE console type and only for connecting a guest Linux based OS."
+    }, 
+    "copy_paste_enabled": {
+      "type": "boolean", 
+      "description": "Indicates whether a user is able to copy and paste content from an external host into the graphic console.\nThis option is only available for the SPICE console type."
+    }, 
+    "secure_port": {
+      "type": "integer", 
+      "description": "The secured port address on the guest, in case of using TLS, to connect the graphic console client to.\nIf TLS isn't enabled then it won't be reported.", 
+      "format": "int32"
+    }, 
+    "proxy": {
+      "type": "string", 
+      "description": "The proxy IP which will be used by the graphic console client to connect to the guest.\nIt is useful when the client is outside the guest's network.\nThis option is only available for the SPICE console type.\nThis proxy can be set in global configuration, cluster level, virtual machine pool level or disabled\nper virtual machine.\nIf the proxy is set in any of this mentioned places and not disabled for the virtual machine, it will be\nreturned by this method.\nIf the proxy is not set, nothing will be reported."
+    }, 
+    "smartcard_enabled": {
+      "type": "boolean", 
+      "description": "Indicates if to use smart card authentication.\nThis option is only available for the SPICE console type."
+    }, 
+    "file_transfer_enabled": {
+      "type": "boolean", 
+      "description": "Indicates if a user is able to drag and drop files from an external host into the graphic console.\nThis option is only available for the SPICE console type."
+    }, 
+    "keyboard_layout": {
+      "type": "string", 
+      "description": "The keyboard layout to use with this graphic console.\nThis option is only available for the VNC console type.\nIf no keyboard is enabled then it won't be reported."
+    }, 
+    "type": {
+      "enum": [
+        "spice", 
+        "vnc"
+      ], 
+      "type": "string", 
+      "description": "The graphic console protocol type."
+    }, 
+    "port": {
+      "type": "integer", 
+      "description": "The port address on the guest to connect the graphic console client to.", 
+      "format": "int32"
+    }, 
+    "address": {
+      "type": "string", 
+      "description": "The IP address of the guest to connect the graphic console client to."
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "on_error": {
+      "enum": [
+        "do_not_migrate", 
+        "migrate", 
+        "migrate_highly_available"
+      ], 
+      "type": "string"
+    }
+  }
+}

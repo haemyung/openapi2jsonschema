@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Type representing high availability of a virtual machine.", 
+  "properties": {
+    "priority": {
+      "type": "integer", 
+      "description": "Indicates the priority of the virtual machine inside the run and migration queues.\n\nVirtual machines with higher priorities will be started and migrated before virtual machines with lower\npriorities.\n\nThe value is an integer between 0 and 100. The higher the value, the higher the priority.\n\nThe graphical user interface (GUI) does not allow specifying all the possible values, instead\nit only allows you to select _Low_, _Medium_ or _High_. When the value is set using the API, the GUI\nwill set the label as follows:\n\n|===\n|API Value |GUI Label\n\n|0 - 25 |Low\n|26 - 74 |Medium\n|75 - 100 |High\n\n|===\n\nWhen the label is selected using the GUI, the value in the API will be set as follows:\n\n|===\n|GUI Label |API Value\n\n|Low |1\n|Medium |50\n|High |100\n\n|===", 
+      "format": "int32"
+    }, 
+    "enabled": {
+      "type": "boolean", 
+      "description": "Define if the virtual machine should be consider highly available."
+    }
+  }
+}

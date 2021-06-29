@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "bytes_read": {
+      "type": "integer", 
+      "format": "int32"
+    }, 
+    "bytes_written": {
+      "type": "integer", 
+      "format": "int32"
+    }, 
+    "client_port": {
+      "type": "integer", 
+      "format": "int32"
+    }, 
+    "host_name": {
+      "type": "string"
+    }
+  }
+}

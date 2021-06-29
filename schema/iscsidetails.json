@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "status": {
+      "type": "string"
+    }, 
+    "username": {
+      "type": "string"
+    }, 
+    "initiator": {
+      "type": "string"
+    }, 
+    "vendor_id": {
+      "type": "string"
+    }, 
+    "volume_group_id": {
+      "type": "string"
+    }, 
+    "paths": {
+      "type": "integer", 
+      "format": "int32"
+    }, 
+    "storage_domain_id": {
+      "type": "string"
+    }, 
+    "disk_id": {
+      "type": "string"
+    }, 
+    "password": {
+      "type": "string"
+    }, 
+    "portal": {
+      "type": "string"
+    }, 
+    "address": {
+      "type": "string"
+    }, 
+    "lun_mapping": {
+      "type": "integer", 
+      "format": "int32"
+    }, 
+    "serial": {
+      "type": "string"
+    }, 
+    "size": {
+      "type": "integer", 
+      "format": "int32"
+    }, 
+    "target": {
+      "type": "string"
+    }, 
+    "port": {
+      "type": "integer", 
+      "format": "int32"
+    }, 
+    "product_id": {
+      "type": "string"
+    }
+  }
+}

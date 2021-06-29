@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "methods": {
+      "type": "object", 
+      "properties": {
+        "method": {
+          "items": {
+            "type": "object", 
+            "properties": {
+              "id": {
+                "enum": [
+                  "guest_agent"
+                ], 
+                "type": "string"
+              }
+            }
+          }, 
+          "type": "array"
+        }
+      }
+    }
+  }
+}

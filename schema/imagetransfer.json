@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "This type contains information regarding an image transfer being performed.", 
+  "properties": {
+    "comment": {
+      "type": "string", 
+      "description": "Free text containing comments about this object."
+    }, 
+    "direction": {
+      "enum": [
+        "download", 
+        "upload"
+      ], 
+      "type": "string", 
+      "description": "The direction indicates whether the transfer is sending image data (`upload`) or\nreceiving image data (`download`).\n\nIf a direction is not set during an addition of a new transfer,\nThe default direction for the transfer will be `upload`."
+    }, 
+    "description": {
+      "type": "string", 
+      "description": "A human-readable description in plain text."
+    }, 
+    "signed_ticket": {
+      "type": "string", 
+      "description": "The signed ticket that should be attached as an `Authentication` header in the\nHTTPS request for the proxy server to input or output to (See the `proxy_url` attribute)."
+    }, 
+    "proxy_url": {
+      "type": "string", 
+      "description": "The URL of the proxy server that the user inputs or outputs to. This attribute is\navailable only if the image transfer entity is in the <<types/image_transfer_phase, transferring>>\nphase. See `phase` for details."
+    }, 
+    "phase": {
+      "enum": [
+        "cancelled", 
+        "finalizing_failure", 
+        "finalizing_success", 
+        "finished_failure", 
+        "finished_success", 
+        "initializing", 
+        "paused_system", 
+        "paused_user", 
+        "resuming", 
+        "transferring", 
+        "unknown"
+      ], 
+      "type": "string", 
+      "description": "The current phase of the image transfer in progress. Each transfer needs a managed\nsession, which must be opened for the user to input or output an image.\nPlease refer to <<services/image_transfer, image transfer>> for further\ndocumentation."
+    }, 
+    "id": {
+      "type": "string", 
+      "description": "A unique identifier."
+    }, 
+    "name": {
+      "type": "string", 
+      "description": "A human-readable name in plain text."
+    }
+  }
+}

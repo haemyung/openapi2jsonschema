@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Configuration of the USB device of a virtual machine.", 
+  "properties": {
+    "enabled": {
+      "type": "boolean", 
+      "description": "Determines whether the USB device should be included or not."
+    }, 
+    "type": {
+      "enum": [
+        "legacy", 
+        "native"
+      ], 
+      "type": "string", 
+      "description": "USB type, currently only `native` is supported."
+    }
+  }
+}

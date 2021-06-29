@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "comment": {
+      "type": "string", 
+      "description": "Free text containing comments about this object."
+    }, 
+    "description": {
+      "type": "string", 
+      "description": "A human-readable description in plain text."
+    }, 
+    "operating_system_name": {
+      "type": "string"
+    }, 
+    "architecture_name": {
+      "type": "string"
+    }, 
+    "domain_name": {
+      "type": "string"
+    }, 
+    "subnet_name": {
+      "type": "string"
+    }, 
+    "id": {
+      "type": "string", 
+      "description": "A unique identifier."
+    }, 
+    "name": {
+      "type": "string", 
+      "description": "A human-readable name in plain text."
+    }
+  }
+}

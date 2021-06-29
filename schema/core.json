@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "index": {
+      "type": "integer", 
+      "format": "int32"
+    }, 
+    "socket": {
+      "type": "integer", 
+      "format": "int32"
+    }
+  }
+}

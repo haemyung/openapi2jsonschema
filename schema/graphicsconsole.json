@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "comment": {
+      "type": "string", 
+      "description": "Free text containing comments about this object."
+    }, 
+    "protocol": {
+      "enum": [
+        "spice", 
+        "vnc"
+      ], 
+      "type": "string"
+    }, 
+    "description": {
+      "type": "string", 
+      "description": "A human-readable description in plain text."
+    }, 
+    "address": {
+      "type": "string"
+    }, 
+    "id": {
+      "type": "string", 
+      "description": "A unique identifier."
+    }, 
+    "tls_port": {
+      "type": "integer", 
+      "format": "int32"
+    }, 
+    "port": {
+      "type": "integer", 
+      "format": "int32"
+    }, 
+    "name": {
+      "type": "string", 
+      "description": "A human-readable name in plain text."
+    }
+  }
+}

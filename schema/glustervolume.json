@@ -1,0 +1,97 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "comment": {
+      "type": "string", 
+      "description": "Free text containing comments about this object."
+    }, 
+    "redundancy_count": {
+      "type": "integer", 
+      "format": "int32"
+    }, 
+    "description": {
+      "type": "string", 
+      "description": "A human-readable description in plain text."
+    }, 
+    "name": {
+      "type": "string", 
+      "description": "A human-readable name in plain text."
+    }, 
+    "replica_count": {
+      "type": "integer", 
+      "format": "int32"
+    }, 
+    "volume_type": {
+      "enum": [
+        "disperse", 
+        "distribute", 
+        "distributed_disperse", 
+        "distributed_replicate", 
+        "distributed_stripe", 
+        "distributed_striped_replicate", 
+        "replicate", 
+        "stripe", 
+        "striped_replicate"
+      ], 
+      "type": "string"
+    }, 
+    "options": {
+      "type": "object", 
+      "properties": {
+        "option": {
+          "items": {
+            "type": "object", 
+            "properties": {
+              "type": {
+                "type": "string"
+              }, 
+              "name": {
+                "type": "string"
+              }, 
+              "value": {
+                "type": "string"
+              }
+            }
+          }, 
+          "type": "array"
+        }
+      }
+    }, 
+    "transport_types": {
+      "type": "object", 
+      "properties": {
+        "transport_type": {
+          "items": {
+            "enum": [
+              "rdma", 
+              "tcp"
+            ], 
+            "type": "string"
+          }, 
+          "type": "array"
+        }
+      }
+    }, 
+    "disperse_count": {
+      "type": "integer", 
+      "format": "int32"
+    }, 
+    "status": {
+      "enum": [
+        "down", 
+        "unknown", 
+        "up"
+      ], 
+      "type": "string"
+    }, 
+    "id": {
+      "type": "string", 
+      "description": "A unique identifier."
+    }, 
+    "stripe_count": {
+      "type": "integer", 
+      "format": "int32"
+    }
+  }
+}

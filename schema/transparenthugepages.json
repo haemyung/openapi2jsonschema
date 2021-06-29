@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Type representing a transparent huge pages (THP) support.", 
+  "properties": {
+    "enabled": {
+      "type": "boolean", 
+      "description": "Enable THP support."
+    }
+  }
+}

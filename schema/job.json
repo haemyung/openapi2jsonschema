@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Represents a job, which monitors execution of a flow in the system.\nA job can contain multiple steps in a hierarchic structure.\nThe steps can be processed in parallel, depends on the implementation of the flow.", 
+  "properties": {
+    "comment": {
+      "type": "string", 
+      "description": "Free text containing comments about this object."
+    }, 
+    "status": {
+      "enum": [
+        "aborted", 
+        "failed", 
+        "finished", 
+        "started", 
+        "unknown"
+      ], 
+      "type": "string", 
+      "description": "The status of the job."
+    }, 
+    "last_updated": {
+      "type": "string", 
+      "description": "The last update date of the job.", 
+      "format": "epoch"
+    }, 
+    "description": {
+      "type": "string", 
+      "description": "A human-readable description in plain text."
+    }, 
+    "external": {
+      "type": "boolean", 
+      "description": "Indicates if the job is originated by an external system.\nExternal jobs are managed externally, by the creator of the job."
+    }, 
+    "start_time": {
+      "type": "string", 
+      "description": "The start time of the job.", 
+      "format": "epoch"
+    }, 
+    "end_time": {
+      "type": "string", 
+      "description": "The end time of the job.", 
+      "format": "epoch"
+    }, 
+    "auto_cleared": {
+      "type": "boolean", 
+      "description": "Indicates if the job should be cleared automatically after it was completed by the system."
+    }, 
+    "id": {
+      "type": "string", 
+      "description": "A unique identifier."
+    }, 
+    "name": {
+      "type": "string", 
+      "description": "A human-readable name in plain text."
+    }
+  }
+}

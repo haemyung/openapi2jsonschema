@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "boot_menu": {
+      "type": "object", 
+      "description": "Represents boot menu configuration\nfor virtual machines and templates.", 
+      "properties": {
+        "enabled": {
+          "type": "boolean", 
+          "description": "Whether the boot menu is enabled\nfor this virtual machine (or template), or not."
+        }
+      }
+    }
+  }
+}

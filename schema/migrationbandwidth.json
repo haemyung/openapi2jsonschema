@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Defines the bandwidth used by migration.", 
+  "properties": {
+    "custom_value": {
+      "type": "integer", 
+      "description": "Custom bandwidth in Mbps. Will be applied only if the `assignmentMethod` attribute is `custom`.", 
+      "format": "int32"
+    }, 
+    "assignment_method": {
+      "enum": [
+        "auto", 
+        "custom", 
+        "hypervisor_default"
+      ], 
+      "type": "string", 
+      "description": "The method used to assign the bandwidth."
+    }
+  }
+}

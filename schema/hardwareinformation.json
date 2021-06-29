@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Represents hardware information of host.\n\nTo get that information send a request like this:\n\n....\nGET /ovirt-engine/api/hosts/123\n....\n\nThe result will be like this:\n\n[source,xml]\n----\n<host href=\"/ovirt-engine/api/hosts/123\" id=\"123\">\n  ...\n  <hardware_information>\n    <family>Red Hat Enterprise Linux</family>\n    <manufacturer>Red Hat</manufacturer>\n    <product_name>RHEV Hypervisor</product_name>\n    <serial_number>01234567-89AB-CDEF-0123-456789ABCDEF</serial_number>\n    <supported_rng_sources>\n      <supported_rng_source>random</supported_rng_source>\n    </supported_rng_sources>\n    <uuid>12345678-9ABC-DEF0-1234-56789ABCDEF0</uuid>\n    <version>1.2-34.5.el7ev</version>\n  </hardware_information>\n  ...\n</application>\n----", 
+  "properties": {
+    "uuid": {
+      "type": "string", 
+      "description": "Unique ID for each host."
+    }, 
+    "family": {
+      "type": "string", 
+      "description": "Type of host's CPU."
+    }, 
+    "supported_rng_sources": {
+      "type": "object", 
+      "properties": {
+        "supported_rng_source": {
+          "items": {
+            "enum": [
+              "hwrng", 
+              "random", 
+              "urandom"
+            ], 
+            "type": "string"
+          }, 
+          "type": "array", 
+          "description": "Supported sources of random number generator."
+        }
+      }
+    }, 
+    "version": {
+      "type": "string", 
+      "description": "Unique name for each of the manufacturer."
+    }, 
+    "serial_number": {
+      "type": "string", 
+      "description": "Unique ID for host's chassis."
+    }, 
+    "product_name": {
+      "type": "string", 
+      "description": "Host's product name (for example `RHEV Hypervisor`)."
+    }, 
+    "manufacturer": {
+      "type": "string", 
+      "description": "Manufacturer of the host's machine and hardware vendor."
+    }
+  }
+}

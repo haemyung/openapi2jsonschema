@@ -1,0 +1,71 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "A summary containing the total number of relevant objects, such as virtual machines, hosts, and storage domains.", 
+  "properties": {
+    "storage_domains": {
+      "type": "object", 
+      "description": "This type contains an item of the API summary. Each item contains the total and active number of some kind of\nobject.", 
+      "properties": {
+        "active": {
+          "type": "integer", 
+          "description": "The total number of active objects.", 
+          "format": "int32"
+        }, 
+        "total": {
+          "type": "integer", 
+          "description": "The total number of objects.", 
+          "format": "int32"
+        }
+      }
+    }, 
+    "hosts": {
+      "type": "object", 
+      "description": "This type contains an item of the API summary. Each item contains the total and active number of some kind of\nobject.", 
+      "properties": {
+        "active": {
+          "type": "integer", 
+          "description": "The total number of active objects.", 
+          "format": "int32"
+        }, 
+        "total": {
+          "type": "integer", 
+          "description": "The total number of objects.", 
+          "format": "int32"
+        }
+      }
+    }, 
+    "users": {
+      "type": "object", 
+      "description": "This type contains an item of the API summary. Each item contains the total and active number of some kind of\nobject.", 
+      "properties": {
+        "active": {
+          "type": "integer", 
+          "description": "The total number of active objects.", 
+          "format": "int32"
+        }, 
+        "total": {
+          "type": "integer", 
+          "description": "The total number of objects.", 
+          "format": "int32"
+        }
+      }
+    }, 
+    "vms": {
+      "type": "object", 
+      "description": "This type contains an item of the API summary. Each item contains the total and active number of some kind of\nobject.", 
+      "properties": {
+        "active": {
+          "type": "integer", 
+          "description": "The total number of active objects.", 
+          "format": "int32"
+        }, 
+        "total": {
+          "type": "integer", 
+          "description": "The total number of objects.", 
+          "format": "int32"
+        }
+      }
+    }
+  }
+}

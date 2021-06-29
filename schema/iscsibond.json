@@ -1,0 +1,370 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "comment": {
+      "type": "string", 
+      "description": "Free text containing comments about this object."
+    }, 
+    "description": {
+      "type": "string", 
+      "description": "A human-readable description in plain text."
+    }, 
+    "storage_connections": {
+      "type": "object", 
+      "properties": {
+        "storage_connection": {
+          "items": {
+            "type": "object", 
+            "description": "Represents a storage server connection.\n\nExample XML representation:\n\n[source,xml]\n----\n<storage_connection id=\"123\">\n  <address>mynfs.example.com</address>\n  <type>nfs</type>\n  <path>/exports/mydata</path>\n</storage_connection>\n----", 
+            "properties": {
+              "comment": {
+                "type": "string", 
+                "description": "Free text containing comments about this object."
+              }, 
+              "username": {
+                "type": "string"
+              }, 
+              "description": {
+                "type": "string", 
+                "description": "A human-readable description in plain text."
+              }, 
+              "name": {
+                "type": "string", 
+                "description": "A human-readable name in plain text."
+              }, 
+              "nfs_timeo": {
+                "type": "integer", 
+                "format": "int32"
+              }, 
+              "nfs_retrans": {
+                "type": "integer", 
+                "format": "int32"
+              }, 
+              "port": {
+                "type": "integer", 
+                "format": "int32"
+              }, 
+              "portal": {
+                "type": "string"
+              }, 
+              "mount_options": {
+                "type": "string"
+              }, 
+              "address": {
+                "type": "string"
+              }, 
+              "id": {
+                "type": "string", 
+                "description": "A unique identifier."
+              }, 
+              "path": {
+                "type": "string"
+              }, 
+              "vfs_type": {
+                "type": "string"
+              }, 
+              "password": {
+                "type": "string"
+              }, 
+              "type": {
+                "enum": [
+                  "cinder", 
+                  "fcp", 
+                  "glance", 
+                  "glusterfs", 
+                  "iscsi", 
+                  "localfs", 
+                  "nfs", 
+                  "posixfs"
+                ], 
+                "type": "string"
+              }, 
+              "nfs_version": {
+                "enum": [
+                  "auto", 
+                  "v3", 
+                  "v4", 
+                  "v4_1", 
+                  "v4_2"
+                ], 
+                "type": "string"
+              }, 
+              "target": {
+                "type": "string"
+              }
+            }
+          }, 
+          "type": "array"
+        }
+      }
+    }, 
+    "id": {
+      "type": "string", 
+      "description": "A unique identifier."
+    }, 
+    "data_center": {
+      "type": "object", 
+      "properties": {
+        "comment": {
+          "type": "string", 
+          "description": "Free text containing comments about this object."
+        }, 
+        "status": {
+          "enum": [
+            "contend", 
+            "maintenance", 
+            "not_operational", 
+            "problematic", 
+            "uninitialized", 
+            "up"
+          ], 
+          "type": "string"
+        }, 
+        "supported_versions": {
+          "items": {
+            "type": "object", 
+            "properties": {
+              "comment": {
+                "type": "string", 
+                "description": "Free text containing comments about this object."
+              }, 
+              "major": {
+                "type": "integer", 
+                "format": "int32"
+              }, 
+              "description": {
+                "type": "string", 
+                "description": "A human-readable description in plain text."
+              }, 
+              "full_version": {
+                "type": "string"
+              }, 
+              "name": {
+                "type": "string", 
+                "description": "A human-readable name in plain text."
+              }, 
+              "build": {
+                "type": "integer", 
+                "format": "int32"
+              }, 
+              "id": {
+                "type": "string", 
+                "description": "A unique identifier."
+              }, 
+              "minor": {
+                "type": "integer", 
+                "format": "int32"
+              }, 
+              "revision": {
+                "type": "integer", 
+                "format": "int32"
+              }
+            }
+          }, 
+          "type": "array"
+        }, 
+        "description": {
+          "type": "string", 
+          "description": "A human-readable description in plain text."
+        }, 
+        "quota_mode": {
+          "enum": [
+            "audit", 
+            "disabled", 
+            "enabled"
+          ], 
+          "type": "string"
+        }, 
+        "id": {
+          "type": "string", 
+          "description": "A unique identifier."
+        }, 
+        "version": {
+          "type": "object", 
+          "properties": {
+            "comment": {
+              "type": "string", 
+              "description": "Free text containing comments about this object."
+            }, 
+            "major": {
+              "type": "integer", 
+              "format": "int32"
+            }, 
+            "description": {
+              "type": "string", 
+              "description": "A human-readable description in plain text."
+            }, 
+            "full_version": {
+              "type": "string"
+            }, 
+            "name": {
+              "type": "string", 
+              "description": "A human-readable name in plain text."
+            }, 
+            "build": {
+              "type": "integer", 
+              "format": "int32"
+            }, 
+            "id": {
+              "type": "string", 
+              "description": "A unique identifier."
+            }, 
+            "minor": {
+              "type": "integer", 
+              "format": "int32"
+            }, 
+            "revision": {
+              "type": "integer", 
+              "format": "int32"
+            }
+          }
+        }, 
+        "local": {
+          "type": "boolean"
+        }, 
+        "storage_format": {
+          "enum": [
+            "v1", 
+            "v2", 
+            "v3", 
+            "v4"
+          ], 
+          "type": "string"
+        }, 
+        "name": {
+          "type": "string", 
+          "description": "A human-readable name in plain text."
+        }
+      }
+    }, 
+    "networks": {
+      "type": "object", 
+      "properties": {
+        "network": {
+          "items": {
+            "type": "object", 
+            "description": "The type for a logical network.\n\nAn example of the JSON representation of a logical network:\n\n[source,json]\n----\n{\n  \"network\" : [ {\n    \"data_center\" : {\n      \"href\" : \"/ovirt-engine/api/datacenters/123\",\n      \"id\" : \"123\"\n    },\n    \"stp\" : \"false\",\n    \"mtu\" : \"0\",\n    \"usages\" : {\n      \"usage\" : [ \"vm\" ]\n    },\n    \"name\" : \"ovirtmgmt\",\n    \"description\" : \"Management Network\",\n    \"href\" : \"/ovirt-engine/api/networks/456\",\n    \"id\" : \"456\",\n    \"link\" : [ {\n      \"href\" : \"/ovirt-engine/api/networks/456/permissions\",\n      \"rel\" : \"permissions\"\n    }, {\n      \"href\" : \"/ovirt-engine/api/networks/456/vnicprofiles\",\n      \"rel\" : \"vnicprofiles\"\n    }, {\n      \"href\" : \"/ovirt-engine/api/networks/456/labels\",\n      \"rel\" : \"labels\"\n    } ]\n  } ]\n}\n----\n\nAn example of the XML representation of the same logical network:\n\n[source,xml]\n----\n<network href=\"/ovirt-engine/api/networks/456\" id=\"456\">\n  <name>ovirtmgmt</name>\n  <description>Management Network</description>\n  <link href=\"/ovirt-engine/api/networks/456/permissions\" rel=\"permissions\"/>\n  <link href=\"/ovirt-engine/api/networks/456/vnicprofiles\" rel=\"vnicprofiles\"/>\n  <link href=\"/ovirt-engine/api/networks/456/labels\" rel=\"labels\"/>\n  <data_center href=\"/ovirt-engine/api/datacenters/123\" id=\"123\"/>\n  <stp>false</stp>\n  <mtu>0</mtu>\n  <usages>\n    <usage>vm</usage>\n  </usages>\n</network>\n----", 
+            "properties": {
+              "comment": {
+                "type": "string", 
+                "description": "Free text containing comments about this object."
+              }, 
+              "status": {
+                "enum": [
+                  "non_operational", 
+                  "operational"
+                ], 
+                "type": "string", 
+                "description": "The status of the network. `non_operational` if the network defined as 'required' and\nomitted from any active cluster host. `operational` otherwise."
+              }, 
+              "usages": {
+                "items": {
+                  "enum": [
+                    "default_route", 
+                    "display", 
+                    "gluster", 
+                    "management", 
+                    "migration", 
+                    "vm"
+                  ], 
+                  "type": "string"
+                }, 
+                "type": "array", 
+                "description": "Defines a set of usage elements for the network.\n\nFor example, users can specify that the network is to be used for virtual machine traffic and also for\ndisplay traffic with the `vm` and `display` values."
+              }, 
+              "required": {
+                "type": "boolean", 
+                "description": "Defines whether the network is mandatory for all the hosts in the cluster. In case a 'required'\n`operational` network is omitted from a host, the host will be marked as `non_operational`,"
+              }, 
+              "description": {
+                "type": "string", 
+                "description": "A human-readable description in plain text."
+              }, 
+              "ip": {
+                "type": "object", 
+                "description": "Represents the IP configuration of a network interface.", 
+                "properties": {
+                  "netmask": {
+                    "type": "string", 
+                    "description": "The network mask.\n\nFor IPv6 addresses the value is an integer in the range of 0-128, which represents the subnet prefix."
+                  }, 
+                  "version": {
+                    "enum": [
+                      "v4", 
+                      "v6"
+                    ], 
+                    "type": "string", 
+                    "description": "The version of the IP protocol.\n\nNOTE: From version 4.1 of the Manager this attribute will be optional, and when a value is not provided, it will\nbe inferred from the value of the `address` attribute."
+                  }, 
+                  "gateway": {
+                    "type": "string", 
+                    "description": "The address of the default gateway."
+                  }, 
+                  "address": {
+                    "type": "string", 
+                    "description": "The text representation of the IP address.\n\nFor example, an IPv4 address will be represented as follows:\n\n[source,xml]\n----\n<ip>\n  <address>192.168.0.1</address>\n  ...\n</ip>\n----\n\nAn IPv6 address will be represented as follows:\n\n[source,xml]\n----\n<ip>\n  <address>2620:52:0:20f0:4216:7eff:feaa:1b50</address>\n  ...\n</ip>\n----"
+                  }
+                }
+              }, 
+              "vlan": {
+                "type": "object", 
+                "description": "Type representing a Virtual LAN (VLAN) type.", 
+                "properties": {
+                  "id": {
+                    "type": "integer", 
+                    "description": "Virtual LAN ID.", 
+                    "format": "int32"
+                  }
+                }
+              }, 
+              "profile_required": {
+                "type": "boolean", 
+                "description": "Specifies whether upon creation of the network a virtual network interface profile should automatically be\ncreated."
+              }, 
+              "mtu": {
+                "type": "integer", 
+                "description": "Specifies the maximum transmission unit for the network.", 
+                "format": "int32"
+              }, 
+              "stp": {
+                "type": "boolean", 
+                "description": "Specifies whether the spanning tree protocol is enabled for the network."
+              }, 
+              "id": {
+                "type": "string", 
+                "description": "A unique identifier."
+              }, 
+              "dns_resolver_configuration": {
+                "type": "object", 
+                "description": "Represents the DNS resolver configuration.", 
+                "properties": {
+                  "name_servers": {
+                    "items": {
+                      "type": "string"
+                    }, 
+                    "type": "array", 
+                    "description": "Array of addresses of name servers. Either IPv4 or IPv6 addresses may be specified."
+                  }
+                }
+              }, 
+              "display": {
+                "type": "boolean", 
+                "description": "Deprecated, 'usages' should be used to define network as a display network."
+              }, 
+              "name": {
+                "type": "string", 
+                "description": "A human-readable name in plain text."
+              }
+            }
+          }, 
+          "type": "array"
+        }
+      }
+    }, 
+    "name": {
+      "type": "string", 
+      "description": "A human-readable name in plain text."
+    }
+  }
+}

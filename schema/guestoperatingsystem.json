@@ -1,0 +1,108 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Represents an operating system installed on the virtual machine.\n\nTo get that information send a request like this:\n\n....\nGET /ovirt-engine/api/vms/123\n....\n\nThe result will be like this:\n\n[source,xml]\n----\n<vm href=\"/ovirt-engine/api/vms/123\" id=\"123\">\n...\n  <guest_operating_system>\n    <architecture>x86_64</architecture>\n    <codename>Maipo</codename>\n    <distribution>Red Hat Enterprise Linux Server</distribution>\n    <family>Linux</family>\n    <kernel>\n      <version>\n        <build>0</build>\n        <full_version>3.10.0-514.10.2.el7.x86_64</full_version>\n        <major>3</major>\n        <minor>10</minor>\n        <revision>514</revision>\n      </version>\n    </kernel>\n    <version>\n      <full_version>7.3</full_version>\n      <major>7</major>\n      <minor>3</minor>\n    </version>\n  </guest_operating_system>\n</vm>\n----", 
+  "properties": {
+    "kernel": {
+      "type": "object", 
+      "properties": {
+        "version": {
+          "type": "object", 
+          "properties": {
+            "comment": {
+              "type": "string", 
+              "description": "Free text containing comments about this object."
+            }, 
+            "major": {
+              "type": "integer", 
+              "format": "int32"
+            }, 
+            "description": {
+              "type": "string", 
+              "description": "A human-readable description in plain text."
+            }, 
+            "full_version": {
+              "type": "string"
+            }, 
+            "name": {
+              "type": "string", 
+              "description": "A human-readable name in plain text."
+            }, 
+            "build": {
+              "type": "integer", 
+              "format": "int32"
+            }, 
+            "id": {
+              "type": "string", 
+              "description": "A unique identifier."
+            }, 
+            "minor": {
+              "type": "integer", 
+              "format": "int32"
+            }, 
+            "revision": {
+              "type": "integer", 
+              "format": "int32"
+            }
+          }
+        }
+      }
+    }, 
+    "family": {
+      "type": "string", 
+      "description": "Family of operating system, such as `Linux`."
+    }, 
+    "version": {
+      "type": "object", 
+      "properties": {
+        "comment": {
+          "type": "string", 
+          "description": "Free text containing comments about this object."
+        }, 
+        "major": {
+          "type": "integer", 
+          "format": "int32"
+        }, 
+        "description": {
+          "type": "string", 
+          "description": "A human-readable description in plain text."
+        }, 
+        "full_version": {
+          "type": "string"
+        }, 
+        "name": {
+          "type": "string", 
+          "description": "A human-readable name in plain text."
+        }, 
+        "build": {
+          "type": "integer", 
+          "format": "int32"
+        }, 
+        "id": {
+          "type": "string", 
+          "description": "A unique identifier."
+        }, 
+        "minor": {
+          "type": "integer", 
+          "format": "int32"
+        }, 
+        "revision": {
+          "type": "integer", 
+          "format": "int32"
+        }
+      }
+    }, 
+    "architecture": {
+      "type": "string", 
+      "description": "The architecture of the operating system, such as x86_64."
+    }, 
+    "distribution": {
+      "type": "string", 
+      "description": "Full name of operating system distribution."
+    }, 
+    "codename": {
+      "type": "string", 
+      "description": "Code name of the operating system, such as `Maipo`."
+    }
+  }
+}

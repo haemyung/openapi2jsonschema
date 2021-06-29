@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Network filters filter packets sent to and from the virtual machine's NIC according to defined rules.\n\nThere are several types of network filters supported based on libvirt.\nFor more details about the different network filters see https://libvirt.org/firewall.html[here].\n\nIn addition to libvirt's network filters, there are two additional network filters:\nThe first is called `vdsm-no-mac-spoofing` and is composed of `no-mac-spoofing` and `no-arp-mac-spoofing`.\nThe second is called `ovirt-no-filter` and is used when no network filter is to be defined for the virtual machine's NIC.\nThe `ovirt-no-filter` network filter is only used for internal implementation, and\ndoes not exist on the NICs.\n\nThis is a example of the XML representation:\n\n[source,xml]\n----\n<network_filter id=\"00000019-0019-0019-0019-00000000026c\">\n  <name>example-filter</name>\n  <version>\n    <major>4</major>\n    <minor>0</minor>\n    <build>-1</build>\n    <revision>-1</revision>\n  </version>\n</network_filter>\n----\n\nIf any part of the version is not present, it is represented by -1.", 
+  "properties": {
+    "comment": {
+      "type": "string", 
+      "description": "Free text containing comments about this object."
+    }, 
+    "description": {
+      "type": "string", 
+      "description": "A human-readable description in plain text."
+    }, 
+    "version": {
+      "type": "object", 
+      "properties": {
+        "comment": {
+          "type": "string", 
+          "description": "Free text containing comments about this object."
+        }, 
+        "major": {
+          "type": "integer", 
+          "format": "int32"
+        }, 
+        "description": {
+          "type": "string", 
+          "description": "A human-readable description in plain text."
+        }, 
+        "full_version": {
+          "type": "string"
+        }, 
+        "name": {
+          "type": "string", 
+          "description": "A human-readable name in plain text."
+        }, 
+        "build": {
+          "type": "integer", 
+          "format": "int32"
+        }, 
+        "id": {
+          "type": "string", 
+          "description": "A unique identifier."
+        }, 
+        "minor": {
+          "type": "integer", 
+          "format": "int32"
+        }, 
+        "revision": {
+          "type": "integer", 
+          "format": "int32"
+        }
+      }
+    }, 
+    "id": {
+      "type": "string", 
+      "description": "A unique identifier."
+    }, 
+    "name": {
+      "type": "string", 
+      "description": "A human-readable name in plain text."
+    }
+  }
+}

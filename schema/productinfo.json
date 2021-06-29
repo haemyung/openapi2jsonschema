@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Product information.\n\nThe entry point contains a `product_info` element to help an API user determine the legitimacy of the\n{product-name} environment. This includes the name of the product, the `vendor` and the `version`.\n\nVerify a genuine {product-name} environment\n\nThe follow elements identify a genuine {product-name} environment:\n\n[source]\n----\n<api>\n...\n<product_info>\n  <name>oVirt Engine</name>\n  <vendor>ovirt.org</vendor>\n  <version>\n    <build>0</build>\n    <full_version>4.1.0_master</full_version>\n    <major>4</major>\n    <minor>1</minor>\n    <revision>0</revision>\n  </version>\n</product_info>\n...\n</api>\n----", 
+  "properties": {
+    "version": {
+      "type": "object", 
+      "properties": {
+        "comment": {
+          "type": "string", 
+          "description": "Free text containing comments about this object."
+        }, 
+        "major": {
+          "type": "integer", 
+          "format": "int32"
+        }, 
+        "description": {
+          "type": "string", 
+          "description": "A human-readable description in plain text."
+        }, 
+        "full_version": {
+          "type": "string"
+        }, 
+        "name": {
+          "type": "string", 
+          "description": "A human-readable name in plain text."
+        }, 
+        "build": {
+          "type": "integer", 
+          "format": "int32"
+        }, 
+        "id": {
+          "type": "string", 
+          "description": "A unique identifier."
+        }, 
+        "minor": {
+          "type": "integer", 
+          "format": "int32"
+        }, 
+        "revision": {
+          "type": "integer", 
+          "format": "int32"
+        }
+      }
+    }, 
+    "vendor": {
+      "type": "string", 
+      "description": "The name of the vendor, for example `ovirt.org`."
+    }, 
+    "name": {
+      "type": "string", 
+      "description": "The name of the product, for example `oVirt Engine`."
+    }
+  }
+}

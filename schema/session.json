@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Describes a user session to a virtual machine.", 
+  "properties": {
+    "comment": {
+      "type": "string", 
+      "description": "Free text containing comments about this object."
+    }, 
+    "protocol": {
+      "type": "string", 
+      "description": "The protocol used by the session.\n\nCurrently not used. Intended for info about how the user is connected: through SPICE, VNC, SSH, or RDP."
+    }, 
+    "description": {
+      "type": "string", 
+      "description": "A human-readable description in plain text."
+    }, 
+    "ip": {
+      "type": "object", 
+      "description": "Represents the IP configuration of a network interface.", 
+      "properties": {
+        "netmask": {
+          "type": "string", 
+          "description": "The network mask.\n\nFor IPv6 addresses the value is an integer in the range of 0-128, which represents the subnet prefix."
+        }, 
+        "version": {
+          "enum": [
+            "v4", 
+            "v6"
+          ], 
+          "type": "string", 
+          "description": "The version of the IP protocol.\n\nNOTE: From version 4.1 of the Manager this attribute will be optional, and when a value is not provided, it will\nbe inferred from the value of the `address` attribute."
+        }, 
+        "gateway": {
+          "type": "string", 
+          "description": "The address of the default gateway."
+        }, 
+        "address": {
+          "type": "string", 
+          "description": "The text representation of the IP address.\n\nFor example, an IPv4 address will be represented as follows:\n\n[source,xml]\n----\n<ip>\n  <address>192.168.0.1</address>\n  ...\n</ip>\n----\n\nAn IPv6 address will be represented as follows:\n\n[source,xml]\n----\n<ip>\n  <address>2620:52:0:20f0:4216:7eff:feaa:1b50</address>\n  ...\n</ip>\n----"
+        }
+      }
+    }, 
+    "console_user": {
+      "type": "boolean", 
+      "description": "Indicates if this is a console session.\n\nThe value will be `true` for console users (SPICE or VNC), and `false` for others (such as RDP or SSH)."
+    }, 
+    "id": {
+      "type": "string", 
+      "description": "A unique identifier."
+    }, 
+    "name": {
+      "type": "string", 
+      "description": "A human-readable name in plain text."
+    }
+  }
+}

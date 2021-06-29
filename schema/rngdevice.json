@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Random number generator (RNG) device model.", 
+  "properties": {
+    "source": {
+      "enum": [
+        "hwrng", 
+        "random", 
+        "urandom"
+      ], 
+      "type": "string", 
+      "description": "Backend of the random number generator device."
+    }, 
+    "rate": {
+      "type": "object", 
+      "description": "Determines maximum speed of consumption of bytes from random number generator device.", 
+      "properties": {
+        "bytes": {
+          "type": "integer", 
+          "description": "Number of bytes allowed to consume per period.", 
+          "format": "int32"
+        }, 
+        "period": {
+          "type": "integer", 
+          "description": "Duration of one period in milliseconds.", 
+          "format": "int32"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "This type represents a watchdog configuration.", 
+  "properties": {
+    "comment": {
+      "type": "string", 
+      "description": "Free text containing comments about this object."
+    }, 
+    "description": {
+      "type": "string", 
+      "description": "A human-readable description in plain text."
+    }, 
+    "action": {
+      "enum": [
+        "dump", 
+        "none", 
+        "pause", 
+        "poweroff", 
+        "reset"
+      ], 
+      "type": "string", 
+      "description": "Watchdog action to be performed when watchdog is triggered."
+    }, 
+    "model": {
+      "enum": [
+        "i6300esb"
+      ], 
+      "type": "string", 
+      "description": "Model of watchdog device. Currently supported only I6300ESB."
+    }, 
+    "id": {
+      "type": "string", 
+      "description": "A unique identifier."
+    }, 
+    "name": {
+      "type": "string", 
+      "description": "A human-readable name in plain text."
+    }
+  }
+}

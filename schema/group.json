@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "This type represents all groups in the directory service.", 
+  "properties": {
+    "comment": {
+      "type": "string", 
+      "description": "Free text containing comments about this object."
+    }, 
+    "description": {
+      "type": "string", 
+      "description": "A human-readable description in plain text."
+    }, 
+    "domain_entry_id": {
+      "type": "string", 
+      "description": "The containing directory service domain id."
+    }, 
+    "namespace": {
+      "type": "string", 
+      "description": "Namespace where group resides."
+    }, 
+    "id": {
+      "type": "string", 
+      "description": "A unique identifier."
+    }, 
+    "name": {
+      "type": "string", 
+      "description": "A human-readable name in plain text."
+    }
+  }
+}

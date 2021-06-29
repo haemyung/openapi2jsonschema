@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Represents a user in the system.", 
+  "properties": {
+    "comment": {
+      "type": "string", 
+      "description": "Free text containing comments about this object."
+    }, 
+    "last_name": {
+      "type": "string"
+    }, 
+    "description": {
+      "type": "string", 
+      "description": "A human-readable description in plain text."
+    }, 
+    "name": {
+      "type": "string", 
+      "description": "A human-readable name in plain text."
+    }, 
+    "domain_entry_id": {
+      "type": "string"
+    }, 
+    "namespace": {
+      "type": "string", 
+      "description": "Namespace where the user resides. When using the authorization provider that stores users in the LDAP server,\nthis attribute equals the naming context of the LDAP server.\nSee https://github.com/oVirt/ovirt-engine-extension-aaa-ldap for more information.\nWhen using the built-in authorization provider that stores users in the database this attribute is ignored.\nSee https://github.com/oVirt/ovirt-engine-extension-aaa-jdbc for more information."
+    }, 
+    "id": {
+      "type": "string", 
+      "description": "A unique identifier."
+    }, 
+    "department": {
+      "type": "string"
+    }, 
+    "logged_in": {
+      "type": "boolean"
+    }, 
+    "password": {
+      "type": "string"
+    }, 
+    "user_name": {
+      "type": "string", 
+      "description": "The user's username. The format depends on authorization provider type. In most LDAP providers it is the\nvalue of the `uid` LDAP attribute. In Active Directory it is the User Principal Name (UPN). `UPN` or\n`uid` must be followed by the authorization provider name. For example, in the case of LDAP's `uid` attribute it is:\n`myuser@myextension-authz`. In the case of Active Directory using `UPN` it is:\n`myuser@mysubdomain.mydomain.com@myextension-authz`. This attribute is a required parameter when adding a new user."
+    }, 
+    "email": {
+      "type": "string"
+    }, 
+    "principal": {
+      "type": "string", 
+      "description": "Similar to `user_name`. The format depends on the LDAP provider. With most LDAP providers it is the\nvalue of the `uid` LDAP attribute. In the case of Active Directory it is the User Principal Name (UPN)."
+    }
+  }
+}

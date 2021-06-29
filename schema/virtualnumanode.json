@@ -1,0 +1,268 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Represents the virtual NUMA node.\n\nAn example XML representation:\n\n[source,xml]\n----\n<vm_numa_node href=\"/ovirt-engine/api/vms/123/numanodes/456\" id=\"456\">\n  <cpu>\n    <cores>\n      <core>\n        <index>0</index>\n      </core>\n    </cores>\n  </cpu>\n  <index>0</index>\n  <memory>1024</memory>\n  <numa_node_pins>\n    <numa_node_pin>\n      <index>0</index>\n    </numa_node_pin>\n  </numa_node_pins>\n  <vm href=\"/ovirt-engine/api/vms/123\" id=\"123\" />\n</vm_numa_node>\n----", 
+  "properties": {
+    "comment": {
+      "type": "string", 
+      "description": "Free text containing comments about this object."
+    }, 
+    "index": {
+      "type": "integer", 
+      "format": "int32"
+    }, 
+    "description": {
+      "type": "string", 
+      "description": "A human-readable description in plain text."
+    }, 
+    "name": {
+      "type": "string", 
+      "description": "A human-readable name in plain text."
+    }, 
+    "id": {
+      "type": "string", 
+      "description": "A unique identifier."
+    }, 
+    "numa_node_pins": {
+      "type": "object", 
+      "properties": {
+        "numa_node_pin": {
+          "items": {
+            "type": "object", 
+            "description": "Represents the pinning of a virtual NUMA node to a physical NUMA node.", 
+            "properties": {
+              "pinned": {
+                "type": "boolean", 
+                "description": "Deprecated. Should always be `true`."
+              }, 
+              "index": {
+                "type": "integer", 
+                "description": "The index of a physical NUMA node to which the virtual NUMA node is pinned.", 
+                "format": "int32"
+              }, 
+              "host_numa_node": {
+                "type": "object", 
+                "description": "Represents a physical NUMA node.\n\nExample XML representation:\n\n[source,xml]\n----\n<host_numa_node href=\"/ovirt-engine/api/hosts/0923f1ea/numanodes/007cf1ab\" id=\"007cf1ab\">\n  <cpu>\n    <cores>\n      <core>\n        <index>0</index>\n      </core>\n    </cores>\n  </cpu>\n  <index>0</index>\n  <memory>65536</memory>\n  <node_distance>40 20 40 10</node_distance>\n  <host href=\"/ovirt-engine/api/hosts/0923f1ea\" id=\"0923f1ea\"/>\n</host_numa_node>\n----", 
+                "properties": {
+                  "comment": {
+                    "type": "string", 
+                    "description": "Free text containing comments about this object."
+                  }, 
+                  "index": {
+                    "type": "integer", 
+                    "format": "int32"
+                  }, 
+                  "description": {
+                    "type": "string", 
+                    "description": "A human-readable description in plain text."
+                  }, 
+                  "name": {
+                    "type": "string", 
+                    "description": "A human-readable name in plain text."
+                  }, 
+                  "id": {
+                    "type": "string", 
+                    "description": "A unique identifier."
+                  }, 
+                  "memory": {
+                    "type": "integer", 
+                    "description": "Memory of the NUMA node in MB.", 
+                    "format": "int32"
+                  }, 
+                  "cpu": {
+                    "type": "object", 
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      }, 
+                      "level": {
+                        "type": "integer", 
+                        "format": "int32"
+                      }, 
+                      "speed": {
+                        "type": "number", 
+                        "format": "double"
+                      }, 
+                      "cpu_tune": {
+                        "type": "object", 
+                        "properties": {
+                          "vcpu_pins": {
+                            "items": {
+                              "type": "object", 
+                              "properties": {
+                                "cpu_set": {
+                                  "type": "string"
+                                }, 
+                                "vcpu": {
+                                  "type": "integer", 
+                                  "format": "int32"
+                                }
+                              }
+                            }, 
+                            "type": "array"
+                          }
+                        }
+                      }, 
+                      "architecture": {
+                        "enum": [
+                          "ppc64", 
+                          "undefined", 
+                          "x86_64"
+                        ], 
+                        "type": "string"
+                      }, 
+                      "mode": {
+                        "enum": [
+                          "custom", 
+                          "host_model", 
+                          "host_passthrough"
+                        ], 
+                        "type": "string"
+                      }, 
+                      "cores": {
+                        "items": {
+                          "type": "object", 
+                          "properties": {
+                            "index": {
+                              "type": "integer", 
+                              "format": "int32"
+                            }, 
+                            "socket": {
+                              "type": "integer", 
+                              "format": "int32"
+                            }
+                          }
+                        }, 
+                        "type": "array"
+                      }, 
+                      "type": {
+                        "type": "string"
+                      }, 
+                      "topology": {
+                        "type": "object", 
+                        "properties": {
+                          "cores": {
+                            "type": "integer", 
+                            "format": "int32"
+                          }, 
+                          "threads": {
+                            "type": "integer", 
+                            "format": "int32"
+                          }, 
+                          "sockets": {
+                            "type": "integer", 
+                            "format": "int32"
+                          }
+                        }
+                      }
+                    }
+                  }, 
+                  "node_distance": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }, 
+          "type": "array"
+        }
+      }
+    }, 
+    "memory": {
+      "type": "integer", 
+      "description": "Memory of the NUMA node in MB.", 
+      "format": "int32"
+    }, 
+    "cpu": {
+      "type": "object", 
+      "properties": {
+        "name": {
+          "type": "string"
+        }, 
+        "level": {
+          "type": "integer", 
+          "format": "int32"
+        }, 
+        "speed": {
+          "type": "number", 
+          "format": "double"
+        }, 
+        "cpu_tune": {
+          "type": "object", 
+          "properties": {
+            "vcpu_pins": {
+              "items": {
+                "type": "object", 
+                "properties": {
+                  "cpu_set": {
+                    "type": "string"
+                  }, 
+                  "vcpu": {
+                    "type": "integer", 
+                    "format": "int32"
+                  }
+                }
+              }, 
+              "type": "array"
+            }
+          }
+        }, 
+        "architecture": {
+          "enum": [
+            "ppc64", 
+            "undefined", 
+            "x86_64"
+          ], 
+          "type": "string"
+        }, 
+        "mode": {
+          "enum": [
+            "custom", 
+            "host_model", 
+            "host_passthrough"
+          ], 
+          "type": "string"
+        }, 
+        "cores": {
+          "items": {
+            "type": "object", 
+            "properties": {
+              "index": {
+                "type": "integer", 
+                "format": "int32"
+              }, 
+              "socket": {
+                "type": "integer", 
+                "format": "int32"
+              }
+            }
+          }, 
+          "type": "array"
+        }, 
+        "type": {
+          "type": "string"
+        }, 
+        "topology": {
+          "type": "object", 
+          "properties": {
+            "cores": {
+              "type": "integer", 
+              "format": "int32"
+            }, 
+            "threads": {
+              "type": "integer", 
+              "format": "int32"
+            }, 
+            "sockets": {
+              "type": "integer", 
+              "format": "int32"
+            }
+          }
+        }
+      }
+    }, 
+    "node_distance": {
+      "type": "string"
+    }
+  }
+}

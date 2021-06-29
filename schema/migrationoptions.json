@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "The type for migration options.", 
+  "properties": {
+    "auto_converge": {
+      "enum": [
+        "false", 
+        "inherit", 
+        "true"
+      ], 
+      "type": "string"
+    }, 
+    "bandwidth": {
+      "type": "object", 
+      "description": "Defines the bandwidth used by migration.", 
+      "properties": {
+        "custom_value": {
+          "type": "integer", 
+          "description": "Custom bandwidth in Mbps. Will be applied only if the `assignmentMethod` attribute is `custom`.", 
+          "format": "int32"
+        }, 
+        "assignment_method": {
+          "enum": [
+            "auto", 
+            "custom", 
+            "hypervisor_default"
+          ], 
+          "type": "string", 
+          "description": "The method used to assign the bandwidth."
+        }
+      }
+    }, 
+    "compressed": {
+      "enum": [
+        "false", 
+        "inherit", 
+        "true"
+      ], 
+      "type": "string"
+    }
+  }
+}

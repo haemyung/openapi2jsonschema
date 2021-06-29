@@ -1,0 +1,141 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "comment": {
+      "type": "string", 
+      "description": "Free text containing comments about this object."
+    }, 
+    "status": {
+      "enum": [
+        "down", 
+        "unknown", 
+        "up"
+      ], 
+      "type": "string"
+    }, 
+    "fs_name": {
+      "type": "string"
+    }, 
+    "description": {
+      "type": "string", 
+      "description": "A human-readable description in plain text."
+    }, 
+    "pid": {
+      "type": "integer", 
+      "format": "int32"
+    }, 
+    "server_id": {
+      "type": "string"
+    }, 
+    "id": {
+      "type": "string", 
+      "description": "A unique identifier."
+    }, 
+    "device": {
+      "type": "string"
+    }, 
+    "mnt_options": {
+      "type": "string"
+    }, 
+    "memory_pools": {
+      "type": "object", 
+      "properties": {
+        "memory_pool": {
+          "items": {
+            "type": "object", 
+            "properties": {
+              "comment": {
+                "type": "string", 
+                "description": "Free text containing comments about this object."
+              }, 
+              "hot_count": {
+                "type": "integer", 
+                "format": "int32"
+              }, 
+              "max_stdalloc": {
+                "type": "integer", 
+                "format": "int32"
+              }, 
+              "description": {
+                "type": "string", 
+                "description": "A human-readable description in plain text."
+              }, 
+              "max_alloc": {
+                "type": "integer", 
+                "format": "int32"
+              }, 
+              "cold_count": {
+                "type": "integer", 
+                "format": "int32"
+              }, 
+              "padded_size": {
+                "type": "integer", 
+                "format": "int32"
+              }, 
+              "alloc_count": {
+                "type": "integer", 
+                "format": "int32"
+              }, 
+              "type": {
+                "type": "string"
+              }, 
+              "id": {
+                "type": "string", 
+                "description": "A unique identifier."
+              }, 
+              "pool_misses": {
+                "type": "integer", 
+                "format": "int32"
+              }, 
+              "name": {
+                "type": "string", 
+                "description": "A human-readable name in plain text."
+              }
+            }
+          }, 
+          "type": "array"
+        }
+      }
+    }, 
+    "brick_dir": {
+      "type": "string"
+    }, 
+    "gluster_clients": {
+      "type": "object", 
+      "properties": {
+        "gluster_client": {
+          "items": {
+            "type": "object", 
+            "properties": {
+              "bytes_read": {
+                "type": "integer", 
+                "format": "int32"
+              }, 
+              "bytes_written": {
+                "type": "integer", 
+                "format": "int32"
+              }, 
+              "client_port": {
+                "type": "integer", 
+                "format": "int32"
+              }, 
+              "host_name": {
+                "type": "string"
+              }
+            }
+          }, 
+          "type": "array"
+        }
+      }
+    }, 
+    "port": {
+      "type": "integer", 
+      "format": "int32"
+    }, 
+    "name": {
+      "type": "string", 
+      "description": "A human-readable name in plain text."
+    }
+  }
+}

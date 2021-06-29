@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Type representing a ticket that allows virtual machine access.", 
+  "properties": {
+    "value": {
+      "type": "string", 
+      "description": "The virtual machine access ticket."
+    }, 
+    "expiry": {
+      "type": "integer", 
+      "description": "Time to live for the ticket in seconds.", 
+      "format": "int32"
+    }
+  }
+}

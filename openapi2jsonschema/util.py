@@ -91,7 +91,6 @@ def change_dict_values(d, prefix, version, changed):
                         new_v = {"type": "object", "properties":{}}
                         if k[len(k)-3:] == "ies":
                             temp = (k[:len(k)-3]+'y')
-                            info("%s" % temp)
                             new_v["properties"] = { temp: change_dict_values(v, prefix, version, True)}
                         else:
                             new_v["properties"] = {k[:len(k)-1]: change_dict_values(v, prefix, version, True)}

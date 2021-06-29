@@ -1,0 +1,80 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Maps an external virtual NIC profile to one that exists in the {engine-name}.\n\nIf, for example, the desired virtual NIC profile's mapping includes the following two lines:\n\n[cols=\"25,35,40\"]\n|===\n|Source network name|Source network profile name|Target virtual NIC profile ID\n\n|`red`\n|`gold`\n|`738dd914-8ec8-4a8b-8628-34672a5d449b`\n\n|`blue`\n|`silver`\n|`892a12ec-2028-4451-80aa-ff3bf55d6bac`\n\n|===\n\nIt should be expressed in the following form:\n\n[source,xml]\n----\n<vnic_profile_mappings>\n  <vnic_profile_mapping>\n    <source_network_name>red</source_network_name>\n    <source_network_profile_name>gold</source_network_profile_name>\n    <target_vnic_profile id=\"738dd914-8ec8-4a8b-8628-34672a5d449b\"/>\n  </vnic_profile_mapping>\n  <vnic_profile_mapping>\n    <source_network_name>blue</source_network_name>\n    <source_network_profile_name>silver</source_network_profile_name>\n    <target_vnic_profile id=\"892a12ec-2028-4451-80aa-ff3bf55d6bac\"/>\n  </vnic_profile_mapping>\n</vnic_profile_mappings>\n----", 
+  "properties": {
+    "target_vnic_profile": {
+      "type": "object", 
+      "description": "A vNIC profile is a collection of settings that can be applied to individual <<types/nic,NIC>>.", 
+      "properties": {
+        "comment": {
+          "type": "string", 
+          "description": "Free text containing comments about this object."
+        }, 
+        "migratable": {
+          "type": "boolean", 
+          "description": "Marks, whether `pass_through` NIC is migratable or not.\n\nIf `pass_through.mode` is set to `disabled` this option has no meaning, and it will be considered to be `true`.\nIf you omit this option from request, by default, this will be set to `true`.\n\nWhen migrating virtual machine, this virtual machine will be migrated only if all `pass_through` NICs are\nflagged as `migratable`."
+        }, 
+        "pass_through": {
+          "type": "object", 
+          "properties": {
+            "mode": {
+              "enum": [
+                "disabled", 
+                "enabled"
+              ], 
+              "type": "string", 
+              "description": "Defines whether the vNIC will be implemented as a virtual device, or as a pass-through to a host device."
+            }
+          }
+        }, 
+        "name": {
+          "type": "string", 
+          "description": "A human-readable name in plain text."
+        }, 
+        "custom_properties": {
+          "items": {
+            "type": "object", 
+            "description": "Custom property representation.", 
+            "properties": {
+              "regexp": {
+                "type": "string", 
+                "description": "A regular expression defining the available values a custom property can get."
+              }, 
+              "name": {
+                "type": "string", 
+                "description": "Property name."
+              }, 
+              "value": {
+                "type": "string", 
+                "description": "Property value."
+              }
+            }
+          }, 
+          "type": "array", 
+          "description": "Custom properties applied to the vNIC profile."
+        }, 
+        "id": {
+          "type": "string", 
+          "description": "A unique identifier."
+        }, 
+        "port_mirroring": {
+          "type": "boolean", 
+          "description": "Enables port mirroring.\n\nPort mirroring copies layer 3 network traffic on a given <<types/network,logical network>>and\n<<types/host,host>> to a NIC on a <<types/vm,virtual machine>>. This virtual machine\ncan be used for network debugging and tuning, intrusion detection, and monitoring the behavior of other\nvirtual machine on the same host and logical network. The only\ntraffic copied is internal to one logical network on one host. There is no\nincrease on traffic on the network external to the host; however a virtual machine\nwith port mirroring enabled uses more host CPU and RAM than other virtual machines.\n\nPort mirroring has the following limitations:\n\n - Hot plugging NIC with a vNIC profile that has port mirroring enabled is not supported.\n - Port mirroring cannot be altered when the vNIC profile is attached to a virtual machine.\n\nGiven the above limitations, it is recommended that you enable port mirroring on an additional,\ndedicated vNIC profile.\n\nIMPORTANT: Enabling port mirroring reduces the privacy of other network users."
+        }, 
+        "description": {
+          "type": "string", 
+          "description": "A human-readable description in plain text."
+        }
+      }
+    }, 
+    "source_network_name": {
+      "type": "string", 
+      "description": "Specifies the name of the external network."
+    }, 
+    "source_network_profile_name": {
+      "type": "string", 
+      "description": "Specifies the name of the external network profile."
+    }
+  }
+}

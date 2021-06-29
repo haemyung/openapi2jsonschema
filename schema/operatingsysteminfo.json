@@ -1,0 +1,83 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Represents a guest operating system.", 
+  "properties": {
+    "comment": {
+      "type": "string", 
+      "description": "Free text containing comments about this object."
+    }, 
+    "description": {
+      "type": "string", 
+      "description": "A human-readable description in plain text."
+    }, 
+    "large_icon": {
+      "type": "object", 
+      "description": "Icon of virtual machine or template.", 
+      "properties": {
+        "comment": {
+          "type": "string", 
+          "description": "Free text containing comments about this object."
+        }, 
+        "description": {
+          "type": "string", 
+          "description": "A human-readable description in plain text."
+        }, 
+        "media_type": {
+          "type": "string", 
+          "description": "Format of icon file.\n\nOne of:\n\n* `image/jpeg`\n* `image/png`\n* `image/gif`"
+        }, 
+        "data": {
+          "type": "string", 
+          "description": "Base64 encode content of the icon file."
+        }, 
+        "id": {
+          "type": "string", 
+          "description": "A unique identifier."
+        }, 
+        "name": {
+          "type": "string", 
+          "description": "A human-readable name in plain text."
+        }
+      }
+    }, 
+    "small_icon": {
+      "type": "object", 
+      "description": "Icon of virtual machine or template.", 
+      "properties": {
+        "comment": {
+          "type": "string", 
+          "description": "Free text containing comments about this object."
+        }, 
+        "description": {
+          "type": "string", 
+          "description": "A human-readable description in plain text."
+        }, 
+        "media_type": {
+          "type": "string", 
+          "description": "Format of icon file.\n\nOne of:\n\n* `image/jpeg`\n* `image/png`\n* `image/gif`"
+        }, 
+        "data": {
+          "type": "string", 
+          "description": "Base64 encode content of the icon file."
+        }, 
+        "id": {
+          "type": "string", 
+          "description": "A unique identifier."
+        }, 
+        "name": {
+          "type": "string", 
+          "description": "A human-readable name in plain text."
+        }
+      }
+    }, 
+    "id": {
+      "type": "string", 
+      "description": "A unique identifier."
+    }, 
+    "name": {
+      "type": "string", 
+      "description": "A human-readable name in plain text."
+    }
+  }
+}

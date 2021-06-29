@@ -1,0 +1,89 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Information describing the operating system. This is used for both virtual machines and hosts.", 
+  "properties": {
+    "kernel": {
+      "type": "string", 
+      "description": "Path to custom kernel on ISO storage domain if Linux operating system is used.\n\nFor example `iso://vmlinuz-3.10.0-514.6.1.el7.x86_64`.\n\nNOTE: Not used for hosts."
+    }, 
+    "reported_kernel_cmdline": {
+      "type": "string", 
+      "description": "The host kernel command line as reported by a running host.\n\nThis is a read-only attribute. Attempts to change this attribute are silently ignored.\n\nNOTE: This attribute is currently only used for hosts."
+    }, 
+    "boot": {
+      "type": "object", 
+      "description": "Configuration of the boot sequence of a virtual machine.", 
+      "properties": {
+        "devices": {
+          "items": {
+            "enum": [
+              "cdrom", 
+              "hd", 
+              "network"
+            ], 
+            "type": "string"
+          }, 
+          "type": "array", 
+          "description": "Ordered list of boot devices. The virtual machine will try to boot from the given boot devices, in the given\norder."
+        }
+      }
+    }, 
+    "cmdline": {
+      "type": "string", 
+      "description": "Custom kernel parameters for start the virtual machine with if Linux operating system is used.\n\nNOTE: Not used for hosts."
+    }, 
+    "initrd": {
+      "type": "string", 
+      "description": "Path to custom initial ramdisk on ISO storage domain if Linux operating system is used.\n\nFor example `iso://initramfs-3.10.0-514.6.1.el7.x86_64.img`.\n\nNOTE: Not used for hosts."
+    }, 
+    "version": {
+      "type": "object", 
+      "properties": {
+        "comment": {
+          "type": "string", 
+          "description": "Free text containing comments about this object."
+        }, 
+        "major": {
+          "type": "integer", 
+          "format": "int32"
+        }, 
+        "description": {
+          "type": "string", 
+          "description": "A human-readable description in plain text."
+        }, 
+        "full_version": {
+          "type": "string"
+        }, 
+        "name": {
+          "type": "string", 
+          "description": "A human-readable name in plain text."
+        }, 
+        "build": {
+          "type": "integer", 
+          "format": "int32"
+        }, 
+        "id": {
+          "type": "string", 
+          "description": "A unique identifier."
+        }, 
+        "minor": {
+          "type": "integer", 
+          "format": "int32"
+        }, 
+        "revision": {
+          "type": "integer", 
+          "format": "int32"
+        }
+      }
+    }, 
+    "custom_kernel_cmdline": {
+      "type": "string", 
+      "description": "A custom part of the host kernel command line. This will be merged with the existing kernel command line.\n\nYou must reinstall and then reboot the host to apply the changes implemented by this attribute.\n\nDuring each host deploy procedure, kernel parameters that were added\nin the previous host deploy procedure are removed using\n`grubby --update-kernel DEFAULT --remove-args <previous_custom_params>`, and the current\nkernel command line customization is applied using\n`grubby --update-kernel DEFAULT --args <custom_params>`. The Manager internally keeps track of the\nlast-applied kernel parameters customization.\n\nNOTE: This attribute is currently only used for hosts."
+    }, 
+    "type": {
+      "type": "string", 
+      "description": "Operating system name in human readable form.\n\nFor example `Fedora` or `RHEL`. In general one of the names returned by the <<services/operating_systems,\noperating system>> service.\n\nNOTE: Read only for hosts."
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Type representing a version of a virtual machine template.", 
+  "properties": {
+    "version_name": {
+      "type": "string", 
+      "description": "The name of this version."
+    }, 
+    "version_number": {
+      "type": "integer", 
+      "description": "The index of this version in the versions hierarchy of the template.\nThe index 1 represents the original version of a template that is also called base version.", 
+      "format": "int32"
+    }
+  }
+}

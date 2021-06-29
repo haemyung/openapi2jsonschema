@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "comment": {
+      "type": "string", 
+      "description": "Free text containing comments about this object."
+    }, 
+    "description": {
+      "type": "string", 
+      "description": "A human-readable description in plain text."
+    }, 
+    "enabled": {
+      "type": "boolean"
+    }, 
+    "id": {
+      "type": "string", 
+      "description": "A unique identifier."
+    }, 
+    "internal": {
+      "type": "boolean"
+    }, 
+    "type": {
+      "enum": [
+        "filter", 
+        "load_balancing", 
+        "weight"
+      ], 
+      "type": "string"
+    }, 
+    "properties": {
+      "type": "object", 
+      "properties": {
+        "property": {
+          "items": {
+            "type": "object", 
+            "properties": {
+              "name": {
+                "type": "string"
+              }, 
+              "value": {
+                "type": "string"
+              }
+            }
+          }, 
+          "type": "array"
+        }
+      }
+    }, 
+    "name": {
+      "type": "string", 
+      "description": "A human-readable name in plain text."
+    }
+  }
+}

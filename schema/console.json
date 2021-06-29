@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Representation for serial console device.", 
+  "properties": {
+    "enabled": {
+      "type": "boolean", 
+      "description": "Enable/disable the serial console device."
+    }
+  }
+}

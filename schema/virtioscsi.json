@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Type representing the support of virtio-SCSI.\nIf it supported we use virtio driver for SCSI guest device.", 
+  "properties": {
+    "enabled": {
+      "type": "boolean", 
+      "description": "Enable Virtio SCSI support."
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "comment": {
+      "type": "string", 
+      "description": "Free text containing comments about this object."
+    }, 
+    "status": {
+      "enum": [
+        "disabled", 
+        "enabled", 
+        "missing"
+      ], 
+      "type": "string"
+    }, 
+    "name": {
+      "type": "string", 
+      "description": "A human-readable name in plain text."
+    }, 
+    "checksum": {
+      "type": "string"
+    }, 
+    "content_type": {
+      "enum": [
+        "binary", 
+        "text"
+      ], 
+      "type": "string"
+    }, 
+    "id": {
+      "type": "string", 
+      "description": "A unique identifier."
+    }, 
+    "description": {
+      "type": "string", 
+      "description": "A human-readable description in plain text."
+    }
+  }
+}

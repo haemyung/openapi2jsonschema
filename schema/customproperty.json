@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Custom property representation.", 
+  "properties": {
+    "regexp": {
+      "type": "string", 
+      "description": "A regular expression defining the available values a custom property can get."
+    }, 
+    "name": {
+      "type": "string", 
+      "description": "Property name."
+    }, 
+    "value": {
+      "type": "string", 
+      "description": "Property value."
+    }
+  }
+}

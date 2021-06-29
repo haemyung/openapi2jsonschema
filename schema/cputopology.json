@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "cores": {
+      "type": "integer", 
+      "format": "int32"
+    }, 
+    "threads": {
+      "type": "integer", 
+      "format": "int32"
+    }, 
+    "sockets": {
+      "type": "integer", 
+      "format": "int32"
+    }
+  }
+}

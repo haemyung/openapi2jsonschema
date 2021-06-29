@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "expected_value": {
+      "type": "string"
+    }, 
+    "actual_value": {
+      "type": "string"
+    }, 
+    "name": {
+      "type": "string"
+    }, 
+    "in_sync": {
+      "type": "boolean", 
+      "description": "`false` when the network attachment contains uncommitted network configuration."
+    }
+  }
+}

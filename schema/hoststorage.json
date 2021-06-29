@@ -1,0 +1,256 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "comment": {
+      "type": "string", 
+      "description": "Free text containing comments about this object."
+    }, 
+    "username": {
+      "type": "string"
+    }, 
+    "description": {
+      "type": "string", 
+      "description": "A human-readable description in plain text."
+    }, 
+    "name": {
+      "type": "string", 
+      "description": "A human-readable name in plain text."
+    }, 
+    "nfs_timeo": {
+      "type": "integer", 
+      "description": "The time in tenths of a second to wait for a response before retrying NFS requests. The value must be in the\nrange of 0 to 65535. For more details see the description of the `timeo` mount option in the `nfs` man page.", 
+      "format": "int32"
+    }, 
+    "logical_units": {
+      "type": "object", 
+      "properties": {
+        "logical_unit": {
+          "items": {
+            "type": "object", 
+            "properties": {
+              "status": {
+                "enum": [
+                  "free", 
+                  "unusable", 
+                  "used"
+                ], 
+                "type": "string"
+              }, 
+              "username": {
+                "type": "string"
+              }, 
+              "password": {
+                "type": "string"
+              }, 
+              "discard_max_size": {
+                "type": "integer", 
+                "description": "The maximum number of bytes that can be discarded by the logical unit's\nunderlying storage in a single operation.\nA value of 0 means that the device does not support discard functionality.\n\nNOTE: This is the software limit, and not the hardware limit, as noted in the\nhttps://www.kernel.org/doc/Documentation/block/queue-sysfs.txt[documentation] of\n`queue-sysfs` for `discard_max_bytes`.", 
+                "format": "int32"
+              }, 
+              "volume_group_id": {
+                "type": "string"
+              }, 
+              "paths": {
+                "type": "integer", 
+                "format": "int32"
+              }, 
+              "vendor_id": {
+                "type": "string"
+              }, 
+              "disk_id": {
+                "type": "string"
+              }, 
+              "port": {
+                "type": "integer", 
+                "format": "int32"
+              }, 
+              "target": {
+                "type": "string"
+              }, 
+              "portal": {
+                "type": "string"
+              }, 
+              "discard_zeroes_data": {
+                "type": "boolean", 
+                "description": "True, if previously discarded blocks in the logical\nunit's underlying storage are read back as zeros.\nFor more information please see the\nhttps://www.kernel.org/doc/Documentation/block/queue-sysfs.txt[documentation]\nof `queue-sysfs` for `discard_zeroes_data`."
+              }, 
+              "lun_mapping": {
+                "type": "integer", 
+                "format": "int32"
+              }, 
+              "serial": {
+                "type": "string"
+              }, 
+              "size": {
+                "type": "integer", 
+                "format": "int32"
+              }, 
+              "storage_domain_id": {
+                "type": "string"
+              }, 
+              "id": {
+                "type": "string"
+              }, 
+              "address": {
+                "type": "string"
+              }, 
+              "product_id": {
+                "type": "string"
+              }
+            }
+          }, 
+          "type": "array"
+        }
+      }
+    }, 
+    "nfs_retrans": {
+      "type": "integer", 
+      "description": "The number of times to retry a request before attempting further recovery actions. The value must be in the\nrange of 0 to 65535. For more details see the description of the `retrans` mount option in the `nfs` man page.", 
+      "format": "int32"
+    }, 
+    "port": {
+      "type": "integer", 
+      "format": "int32"
+    }, 
+    "override_luns": {
+      "type": "boolean"
+    }, 
+    "portal": {
+      "type": "string"
+    }, 
+    "mount_options": {
+      "type": "string"
+    }, 
+    "volume_group": {
+      "type": "object", 
+      "properties": {
+        "logical_units": {
+          "items": {
+            "type": "object", 
+            "properties": {
+              "status": {
+                "enum": [
+                  "free", 
+                  "unusable", 
+                  "used"
+                ], 
+                "type": "string"
+              }, 
+              "username": {
+                "type": "string"
+              }, 
+              "password": {
+                "type": "string"
+              }, 
+              "discard_max_size": {
+                "type": "integer", 
+                "description": "The maximum number of bytes that can be discarded by the logical unit's\nunderlying storage in a single operation.\nA value of 0 means that the device does not support discard functionality.\n\nNOTE: This is the software limit, and not the hardware limit, as noted in the\nhttps://www.kernel.org/doc/Documentation/block/queue-sysfs.txt[documentation] of\n`queue-sysfs` for `discard_max_bytes`.", 
+                "format": "int32"
+              }, 
+              "volume_group_id": {
+                "type": "string"
+              }, 
+              "paths": {
+                "type": "integer", 
+                "format": "int32"
+              }, 
+              "vendor_id": {
+                "type": "string"
+              }, 
+              "disk_id": {
+                "type": "string"
+              }, 
+              "port": {
+                "type": "integer", 
+                "format": "int32"
+              }, 
+              "target": {
+                "type": "string"
+              }, 
+              "portal": {
+                "type": "string"
+              }, 
+              "discard_zeroes_data": {
+                "type": "boolean", 
+                "description": "True, if previously discarded blocks in the logical\nunit's underlying storage are read back as zeros.\nFor more information please see the\nhttps://www.kernel.org/doc/Documentation/block/queue-sysfs.txt[documentation]\nof `queue-sysfs` for `discard_zeroes_data`."
+              }, 
+              "lun_mapping": {
+                "type": "integer", 
+                "format": "int32"
+              }, 
+              "serial": {
+                "type": "string"
+              }, 
+              "size": {
+                "type": "integer", 
+                "format": "int32"
+              }, 
+              "storage_domain_id": {
+                "type": "string"
+              }, 
+              "id": {
+                "type": "string"
+              }, 
+              "address": {
+                "type": "string"
+              }, 
+              "product_id": {
+                "type": "string"
+              }
+            }
+          }, 
+          "type": "array"
+        }, 
+        "id": {
+          "type": "string"
+        }, 
+        "name": {
+          "type": "string"
+        }
+      }
+    }, 
+    "address": {
+      "type": "string"
+    }, 
+    "id": {
+      "type": "string", 
+      "description": "A unique identifier."
+    }, 
+    "path": {
+      "type": "string"
+    }, 
+    "vfs_type": {
+      "type": "string"
+    }, 
+    "password": {
+      "type": "string"
+    }, 
+    "type": {
+      "enum": [
+        "cinder", 
+        "fcp", 
+        "glance", 
+        "glusterfs", 
+        "iscsi", 
+        "localfs", 
+        "nfs", 
+        "posixfs"
+      ], 
+      "type": "string"
+    }, 
+    "nfs_version": {
+      "enum": [
+        "auto", 
+        "v3", 
+        "v4", 
+        "v4_1", 
+        "v4_2"
+      ], 
+      "type": "string"
+    }, 
+    "target": {
+      "type": "string"
+    }
+  }
+}

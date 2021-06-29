@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "threshold": {
+      "type": "integer", 
+      "description": "Threshold for connectivity testing.\nIf at least the threshold percentage of hosts in the cluster\nlost connectivity then fencing will not take place.", 
+      "format": "int32"
+    }, 
+    "enabled": {
+      "type": "boolean", 
+      "description": "If enabled, we will not fence a host\nin case more than a configurable percentage\nof hosts in the cluster lost connectivity as well.\nThis comes to prevent fencing _storm_ in cases\nwhere there is a global networking issue in the\ncluster."
+    }
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "comment": {
+      "type": "string", 
+      "description": "Free text containing comments about this object."
+    }, 
+    "read_only": {
+      "type": "boolean", 
+      "description": "Indicates whether the provider is read-only.\n\nA read-only provider does not allow adding, modifying, or deleting of networks or subnets. Port-related\noperations are allowed, as they are required for the provisioning of virtual NICs."
+    }, 
+    "agent_configuration": {
+      "type": "object", 
+      "properties": {
+        "username": {
+          "type": "string"
+        }, 
+        "network_mappings": {
+          "type": "string"
+        }, 
+        "broker_type": {
+          "enum": [
+            "qpid", 
+            "rabbit_mq"
+          ], 
+          "type": "string"
+        }, 
+        "address": {
+          "type": "string"
+        }, 
+        "password": {
+          "type": "string"
+        }, 
+        "port": {
+          "type": "integer", 
+          "format": "int32"
+        }
+      }
+    }, 
+    "description": {
+      "type": "string", 
+      "description": "A human-readable description in plain text."
+    }, 
+    "name": {
+      "type": "string", 
+      "description": "A human-readable name in plain text."
+    }, 
+    "url": {
+      "type": "string", 
+      "description": "Defines URL address of the external provider."
+    }, 
+    "tenant_name": {
+      "type": "string"
+    }, 
+    "id": {
+      "type": "string", 
+      "description": "A unique identifier."
+    }, 
+    "username": {
+      "type": "string", 
+      "description": "Defines user name to be used during authentication process."
+    }, 
+    "authentication_url": {
+      "type": "string", 
+      "description": "Defines the external provider authentication URL address."
+    }, 
+    "requires_authentication": {
+      "type": "boolean", 
+      "description": "Defines whether provider authentication is required or not.\n\nIf authentication is required, both `username` and `password` attributes will be used during authentication."
+    }, 
+    "password": {
+      "type": "string", 
+      "description": "Defines password for the user during the authentication process."
+    }, 
+    "type": {
+      "enum": [
+        "external", 
+        "neutron"
+      ], 
+      "type": "string", 
+      "description": "The type of provider."
+    }, 
+    "properties": {
+      "type": "object", 
+      "properties": {
+        "property": {
+          "items": {
+            "type": "object", 
+            "properties": {
+              "name": {
+                "type": "string"
+              }, 
+              "value": {
+                "type": "string"
+              }
+            }
+          }, 
+          "type": "array", 
+          "description": "Array of provider name/value properties."
+        }
+      }
+    }, 
+    "plugin_type": {
+      "enum": [
+        "open_vswitch"
+      ], 
+      "type": "string", 
+      "description": "Network plugin type."
+    }
+  }
+}

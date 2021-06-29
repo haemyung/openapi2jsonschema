@@ -1,0 +1,94 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "name": {
+      "type": "string"
+    }, 
+    "level": {
+      "type": "integer", 
+      "format": "int32"
+    }, 
+    "speed": {
+      "type": "number", 
+      "format": "double"
+    }, 
+    "cpu_tune": {
+      "type": "object", 
+      "properties": {
+        "vcpu_pins": {
+          "items": {
+            "type": "object", 
+            "properties": {
+              "cpu_set": {
+                "type": "string"
+              }, 
+              "vcpu": {
+                "type": "integer", 
+                "format": "int32"
+              }
+            }
+          }, 
+          "type": "array"
+        }
+      }
+    }, 
+    "architecture": {
+      "enum": [
+        "ppc64", 
+        "undefined", 
+        "x86_64"
+      ], 
+      "type": "string"
+    }, 
+    "mode": {
+      "enum": [
+        "custom", 
+        "host_model", 
+        "host_passthrough"
+      ], 
+      "type": "string"
+    }, 
+    "cores": {
+      "type": "object", 
+      "properties": {
+        "core": {
+          "items": {
+            "type": "object", 
+            "properties": {
+              "index": {
+                "type": "integer", 
+                "format": "int32"
+              }, 
+              "socket": {
+                "type": "integer", 
+                "format": "int32"
+              }
+            }
+          }, 
+          "type": "array"
+        }
+      }
+    }, 
+    "type": {
+      "type": "string"
+    }, 
+    "topology": {
+      "type": "object", 
+      "properties": {
+        "cores": {
+          "type": "integer", 
+          "format": "int32"
+        }, 
+        "threads": {
+          "type": "integer", 
+          "format": "int32"
+        }, 
+        "sockets": {
+          "type": "integer", 
+          "format": "int32"
+        }
+      }
+    }
+  }
+}

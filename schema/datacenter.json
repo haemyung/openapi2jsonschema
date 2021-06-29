@@ -1,0 +1,141 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "comment": {
+      "type": "string", 
+      "description": "Free text containing comments about this object."
+    }, 
+    "status": {
+      "enum": [
+        "contend", 
+        "maintenance", 
+        "not_operational", 
+        "problematic", 
+        "uninitialized", 
+        "up"
+      ], 
+      "type": "string"
+    }, 
+    "supported_versions": {
+      "type": "object", 
+      "properties": {
+        "supported_version": {
+          "items": {
+            "type": "object", 
+            "properties": {
+              "comment": {
+                "type": "string", 
+                "description": "Free text containing comments about this object."
+              }, 
+              "major": {
+                "type": "integer", 
+                "format": "int32"
+              }, 
+              "description": {
+                "type": "string", 
+                "description": "A human-readable description in plain text."
+              }, 
+              "full_version": {
+                "type": "string"
+              }, 
+              "name": {
+                "type": "string", 
+                "description": "A human-readable name in plain text."
+              }, 
+              "build": {
+                "type": "integer", 
+                "format": "int32"
+              }, 
+              "id": {
+                "type": "string", 
+                "description": "A unique identifier."
+              }, 
+              "minor": {
+                "type": "integer", 
+                "format": "int32"
+              }, 
+              "revision": {
+                "type": "integer", 
+                "format": "int32"
+              }
+            }
+          }, 
+          "type": "array"
+        }
+      }
+    }, 
+    "description": {
+      "type": "string", 
+      "description": "A human-readable description in plain text."
+    }, 
+    "quota_mode": {
+      "enum": [
+        "audit", 
+        "disabled", 
+        "enabled"
+      ], 
+      "type": "string"
+    }, 
+    "id": {
+      "type": "string", 
+      "description": "A unique identifier."
+    }, 
+    "version": {
+      "type": "object", 
+      "properties": {
+        "comment": {
+          "type": "string", 
+          "description": "Free text containing comments about this object."
+        }, 
+        "major": {
+          "type": "integer", 
+          "format": "int32"
+        }, 
+        "description": {
+          "type": "string", 
+          "description": "A human-readable description in plain text."
+        }, 
+        "full_version": {
+          "type": "string"
+        }, 
+        "name": {
+          "type": "string", 
+          "description": "A human-readable name in plain text."
+        }, 
+        "build": {
+          "type": "integer", 
+          "format": "int32"
+        }, 
+        "id": {
+          "type": "string", 
+          "description": "A unique identifier."
+        }, 
+        "minor": {
+          "type": "integer", 
+          "format": "int32"
+        }, 
+        "revision": {
+          "type": "integer", 
+          "format": "int32"
+        }
+      }
+    }, 
+    "local": {
+      "type": "boolean"
+    }, 
+    "storage_format": {
+      "enum": [
+        "v1", 
+        "v2", 
+        "v3", 
+        "v4"
+      ], 
+      "type": "string"
+    }, 
+    "name": {
+      "type": "string", 
+      "description": "A human-readable name in plain text."
+    }
+  }
+}

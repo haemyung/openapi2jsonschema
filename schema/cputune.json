@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "vcpu_pins": {
+      "type": "object", 
+      "properties": {
+        "vcpu_pin": {
+          "items": {
+            "type": "object", 
+            "properties": {
+              "cpu_set": {
+                "type": "string"
+              }, 
+              "vcpu": {
+                "type": "integer", 
+                "format": "int32"
+              }
+            }
+          }, 
+          "type": "array"
+        }
+      }
+    }
+  }
+}

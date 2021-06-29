@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Describes a supported CPU type.", 
+  "properties": {
+    "level": {
+      "type": "integer", 
+      "description": "The level of the CPU type.", 
+      "format": "int32"
+    }, 
+    "architecture": {
+      "enum": [
+        "ppc64", 
+        "undefined", 
+        "x86_64"
+      ], 
+      "type": "string", 
+      "description": "The architecture of the CPU."
+    }, 
+    "name": {
+      "type": "string", 
+      "description": "The name of the CPU type, for example `Intel Conroe Family`."
+    }
+  }
+}

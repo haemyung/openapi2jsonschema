@@ -1,0 +1,261 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "profile_details": {
+      "type": "object", 
+      "properties": {
+        "profile_detail": {
+          "items": {
+            "type": "object", 
+            "properties": {
+              "duration": {
+                "type": "integer", 
+                "format": "int32"
+              }, 
+              "statistics": {
+                "items": {
+                  "type": "object", 
+                  "description": "A generic type used for all kinds of statistics.\n\nStatistic contains the statistics values for various entities.\nThe following object contain statistics:\n\n* Disk\n* Host\n* HostNic\n* NumaNode\n* Nic\n* Vm\n* GlusterBrick\n* Step\n* GlusterVolume\n\nAn example of a XML representation:\n\n[source,xml]\n----\n<statistics>\n  <statistic id=\"1234\" href=\"/ovirt-engine/api/hosts/1234/nics/1234/statistics/1234\">\n    <name>data.current.rx</name>\n    <description>Receive data rate</description>\n    <values type=\"DECIMAL\">\n      <value>\n        <datum>0</datum>\n      </value>\n    </values>\n    <type>GAUGE</type>\n    <unit>BYTES_PER_SECOND</unit>\n    <host_nic id=\"1234\" href=\"/ovirt-engine/api/hosts/1234/nics/1234\"/>\n  </statistic>\n  ...\n</statistics>\n----\n\nNOTE: This statistics sub-collection is read-only.", 
+                  "properties": {
+                    "comment": {
+                      "type": "string", 
+                      "description": "Free text containing comments about this object."
+                    }, 
+                    "kind": {
+                      "enum": [
+                        "counter", 
+                        "gauge"
+                      ], 
+                      "type": "string", 
+                      "description": "The type of statistic measures."
+                    }, 
+                    "description": {
+                      "type": "string", 
+                      "description": "A human-readable description in plain text."
+                    }, 
+                    "values": {
+                      "items": {
+                        "type": "object", 
+                        "properties": {
+                          "datum": {
+                            "type": "number", 
+                            "format": "double"
+                          }, 
+                          "detail": {
+                            "type": "string"
+                          }
+                        }
+                      }, 
+                      "type": "array", 
+                      "description": "A data set that contains `datum`."
+                    }, 
+                    "type": {
+                      "enum": [
+                        "decimal", 
+                        "integer", 
+                        "string"
+                      ], 
+                      "type": "string", 
+                      "description": "The data type for the statistical values that follow."
+                    }, 
+                    "id": {
+                      "type": "string", 
+                      "description": "A unique identifier."
+                    }, 
+                    "unit": {
+                      "enum": [
+                        "bits_per_second", 
+                        "bytes", 
+                        "bytes_per_second", 
+                        "count_per_second", 
+                        "none", 
+                        "percent", 
+                        "seconds"
+                      ], 
+                      "type": "string", 
+                      "description": "The unit or rate to measure of the statistical values."
+                    }, 
+                    "name": {
+                      "type": "string", 
+                      "description": "A human-readable name in plain text."
+                    }
+                  }
+                }, 
+                "type": "array"
+              }, 
+              "fop_statistics": {
+                "items": {
+                  "type": "object", 
+                  "properties": {
+                    "statistics": {
+                      "items": {
+                        "type": "object", 
+                        "description": "A generic type used for all kinds of statistics.\n\nStatistic contains the statistics values for various entities.\nThe following object contain statistics:\n\n* Disk\n* Host\n* HostNic\n* NumaNode\n* Nic\n* Vm\n* GlusterBrick\n* Step\n* GlusterVolume\n\nAn example of a XML representation:\n\n[source,xml]\n----\n<statistics>\n  <statistic id=\"1234\" href=\"/ovirt-engine/api/hosts/1234/nics/1234/statistics/1234\">\n    <name>data.current.rx</name>\n    <description>Receive data rate</description>\n    <values type=\"DECIMAL\">\n      <value>\n        <datum>0</datum>\n      </value>\n    </values>\n    <type>GAUGE</type>\n    <unit>BYTES_PER_SECOND</unit>\n    <host_nic id=\"1234\" href=\"/ovirt-engine/api/hosts/1234/nics/1234\"/>\n  </statistic>\n  ...\n</statistics>\n----\n\nNOTE: This statistics sub-collection is read-only.", 
+                        "properties": {
+                          "comment": {
+                            "type": "string", 
+                            "description": "Free text containing comments about this object."
+                          }, 
+                          "kind": {
+                            "enum": [
+                              "counter", 
+                              "gauge"
+                            ], 
+                            "type": "string", 
+                            "description": "The type of statistic measures."
+                          }, 
+                          "description": {
+                            "type": "string", 
+                            "description": "A human-readable description in plain text."
+                          }, 
+                          "values": {
+                            "items": {
+                              "type": "object", 
+                              "properties": {
+                                "datum": {
+                                  "type": "number", 
+                                  "format": "double"
+                                }, 
+                                "detail": {
+                                  "type": "string"
+                                }
+                              }
+                            }, 
+                            "type": "array", 
+                            "description": "A data set that contains `datum`."
+                          }, 
+                          "type": {
+                            "enum": [
+                              "decimal", 
+                              "integer", 
+                              "string"
+                            ], 
+                            "type": "string", 
+                            "description": "The data type for the statistical values that follow."
+                          }, 
+                          "id": {
+                            "type": "string", 
+                            "description": "A unique identifier."
+                          }, 
+                          "unit": {
+                            "enum": [
+                              "bits_per_second", 
+                              "bytes", 
+                              "bytes_per_second", 
+                              "count_per_second", 
+                              "none", 
+                              "percent", 
+                              "seconds"
+                            ], 
+                            "type": "string", 
+                            "description": "The unit or rate to measure of the statistical values."
+                          }, 
+                          "name": {
+                            "type": "string", 
+                            "description": "A human-readable name in plain text."
+                          }
+                        }
+                      }, 
+                      "type": "array"
+                    }, 
+                    "name": {
+                      "type": "string"
+                    }
+                  }
+                }, 
+                "type": "array"
+              }, 
+              "profile_type": {
+                "type": "string"
+              }, 
+              "block_statistics": {
+                "items": {
+                  "type": "object", 
+                  "properties": {
+                    "statistics": {
+                      "items": {
+                        "type": "object", 
+                        "description": "A generic type used for all kinds of statistics.\n\nStatistic contains the statistics values for various entities.\nThe following object contain statistics:\n\n* Disk\n* Host\n* HostNic\n* NumaNode\n* Nic\n* Vm\n* GlusterBrick\n* Step\n* GlusterVolume\n\nAn example of a XML representation:\n\n[source,xml]\n----\n<statistics>\n  <statistic id=\"1234\" href=\"/ovirt-engine/api/hosts/1234/nics/1234/statistics/1234\">\n    <name>data.current.rx</name>\n    <description>Receive data rate</description>\n    <values type=\"DECIMAL\">\n      <value>\n        <datum>0</datum>\n      </value>\n    </values>\n    <type>GAUGE</type>\n    <unit>BYTES_PER_SECOND</unit>\n    <host_nic id=\"1234\" href=\"/ovirt-engine/api/hosts/1234/nics/1234\"/>\n  </statistic>\n  ...\n</statistics>\n----\n\nNOTE: This statistics sub-collection is read-only.", 
+                        "properties": {
+                          "comment": {
+                            "type": "string", 
+                            "description": "Free text containing comments about this object."
+                          }, 
+                          "kind": {
+                            "enum": [
+                              "counter", 
+                              "gauge"
+                            ], 
+                            "type": "string", 
+                            "description": "The type of statistic measures."
+                          }, 
+                          "description": {
+                            "type": "string", 
+                            "description": "A human-readable description in plain text."
+                          }, 
+                          "values": {
+                            "items": {
+                              "type": "object", 
+                              "properties": {
+                                "datum": {
+                                  "type": "number", 
+                                  "format": "double"
+                                }, 
+                                "detail": {
+                                  "type": "string"
+                                }
+                              }
+                            }, 
+                            "type": "array", 
+                            "description": "A data set that contains `datum`."
+                          }, 
+                          "type": {
+                            "enum": [
+                              "decimal", 
+                              "integer", 
+                              "string"
+                            ], 
+                            "type": "string", 
+                            "description": "The data type for the statistical values that follow."
+                          }, 
+                          "id": {
+                            "type": "string", 
+                            "description": "A unique identifier."
+                          }, 
+                          "unit": {
+                            "enum": [
+                              "bits_per_second", 
+                              "bytes", 
+                              "bytes_per_second", 
+                              "count_per_second", 
+                              "none", 
+                              "percent", 
+                              "seconds"
+                            ], 
+                            "type": "string", 
+                            "description": "The unit or rate to measure of the statistical values."
+                          }, 
+                          "name": {
+                            "type": "string", 
+                            "description": "A human-readable name in plain text."
+                          }
+                        }
+                      }, 
+                      "type": "array"
+                    }
+                  }
+                }, 
+                "type": "array"
+              }
+            }
+          }, 
+          "type": "array"
+        }
+      }
+    }, 
+    "nfs_server_ip": {
+      "type": "string"
+    }
+  }
+}

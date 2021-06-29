@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Generic rule definition for affinity group. Each supported resource type (virtual machine, host) is controlled\nby a separate rule. This allows expressing of rules like: no affinity between defined virtual machines, but hard\naffinity between defined virtual machines and virtual hosts.", 
+  "properties": {
+    "positive": {
+      "type": "boolean", 
+      "description": "Specifies whether the affinity group applies positive affinity or negative affinity to the resources\nthat are controlled by this rule. This argument is mandatory if the rule is enabled and is ignored\nwhen the rule is disabled."
+    }, 
+    "enforcing": {
+      "type": "boolean", 
+      "description": "Specifies whether the affinity group uses hard or soft enforcement of the affinity applied to the resources\nthat are controlled by this rule. This argument is mandatory if the rule is enabled and is ignored\nwhen the rule is disabled."
+    }, 
+    "enabled": {
+      "type": "boolean", 
+      "description": "Specifies whether the affinity group uses this rule or not.\nThis attribute is optional during creation and is considered to be `true` when it is not provided.\nIn case this attribute is not provided to the update operation, it is considered to be `true` if\nAffinityGroup `positive` attribute is set as well.\nThe backend `enabled` value will be preserved when both `enabled` and `positive` attributes are missing."
+    }
+  }
+}

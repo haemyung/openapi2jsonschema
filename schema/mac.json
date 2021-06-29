@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Represents a MAC address of a virtual network interface.", 
+  "properties": {
+    "address": {
+      "type": "string", 
+      "description": "MAC address."
+    }
+  }
+}

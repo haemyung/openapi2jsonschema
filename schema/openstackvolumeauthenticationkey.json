@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "comment": {
+      "type": "string", 
+      "description": "Free text containing comments about this object."
+    }, 
+    "description": {
+      "type": "string", 
+      "description": "A human-readable description in plain text."
+    }, 
+    "name": {
+      "type": "string", 
+      "description": "A human-readable name in plain text."
+    }, 
+    "value": {
+      "type": "string"
+    }, 
+    "creation_date": {
+      "type": "string", 
+      "format": "epoch"
+    }, 
+    "usage_type": {
+      "enum": [
+        "ceph"
+      ], 
+      "type": "string"
+    }, 
+    "id": {
+      "type": "string", 
+      "description": "A unique identifier."
+    }, 
+    "uuid": {
+      "type": "string"
+    }
+  }
+}

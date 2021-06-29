@@ -1,0 +1,171 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "status": {
+      "enum": [
+        "off", 
+        "on", 
+        "unknown"
+      ], 
+      "type": "string", 
+      "description": "Determines the power status of the host."
+    }, 
+    "username": {
+      "type": "string", 
+      "description": "A valid user name for power management."
+    }, 
+    "kdump_detection": {
+      "type": "boolean", 
+      "description": "Toggles whether to determine if kdump is running on the host before it is shut down.\nWhen set to `true`, the host will not shut down during a kdump process.\nThis is set to `true` when a host has power management enabled, unless disabled by the user."
+    }, 
+    "automatic_pm_enabled": {
+      "type": "boolean", 
+      "description": "Toggles the automated power control of the host in order to save energy.\nWhen set to true, the host will be automatically powered down if the cluster's load is low,\nand powered on again when required. This is set to true when a host is created, unless disabled by the user."
+    }, 
+    "enabled": {
+      "type": "boolean", 
+      "description": "Indicates whether power management configuration is enabled or disabled."
+    }, 
+    "pm_proxies": {
+      "type": "object", 
+      "properties": {
+        "pm_proxy": {
+          "items": {
+            "type": "object", 
+            "properties": {
+              "type": {
+                "enum": [
+                  "cluster", 
+                  "dc", 
+                  "other_dc"
+                ], 
+                "type": "string"
+              }
+            }
+          }, 
+          "type": "array", 
+          "description": "Determines the power management proxy."
+        }
+      }
+    }, 
+    "agents": {
+      "type": "object", 
+      "properties": {
+        "agent": {
+          "items": {
+            "type": "object", 
+            "description": "Type representing a fence agent.", 
+            "properties": {
+              "comment": {
+                "type": "string", 
+                "description": "Free text containing comments about this object."
+              }, 
+              "username": {
+                "type": "string", 
+                "description": "Fence agent user name."
+              }, 
+              "encrypt_options": {
+                "type": "boolean", 
+                "description": "Specifies whether the options should be encrypted."
+              }, 
+              "description": {
+                "type": "string", 
+                "description": "A human-readable description in plain text."
+              }, 
+              "options": {
+                "items": {
+                  "type": "object", 
+                  "properties": {
+                    "type": {
+                      "type": "string"
+                    }, 
+                    "name": {
+                      "type": "string"
+                    }, 
+                    "value": {
+                      "type": "string"
+                    }
+                  }
+                }, 
+                "type": "array", 
+                "description": "Fence agent options (comma-delimited list of\nkey-value pairs)."
+              }, 
+              "order": {
+                "type": "integer", 
+                "description": "The order of this agent if used with other agents.", 
+                "format": "int32"
+              }, 
+              "concurrent": {
+                "type": "boolean", 
+                "description": "Specifies whether the agent should be used concurrently\nor sequentially."
+              }, 
+              "address": {
+                "type": "string", 
+                "description": "Fence agent address."
+              }, 
+              "id": {
+                "type": "string", 
+                "description": "A unique identifier."
+              }, 
+              "password": {
+                "type": "string", 
+                "description": "Fence agent password."
+              }, 
+              "type": {
+                "type": "string", 
+                "description": "Fence agent type."
+              }, 
+              "port": {
+                "type": "integer", 
+                "description": "Fence agent port.", 
+                "format": "int32"
+              }, 
+              "name": {
+                "type": "string", 
+                "description": "A human-readable name in plain text."
+              }
+            }
+          }, 
+          "type": "array", 
+          "description": "Specifies fence agent options when multiple fences are used.\n\nUse the order sub-element to prioritize the fence agents. Agents are run sequentially according to their\norder until the fence action succeeds. When two or more fence agents have the same order,\nthey are run concurrently. Other sub-elements include type, ip, user, password, and options."
+        }
+      }
+    }, 
+    "address": {
+      "type": "string", 
+      "description": "The host name or IP address of the host."
+    }, 
+    "password": {
+      "type": "string", 
+      "description": "A valid, robust password for power management."
+    }, 
+    "type": {
+      "type": "string", 
+      "description": "Fencing device code.\n\nA list of valid fencing device codes are available in the `capabilities` collection."
+    }, 
+    "options": {
+      "type": "object", 
+      "properties": {
+        "option": {
+          "items": {
+            "type": "object", 
+            "properties": {
+              "type": {
+                "type": "string"
+              }, 
+              "name": {
+                "type": "string"
+              }, 
+              "value": {
+                "type": "string"
+              }
+            }
+          }, 
+          "type": "array", 
+          "description": "Fencing options for the selected type= specified with the option name=\"\" and value=\"\" strings."
+        }
+      }
+    }
+  }
+}

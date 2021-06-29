@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "active": {
+      "type": "boolean"
+    }, 
+    "local_maintenance": {
+      "type": "boolean"
+    }, 
+    "configured": {
+      "type": "boolean"
+    }, 
+    "score": {
+      "type": "integer", 
+      "format": "int32"
+    }, 
+    "global_maintenance": {
+      "type": "boolean"
+    }
+  }
+}

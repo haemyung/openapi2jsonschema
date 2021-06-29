@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "comment": {
+      "type": "string", 
+      "description": "Free text containing comments about this object."
+    }, 
+    "dns_servers": {
+      "type": "object", 
+      "properties": {
+        "dns_server": {
+          "items": {
+            "type": "string"
+          }, 
+          "type": "array", 
+          "description": "Defines a list of DNS servers."
+        }
+      }
+    }, 
+    "description": {
+      "type": "string", 
+      "description": "A human-readable description in plain text."
+    }, 
+    "id": {
+      "type": "string", 
+      "description": "A unique identifier."
+    }, 
+    "ip_version": {
+      "type": "string", 
+      "description": "Defines IP version.\n\nValues can be `v4' for IPv4 or `v6` for IPv6."
+    }, 
+    "cidr": {
+      "type": "string", 
+      "description": "Defines network CIDR."
+    }, 
+    "gateway": {
+      "type": "string", 
+      "description": "Defines IP gateway."
+    }, 
+    "name": {
+      "type": "string", 
+      "description": "A human-readable name in plain text."
+    }
+  }
+}

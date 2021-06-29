@@ -1,0 +1,113 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "This type represents the attributes to define Quality of service (QoS).\n\nFor storage the `type` is <<types/qos_type, storage>>, the attributes `max_throughput`, `max_read_throughput`,\n`max_write_throughput`, `max_iops`, `max_read_iops` and `max_write_iops` are relevant.\n\nFor resources with computing capabilities the `type` is <<types/qos_type, cpu>>, the attribute `cpu_limit` is\nrelevant.\n\nFor virtual machines networks the `type` is <<types/qos_type, network>>, the attributes `inbound_average`,\n`inbound_peak`, `inbound_burst`, `outbound_average`, `outbound_peak` and `outbound_burst` are relevant.\n\nFor host networks the `type` is <<types/qos_type, hostnetwork>>, the attributes `outbound_average_linkshare`,\n`outbound_average_upperlimit` and `outbound_average_realtime` are relevant.", 
+  "properties": {
+    "comment": {
+      "type": "string", 
+      "description": "Free text containing comments about this object."
+    }, 
+    "inbound_burst": {
+      "type": "integer", 
+      "description": "The amount of data that can be delivered in a single burst in MiB.\n\nUsed to configure virtual machines networks. If defined, `inbound_average` and `inbound_peak` also has to be set.\n\nSee https://libvirt.org/formatnetwork.html#elementQoS[Libvirt-QOS] for further details.", 
+      "format": "int32"
+    }, 
+    "max_read_iops": {
+      "type": "integer", 
+      "description": "Maximum permitted number of input operations per second.\n\nUsed to configure storage. Must not be set if `max_iops` is set.", 
+      "format": "int32"
+    }, 
+    "description": {
+      "type": "string", 
+      "description": "A human-readable description in plain text."
+    }, 
+    "max_throughput": {
+      "type": "integer", 
+      "description": "Maximum permitted total throughput.\n\nUsed to configure storage. Must not be set if `max_read_throughput` or `max_write_throughput` is set.", 
+      "format": "int32"
+    }, 
+    "outbound_average_upperlimit": {
+      "type": "integer", 
+      "description": "The maximum bandwidth to be used by a network in Mbps.\n\nUsed to configure host networks. If `outboundAverageUpperlimit` and `outbound_average_realtime` are provided, the\n`outbound_averageUpperlimit` must not be lower than the `outbound_average_realtime`.\n\nSee https://libvirt.org/formatnetwork.html#elementQoS[Libvirt-QOS] for further details.", 
+      "format": "int32"
+    }, 
+    "cpu_limit": {
+      "type": "integer", 
+      "description": "The maximum processing capability in %.\n\nUsed to configure computing resources.", 
+      "format": "int32"
+    }, 
+    "outbound_burst": {
+      "type": "integer", 
+      "description": "The amount of data that can be sent in a single burst in MiB.\n\nUsed to configure virtual machines networks. If defined, `outbound_average` and `outbound_peak` also has to be\nset.\n\nSee https://libvirt.org/formatnetwork.html#elementQoS[Libvirt-QOS] for further details.", 
+      "format": "int32"
+    }, 
+    "inbound_peak": {
+      "type": "integer", 
+      "description": "The maximum inbound rate in Mbps.\n\nUsed to configure virtual machines networks. If defined, `inbound_average` and `inbound_burst` also has to be set.\n\nSee https://libvirt.org/formatnetwork.html#elementQoS[Libvirt-QOS] for further details.", 
+      "format": "int32"
+    }, 
+    "max_write_iops": {
+      "type": "integer", 
+      "description": "Maximum permitted number of output operations per second.\n\nUsed to configure storage. Must not be set if `max_iops` is set.", 
+      "format": "int32"
+    }, 
+    "inbound_average": {
+      "type": "integer", 
+      "description": "The desired average inbound bit rate in Mbps.\n\nUsed to configure virtual machines networks. If defined, `inbound_peak` and `inbound_burst` also has to be set.\n\nSee https://libvirt.org/formatnetwork.html#elementQoS[Libvirt-QOS] for further details.", 
+      "format": "int32"
+    }, 
+    "outbound_average_realtime": {
+      "type": "integer", 
+      "description": "The committed rate in Mbps.\n\nUsed to configure host networks. The minimum bandwidth required by a network. The committed rate requested is not\nguaranteed and will vary depending on the network infrastructure and the committed rate requested by other\nnetworks on the same logical link.", 
+      "format": "int32"
+    }, 
+    "max_iops": {
+      "type": "integer", 
+      "description": "Maximum permitted number of input and output operations per second.\n\nUsed to configure storage. Must not be set if `max_read_iops` or `max_write_iops` is set.", 
+      "format": "int32"
+    }, 
+    "outbound_average": {
+      "type": "integer", 
+      "description": "The desired average outbound bit rate in Mbps.\n\nUsed to configure virtual machines networks. If defined, `outbound_peak` and `outbound_burst` also has to be set.\n\nSee https://libvirt.org/formatnetwork.html#elementQoS[Libvirt-QOS] for further details.", 
+      "format": "int32"
+    }, 
+    "max_read_throughput": {
+      "type": "integer", 
+      "description": "Maximum permitted throughput for read operations.\n\nUsed to configure storage. Must not be set if `max_throughput` is set.", 
+      "format": "int32"
+    }, 
+    "max_write_throughput": {
+      "type": "integer", 
+      "description": "Maximum permitted throughput for write operations.\n\nUsed to configure storage. Must not be set if `max_throughput` is set.", 
+      "format": "int32"
+    }, 
+    "outbound_average_linkshare": {
+      "type": "integer", 
+      "description": "Weighted share.\n\nUsed to configure host networks. Signifies how much of the logical link's capacity a specific network should be\nallocated, relative to the other networks attached to the same logical link. The exact share depends on the sum\nof shares of all networks on that link. By default this is a number in the range 1-100.", 
+      "format": "int32"
+    }, 
+    "outbound_peak": {
+      "type": "integer", 
+      "description": "The maximum outbound rate in Mbps.\n\nUsed to configure virtual machines networks. If defined, `outbound_average` and `outbound_burst` also has to be\nset.\n\nSee https://libvirt.org/formatnetwork.html#elementQoS[Libvirt-QOS] for further details.", 
+      "format": "int32"
+    }, 
+    "type": {
+      "enum": [
+        "cpu", 
+        "hostnetwork", 
+        "network", 
+        "storage"
+      ], 
+      "type": "string", 
+      "description": "The kind of resources this entry can be assigned."
+    }, 
+    "id": {
+      "type": "string", 
+      "description": "A unique identifier."
+    }, 
+    "name": {
+      "type": "string", 
+      "description": "A human-readable name in plain text."
+    }
+  }
+}

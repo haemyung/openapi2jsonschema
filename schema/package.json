@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Type representing a package.\n\nThis is an example of the package element:\n\n[source,xml]\n----\n<package>\n  <name>libipa_hbac-1.9.2-82.11.el6_4.i686</name>\n</package>\n----", 
+  "properties": {
+    "name": {
+      "type": "string", 
+      "description": "The name of the package."
+    }
+  }
+}

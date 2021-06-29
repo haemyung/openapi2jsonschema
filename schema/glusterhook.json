@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "comment": {
+      "type": "string", 
+      "description": "Free text containing comments about this object."
+    }, 
+    "status": {
+      "enum": [
+        "disabled", 
+        "enabled", 
+        "missing"
+      ], 
+      "type": "string"
+    }, 
+    "description": {
+      "type": "string", 
+      "description": "A human-readable description in plain text."
+    }, 
+    "checksum": {
+      "type": "string"
+    }, 
+    "gluster_command": {
+      "type": "string"
+    }, 
+    "content": {
+      "type": "string"
+    }, 
+    "conflict_status": {
+      "type": "integer", 
+      "format": "int32"
+    }, 
+    "content_type": {
+      "enum": [
+        "binary", 
+        "text"
+      ], 
+      "type": "string"
+    }, 
+    "conflicts": {
+      "type": "string"
+    }, 
+    "stage": {
+      "enum": [
+        "post", 
+        "pre"
+      ], 
+      "type": "string"
+    }, 
+    "id": {
+      "type": "string", 
+      "description": "A unique identifier."
+    }, 
+    "name": {
+      "type": "string", 
+      "description": "A human-readable name in plain text."
+    }
+  }
+}

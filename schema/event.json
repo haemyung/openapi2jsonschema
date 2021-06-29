@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Type representing an event.", 
+  "properties": {
+    "comment": {
+      "type": "string", 
+      "description": "Free text containing comments about this object."
+    }, 
+    "origin": {
+      "type": "string", 
+      "description": "Free text identifying the origin of the event."
+    }, 
+    "custom_id": {
+      "type": "integer", 
+      "description": "A custom event identifier.", 
+      "format": "int32"
+    }, 
+    "code": {
+      "type": "integer", 
+      "description": "The event code.", 
+      "format": "int32"
+    }, 
+    "description": {
+      "type": "string", 
+      "description": "A human-readable description in plain text."
+    }, 
+    "custom_data": {
+      "type": "string", 
+      "description": "Free text representing custom event data."
+    }, 
+    "name": {
+      "type": "string", 
+      "description": "A human-readable name in plain text."
+    }, 
+    "correlation_id": {
+      "type": "string", 
+      "description": "The event correlation identifier. Used in order to correlate\nseveral events together."
+    }, 
+    "flood_rate": {
+      "type": "integer", 
+      "description": "Defines the flood rate.\nThis prevents flooding in case an event appeared\nmore than once in the defined rate.\nDefaults is 30 seconds.", 
+      "format": "int32"
+    }, 
+    "time": {
+      "type": "string", 
+      "description": "The event time.", 
+      "format": "epoch"
+    }, 
+    "id": {
+      "type": "string", 
+      "description": "A unique identifier."
+    }, 
+    "severity": {
+      "enum": [
+        "alert", 
+        "error", 
+        "normal", 
+        "warning"
+      ], 
+      "type": "string", 
+      "description": "The event severity."
+    }
+  }
+}

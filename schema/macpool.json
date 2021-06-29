@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Represents a MAC address pool.\n\nExample of an XML representation of a MAC address pool:\n\n[source,xml]\n----\n<mac_pool href=\"/ovirt-engine/api/macpools/123\" id=\"123\">\n  <name>Default</name>\n  <description>Default MAC pool</description>\n  <allow_duplicates>false</allow_duplicates>\n  <default_pool>true</default_pool>\n  <ranges>\n    <range>\n      <from>00:1A:4A:16:01:51</from>\n      <to>00:1A:4A:16:01:E6</to>\n    </range>\n  </ranges>\n</mac_pool>\n----", 
+  "properties": {
+    "comment": {
+      "type": "string", 
+      "description": "Free text containing comments about this object."
+    }, 
+    "ranges": {
+      "type": "object", 
+      "properties": {
+        "range": {
+          "items": {
+            "type": "object", 
+            "properties": {
+              "to": {
+                "type": "string"
+              }, 
+              "from": {
+                "type": "string"
+              }
+            }
+          }, 
+          "type": "array", 
+          "description": "Defines the range of MAC addresses for the pool. Multiple ranges can be defined."
+        }
+      }
+    }, 
+    "description": {
+      "type": "string", 
+      "description": "A human-readable description in plain text."
+    }, 
+    "default_pool": {
+      "type": "boolean", 
+      "description": "Defines whether this is the default pool. If not specified, defaults to `false`."
+    }, 
+    "allow_duplicates": {
+      "type": "boolean", 
+      "description": "Defines whether duplicate MAC addresses are permitted in the pool. If not specified, defaults to `false`."
+    }, 
+    "id": {
+      "type": "string", 
+      "description": "A unique identifier."
+    }, 
+    "name": {
+      "type": "string", 
+      "description": "A human-readable name in plain text."
+    }
+  }
+}

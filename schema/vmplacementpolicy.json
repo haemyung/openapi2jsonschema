@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "affinity": {
+      "enum": [
+        "migratable", 
+        "pinned", 
+        "user_migratable"
+      ], 
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "This type represents the storage related\nconfiguration in the fencing policy.", 
+  "properties": {
+    "enabled": {
+      "type": "boolean", 
+      "description": "If enabled, we will skip fencing in case the host\nmaintains its lease in the storage. It means that\nif the host still has storage access then it won't\nget fenced."
+    }
+  }
+}

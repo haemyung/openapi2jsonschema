@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "comment": {
+      "type": "string", 
+      "description": "Free text containing comments about this object."
+    }, 
+    "memory_limit": {
+      "type": "number", 
+      "format": "double"
+    }, 
+    "memory_usage": {
+      "type": "number", 
+      "format": "double"
+    }, 
+    "description": {
+      "type": "string", 
+      "description": "A human-readable description in plain text."
+    }, 
+    "vcpu_usage": {
+      "type": "integer", 
+      "format": "int32"
+    }, 
+    "vcpu_limit": {
+      "type": "integer", 
+      "format": "int32"
+    }, 
+    "id": {
+      "type": "string", 
+      "description": "A unique identifier."
+    }, 
+    "name": {
+      "type": "string", 
+      "description": "A human-readable name in plain text."
+    }
+  }
+}

@@ -1,0 +1,365 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Represents a lease residing on a storage domain.\n\nA lease is a http://www.ovirt.org/develop/developer-guide/vdsm/sanlock[Sanlock] resource residing on a special\nvolume on the storage domain, this Sanlock resource is used to provide storage base locking.", 
+  "properties": {
+    "storage_domain": {
+      "type": "object", 
+      "description": "Storage domain.\n\nAn XML representation of a NFS storage domain with identifier `123`:\n\n[source,xml]\n----\n<storage_domain href=\"/ovirt-engine/api/storagedomains/123\" id=\"123\">\n  <name>mydata</name>\n  <description>My data</description>\n  <available>38654705664</available>\n  <committed>1073741824</committed>\n  <critical_space_action_blocker>5</critical_space_action_blocker>\n  <external_status>ok</external_status>\n  <master>true</master>\n  <storage>\n    <address>mynfs.example.com</address>\n    <nfs_version>v3</nfs_version>\n    <path>/exports/mydata</path>\n    <type>nfs</type>\n  </storage>\n  <storage_format>v3</storage_format>\n  <type>data</type>\n  <used>13958643712</used>\n  <warning_low_space_indicator>10</warning_low_space_indicator>\n  <wipe_after_delete>false</wipe_after_delete>\n  <data_centers>\n    <data_center href=\"/ovirt-engine/api/datacenters/456\" id=\"456\"/>\n  </data_centers>\n</storage_domain>\n----", 
+      "properties": {
+        "available": {
+          "type": "integer", 
+          "format": "int32"
+        }, 
+        "comment": {
+          "type": "string", 
+          "description": "Free text containing comments about this object."
+        }, 
+        "supports_discard_zeroes_data": {
+          "type": "boolean", 
+          "description": "Indicates whether a block storage domain supports the property that\ndiscard zeroes the data.\nA <<types/storage_domain,storage domain>> only supports the property that\ndiscard zeroes the data if all of the\n<<types/logical_unit, logical unit>>s that it is built from support it;\nthat is, if each logical unit's `discard_zeroes_data` value is true.\nThis is one of the conditions necessary for a virtual disk in this\nstorage domain to have both `wipe_after_delete` and `pass_discard` attributes enabled.\nSince the engine cannot check if the underlying block device supports\nthe property that discard zeroes the data for file storage domains,\nthis attribute will not be reported for them at all."
+        }, 
+        "description": {
+          "type": "string", 
+          "description": "A human-readable description in plain text."
+        }, 
+        "name": {
+          "type": "string", 
+          "description": "A human-readable name in plain text."
+        }, 
+        "warning_low_space_indicator": {
+          "type": "integer", 
+          "format": "int32"
+        }, 
+        "wipe_after_delete": {
+          "type": "boolean", 
+          "description": "Serves as the default value of `wipe_after_delete` for <<types/disk, disk>>s on this\n<<types/storage_domain, storage domain>>.\n\nThat is, newly created disks will get their `wipe_after_delete` value from their storage domains by default.\nNote that the configuration value `SANWipeAfterDelete` serves as the default value of block storage domains'\n`wipe_after_delete` value."
+        }, 
+        "critical_space_action_blocker": {
+          "type": "integer", 
+          "format": "int32"
+        }, 
+        "storage": {
+          "type": "object", 
+          "properties": {
+            "comment": {
+              "type": "string", 
+              "description": "Free text containing comments about this object."
+            }, 
+            "username": {
+              "type": "string"
+            }, 
+            "description": {
+              "type": "string", 
+              "description": "A human-readable description in plain text."
+            }, 
+            "name": {
+              "type": "string", 
+              "description": "A human-readable name in plain text."
+            }, 
+            "nfs_timeo": {
+              "type": "integer", 
+              "description": "The time in tenths of a second to wait for a response before retrying NFS requests. The value must be in the\nrange of 0 to 65535. For more details see the description of the `timeo` mount option in the `nfs` man page.", 
+              "format": "int32"
+            }, 
+            "logical_units": {
+              "items": {
+                "type": "object", 
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "free", 
+                      "unusable", 
+                      "used"
+                    ], 
+                    "type": "string"
+                  }, 
+                  "username": {
+                    "type": "string"
+                  }, 
+                  "password": {
+                    "type": "string"
+                  }, 
+                  "discard_max_size": {
+                    "type": "integer", 
+                    "description": "The maximum number of bytes that can be discarded by the logical unit's\nunderlying storage in a single operation.\nA value of 0 means that the device does not support discard functionality.\n\nNOTE: This is the software limit, and not the hardware limit, as noted in the\nhttps://www.kernel.org/doc/Documentation/block/queue-sysfs.txt[documentation] of\n`queue-sysfs` for `discard_max_bytes`.", 
+                    "format": "int32"
+                  }, 
+                  "volume_group_id": {
+                    "type": "string"
+                  }, 
+                  "paths": {
+                    "type": "integer", 
+                    "format": "int32"
+                  }, 
+                  "vendor_id": {
+                    "type": "string"
+                  }, 
+                  "disk_id": {
+                    "type": "string"
+                  }, 
+                  "port": {
+                    "type": "integer", 
+                    "format": "int32"
+                  }, 
+                  "target": {
+                    "type": "string"
+                  }, 
+                  "portal": {
+                    "type": "string"
+                  }, 
+                  "discard_zeroes_data": {
+                    "type": "boolean", 
+                    "description": "True, if previously discarded blocks in the logical\nunit's underlying storage are read back as zeros.\nFor more information please see the\nhttps://www.kernel.org/doc/Documentation/block/queue-sysfs.txt[documentation]\nof `queue-sysfs` for `discard_zeroes_data`."
+                  }, 
+                  "lun_mapping": {
+                    "type": "integer", 
+                    "format": "int32"
+                  }, 
+                  "serial": {
+                    "type": "string"
+                  }, 
+                  "size": {
+                    "type": "integer", 
+                    "format": "int32"
+                  }, 
+                  "storage_domain_id": {
+                    "type": "string"
+                  }, 
+                  "id": {
+                    "type": "string"
+                  }, 
+                  "address": {
+                    "type": "string"
+                  }, 
+                  "product_id": {
+                    "type": "string"
+                  }
+                }
+              }, 
+              "type": "array"
+            }, 
+            "nfs_retrans": {
+              "type": "integer", 
+              "description": "The number of times to retry a request before attempting further recovery actions. The value must be in the\nrange of 0 to 65535. For more details see the description of the `retrans` mount option in the `nfs` man page.", 
+              "format": "int32"
+            }, 
+            "port": {
+              "type": "integer", 
+              "format": "int32"
+            }, 
+            "override_luns": {
+              "type": "boolean"
+            }, 
+            "portal": {
+              "type": "string"
+            }, 
+            "mount_options": {
+              "type": "string"
+            }, 
+            "volume_group": {
+              "type": "object", 
+              "properties": {
+                "logical_units": {
+                  "items": {
+                    "type": "object", 
+                    "properties": {
+                      "status": {
+                        "enum": [
+                          "free", 
+                          "unusable", 
+                          "used"
+                        ], 
+                        "type": "string"
+                      }, 
+                      "username": {
+                        "type": "string"
+                      }, 
+                      "password": {
+                        "type": "string"
+                      }, 
+                      "discard_max_size": {
+                        "type": "integer", 
+                        "description": "The maximum number of bytes that can be discarded by the logical unit's\nunderlying storage in a single operation.\nA value of 0 means that the device does not support discard functionality.\n\nNOTE: This is the software limit, and not the hardware limit, as noted in the\nhttps://www.kernel.org/doc/Documentation/block/queue-sysfs.txt[documentation] of\n`queue-sysfs` for `discard_max_bytes`.", 
+                        "format": "int32"
+                      }, 
+                      "volume_group_id": {
+                        "type": "string"
+                      }, 
+                      "paths": {
+                        "type": "integer", 
+                        "format": "int32"
+                      }, 
+                      "vendor_id": {
+                        "type": "string"
+                      }, 
+                      "disk_id": {
+                        "type": "string"
+                      }, 
+                      "port": {
+                        "type": "integer", 
+                        "format": "int32"
+                      }, 
+                      "target": {
+                        "type": "string"
+                      }, 
+                      "portal": {
+                        "type": "string"
+                      }, 
+                      "discard_zeroes_data": {
+                        "type": "boolean", 
+                        "description": "True, if previously discarded blocks in the logical\nunit's underlying storage are read back as zeros.\nFor more information please see the\nhttps://www.kernel.org/doc/Documentation/block/queue-sysfs.txt[documentation]\nof `queue-sysfs` for `discard_zeroes_data`."
+                      }, 
+                      "lun_mapping": {
+                        "type": "integer", 
+                        "format": "int32"
+                      }, 
+                      "serial": {
+                        "type": "string"
+                      }, 
+                      "size": {
+                        "type": "integer", 
+                        "format": "int32"
+                      }, 
+                      "storage_domain_id": {
+                        "type": "string"
+                      }, 
+                      "id": {
+                        "type": "string"
+                      }, 
+                      "address": {
+                        "type": "string"
+                      }, 
+                      "product_id": {
+                        "type": "string"
+                      }
+                    }
+                  }, 
+                  "type": "array"
+                }, 
+                "id": {
+                  "type": "string"
+                }, 
+                "name": {
+                  "type": "string"
+                }
+              }
+            }, 
+            "address": {
+              "type": "string"
+            }, 
+            "id": {
+              "type": "string", 
+              "description": "A unique identifier."
+            }, 
+            "path": {
+              "type": "string"
+            }, 
+            "vfs_type": {
+              "type": "string"
+            }, 
+            "password": {
+              "type": "string"
+            }, 
+            "type": {
+              "enum": [
+                "cinder", 
+                "fcp", 
+                "glance", 
+                "glusterfs", 
+                "iscsi", 
+                "localfs", 
+                "nfs", 
+                "posixfs"
+              ], 
+              "type": "string"
+            }, 
+            "nfs_version": {
+              "enum": [
+                "auto", 
+                "v3", 
+                "v4", 
+                "v4_1", 
+                "v4_2"
+              ], 
+              "type": "string"
+            }, 
+            "target": {
+              "type": "string"
+            }
+          }
+        }, 
+        "id": {
+          "type": "string", 
+          "description": "A unique identifier."
+        }, 
+        "status": {
+          "enum": [
+            "activating", 
+            "active", 
+            "detaching", 
+            "inactive", 
+            "locked", 
+            "maintenance", 
+            "mixed", 
+            "preparing_for_maintenance", 
+            "unattached", 
+            "unknown"
+          ], 
+          "type": "string"
+        }, 
+        "used": {
+          "type": "integer", 
+          "format": "int32"
+        }, 
+        "master": {
+          "type": "boolean"
+        }, 
+        "discard_after_delete": {
+          "type": "boolean", 
+          "description": "Indicates whether <<types/disk, disk>>s' blocks on block <<types/storage_domain, storage domain>>s will be\ndiscarded right before they are deleted.\n\nIf true, and a disk on this storage domain has its `wipe_after_delete` value enabled, then when the disk is\ndeleted:\n\n. It is first wiped.\n. Then its blocks are discarded.\n. Finally it is deleted.\n\nNote that:\n\n* Discard after delete will always be `false` for non block storage types.\n\n* Discard after delete can be set to `true` only if the storage domain\n<<types/storage_domain/attributes/supports_discard, supports discard>>."
+        }, 
+        "committed": {
+          "type": "integer", 
+          "format": "int32"
+        }, 
+        "import": {
+          "type": "boolean"
+        }, 
+        "external_status": {
+          "enum": [
+            "error", 
+            "failure", 
+            "info", 
+            "ok", 
+            "warning"
+          ], 
+          "type": "string"
+        }, 
+        "type": {
+          "enum": [
+            "data", 
+            "export", 
+            "image", 
+            "iso", 
+            "volume"
+          ], 
+          "type": "string"
+        }, 
+        "storage_format": {
+          "enum": [
+            "v1", 
+            "v2", 
+            "v3", 
+            "v4"
+          ], 
+          "type": "string"
+        }, 
+        "supports_discard": {
+          "type": "boolean", 
+          "description": "Indicates whether a block storage domain supports discard operations.\nA <<types/storage_domain,storage domain>> only supports discard\nif all of the <<types/logical_unit, logical unit>>s that it is built\nfrom support discard; that is, if each logical unit's `discard_max_size` value\nis greater than 0.\nThis is one of the conditions necessary for a virtual disk in this\nstorage domain to have its `pass_discard` attribute enabled.\nSince the engine cannot check if the underlying block device supports\ndiscard for file storage domains, this attribute will not be reported\nfor them at all."
+        }
+      }
+    }
+  }
+}

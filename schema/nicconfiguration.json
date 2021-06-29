@@ -1,0 +1,87 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "The type describes the configuration of a virtual network interface.", 
+  "properties": {
+    "name": {
+      "type": "string", 
+      "description": "Network interface name."
+    }, 
+    "ipv6_boot_protocol": {
+      "enum": [
+        "autoconf", 
+        "dhcp", 
+        "none", 
+        "static"
+      ], 
+      "type": "string", 
+      "description": "IPv6 boot protocol."
+    }, 
+    "ip": {
+      "type": "object", 
+      "description": "Represents the IP configuration of a network interface.", 
+      "properties": {
+        "netmask": {
+          "type": "string", 
+          "description": "The network mask.\n\nFor IPv6 addresses the value is an integer in the range of 0-128, which represents the subnet prefix."
+        }, 
+        "version": {
+          "enum": [
+            "v4", 
+            "v6"
+          ], 
+          "type": "string", 
+          "description": "The version of the IP protocol.\n\nNOTE: From version 4.1 of the Manager this attribute will be optional, and when a value is not provided, it will\nbe inferred from the value of the `address` attribute."
+        }, 
+        "gateway": {
+          "type": "string", 
+          "description": "The address of the default gateway."
+        }, 
+        "address": {
+          "type": "string", 
+          "description": "The text representation of the IP address.\n\nFor example, an IPv4 address will be represented as follows:\n\n[source,xml]\n----\n<ip>\n  <address>192.168.0.1</address>\n  ...\n</ip>\n----\n\nAn IPv6 address will be represented as follows:\n\n[source,xml]\n----\n<ip>\n  <address>2620:52:0:20f0:4216:7eff:feaa:1b50</address>\n  ...\n</ip>\n----"
+        }
+      }
+    }, 
+    "boot_protocol": {
+      "enum": [
+        "autoconf", 
+        "dhcp", 
+        "none", 
+        "static"
+      ], 
+      "type": "string", 
+      "description": "IPv4 boot protocol."
+    }, 
+    "on_boot": {
+      "type": "boolean", 
+      "description": "Specifies whether the network interface should be activated on the virtual machine guest operating system boot."
+    }, 
+    "ipv6": {
+      "type": "object", 
+      "description": "Represents the IP configuration of a network interface.", 
+      "properties": {
+        "netmask": {
+          "type": "string", 
+          "description": "The network mask.\n\nFor IPv6 addresses the value is an integer in the range of 0-128, which represents the subnet prefix."
+        }, 
+        "version": {
+          "enum": [
+            "v4", 
+            "v6"
+          ], 
+          "type": "string", 
+          "description": "The version of the IP protocol.\n\nNOTE: From version 4.1 of the Manager this attribute will be optional, and when a value is not provided, it will\nbe inferred from the value of the `address` attribute."
+        }, 
+        "gateway": {
+          "type": "string", 
+          "description": "The address of the default gateway."
+        }, 
+        "address": {
+          "type": "string", 
+          "description": "The text representation of the IP address.\n\nFor example, an IPv4 address will be represented as follows:\n\n[source,xml]\n----\n<ip>\n  <address>192.168.0.1</address>\n  ...\n</ip>\n----\n\nAn IPv6 address will be represented as follows:\n\n[source,xml]\n----\n<ip>\n  <address>2620:52:0:20f0:4216:7eff:feaa:1b50</address>\n  ...\n</ip>\n----"
+        }
+      }
+    }
+  }
+}

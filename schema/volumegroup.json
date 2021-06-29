@@ -1,0 +1,94 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "logical_units": {
+      "type": "object", 
+      "properties": {
+        "logical_unit": {
+          "items": {
+            "type": "object", 
+            "properties": {
+              "status": {
+                "enum": [
+                  "free", 
+                  "unusable", 
+                  "used"
+                ], 
+                "type": "string"
+              }, 
+              "username": {
+                "type": "string"
+              }, 
+              "password": {
+                "type": "string"
+              }, 
+              "discard_max_size": {
+                "type": "integer", 
+                "description": "The maximum number of bytes that can be discarded by the logical unit's\nunderlying storage in a single operation.\nA value of 0 means that the device does not support discard functionality.\n\nNOTE: This is the software limit, and not the hardware limit, as noted in the\nhttps://www.kernel.org/doc/Documentation/block/queue-sysfs.txt[documentation] of\n`queue-sysfs` for `discard_max_bytes`.", 
+                "format": "int32"
+              }, 
+              "volume_group_id": {
+                "type": "string"
+              }, 
+              "paths": {
+                "type": "integer", 
+                "format": "int32"
+              }, 
+              "vendor_id": {
+                "type": "string"
+              }, 
+              "disk_id": {
+                "type": "string"
+              }, 
+              "port": {
+                "type": "integer", 
+                "format": "int32"
+              }, 
+              "target": {
+                "type": "string"
+              }, 
+              "portal": {
+                "type": "string"
+              }, 
+              "discard_zeroes_data": {
+                "type": "boolean", 
+                "description": "True, if previously discarded blocks in the logical\nunit's underlying storage are read back as zeros.\nFor more information please see the\nhttps://www.kernel.org/doc/Documentation/block/queue-sysfs.txt[documentation]\nof `queue-sysfs` for `discard_zeroes_data`."
+              }, 
+              "lun_mapping": {
+                "type": "integer", 
+                "format": "int32"
+              }, 
+              "serial": {
+                "type": "string"
+              }, 
+              "size": {
+                "type": "integer", 
+                "format": "int32"
+              }, 
+              "storage_domain_id": {
+                "type": "string"
+              }, 
+              "id": {
+                "type": "string"
+              }, 
+              "address": {
+                "type": "string"
+              }, 
+              "product_id": {
+                "type": "string"
+              }
+            }
+          }, 
+          "type": "array"
+        }
+      }
+    }, 
+    "id": {
+      "type": "string"
+    }, 
+    "name": {
+      "type": "string"
+    }
+  }
+}

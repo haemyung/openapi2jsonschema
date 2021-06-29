@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Time zone representation.", 
+  "properties": {
+    "utc_offset": {
+      "type": "string", 
+      "description": "Offset from https://en.wikipedia.org/wiki/Coordinated_Universal_Time[UTC]."
+    }, 
+    "name": {
+      "type": "string", 
+      "description": "Name of the time zone."
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Type representing a cluster fencing policy.", 
+  "properties": {
+    "skip_if_gluster_bricks_up": {
+      "type": "boolean", 
+      "description": "A flag indicating if fencing should be skipped if Gluster bricks are up and running in the host being fenced.\nThis flag is optional, and the default value is `false`."
+    }, 
+    "enabled": {
+      "type": "boolean", 
+      "description": "Enable or disable fencing on this cluster."
+    }, 
+    "skip_if_connectivity_broken": {
+      "type": "object", 
+      "properties": {
+        "threshold": {
+          "type": "integer", 
+          "description": "Threshold for connectivity testing.\nIf at least the threshold percentage of hosts in the cluster\nlost connectivity then fencing will not take place.", 
+          "format": "int32"
+        }, 
+        "enabled": {
+          "type": "boolean", 
+          "description": "If enabled, we will not fence a host\nin case more than a configurable percentage\nof hosts in the cluster lost connectivity as well.\nThis comes to prevent fencing _storm_ in cases\nwhere there is a global networking issue in the\ncluster."
+        }
+      }
+    }, 
+    "skip_if_gluster_quorum_not_met": {
+      "type": "boolean", 
+      "description": "A flag indicating if fencing should be skipped if Gluster bricks are up and running and Gluster quorum will not\nbe met without those bricks.\nThis flag is optional, and the default value is `false`."
+    }, 
+    "skip_if_sd_active": {
+      "type": "object", 
+      "description": "This type represents the storage related\nconfiguration in the fencing policy.", 
+      "properties": {
+        "enabled": {
+          "type": "boolean", 
+          "description": "If enabled, we will skip fencing in case the host\nmaintains its lease in the storage. It means that\nif the host still has storage access then it won't\nget fenced."
+        }
+      }
+    }
+  }
+}

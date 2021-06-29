@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Represents an external provider.", 
+  "properties": {
+    "comment": {
+      "type": "string", 
+      "description": "Free text containing comments about this object."
+    }, 
+    "requires_authentication": {
+      "type": "boolean", 
+      "description": "Defines whether provider authentication is required or not.\n\nIf authentication is required, both `username` and `password` attributes will be used during authentication."
+    }, 
+    "description": {
+      "type": "string", 
+      "description": "A human-readable description in plain text."
+    }, 
+    "url": {
+      "type": "string", 
+      "description": "Defines URL address of the external provider."
+    }, 
+    "id": {
+      "type": "string", 
+      "description": "A unique identifier."
+    }, 
+    "username": {
+      "type": "string", 
+      "description": "Defines user name to be used during authentication process."
+    }, 
+    "authentication_url": {
+      "type": "string", 
+      "description": "Defines the external provider authentication URL address."
+    }, 
+    "password": {
+      "type": "string", 
+      "description": "Defines password for the user during the authentication process."
+    }, 
+    "properties": {
+      "type": "object", 
+      "properties": {
+        "property": {
+          "items": {
+            "type": "object", 
+            "properties": {
+              "name": {
+                "type": "string"
+              }, 
+              "value": {
+                "type": "string"
+              }
+            }
+          }, 
+          "type": "array", 
+          "description": "Array of provider name/value properties."
+        }
+      }
+    }, 
+    "name": {
+      "type": "string", 
+      "description": "A human-readable name in plain text."
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Represents the DNS resolver configuration.", 
+  "properties": {
+    "name_servers": {
+      "type": "object", 
+      "properties": {
+        "name_server": {
+          "items": {
+            "type": "string"
+          }, 
+          "type": "array", 
+          "description": "Array of addresses of name servers. Either IPv4 or IPv6 addresses may be specified."
+        }
+      }
+    }
+  }
+}
