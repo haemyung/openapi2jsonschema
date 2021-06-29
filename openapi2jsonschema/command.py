@@ -179,18 +179,20 @@ def default(output, schema, prefix, stand_alone, expanded, kubernetes, strict):
             ):
                 raise UnsupportedError("%s not currently supported" % kind)
 
-            updated = change_dict_values(specification, prefix, version)
+            updated = change_dict_values(specification, prefix, version, false)
             specification = updated
 
             if stand_alone:
                 base = "file://%s/%s/" % (os.getcwd(), output)
-                specification = JsonRef.replace_refs(
+                info(output)
+                specification = JsonRef.repla
+                    JsonRef.replace_refs(
                     specification, base_uri=base)
 
             if "additionalProperties" in specification:
                 if specification["additionalProperties"]:
                     updated = change_dict_values(
-                        specification["additionalProperties"], prefix, version
+                        specification["additionalProperties"], prefix, version, false
                     )
                     specification["additionalProperties"] = updated
 
