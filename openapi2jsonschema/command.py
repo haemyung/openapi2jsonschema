@@ -114,15 +114,20 @@ def default(output, schema, prefix, stand_alone, expanded, kubernetes, strict):
                                     type_def["properties"]["kind"], "enum", kind
                                 )
             if strict:
-                definitions = additional_properties(definitions)
+                definitions = additional_properties(definitions)            
             definitions_file.write(json.dumps(
                 {"definitions": definitions}, indent=2))
+
+    with open("%s/_definitions.json" % output, 'w') as definitions_file:
+        definitions = data['definitions']
+        updated = ovirt_change_array(definitions, prefix, version, False)
+        definitions_file.write(json.dumps({"definitions": updated}, indent=2))
 
     types = []
 
     info("Generating individual schemas")
     if version < "3":
-        components = data["definitions"]
+        components = updated  #data['definitions']
     else:
         components = data["components"]["schemas"]
 
@@ -179,20 +184,18 @@ def default(output, schema, prefix, stand_alone, expanded, kubernetes, strict):
             ):
                 raise UnsupportedError("%s not currently supported" % kind)
 
-            updated = change_dict_values(specification, prefix, version, false)
+            updated = change_dict_values(specification, prefix, version)
             specification = updated
 
             if stand_alone:
                 base = "file://%s/%s/" % (os.getcwd(), output)
-                info(output)
-                specification = JsonRef.repla
-                    JsonRef.replace_refs(
+                specification = JsonRef.replace_refs(
                     specification, base_uri=base)
 
             if "additionalProperties" in specification:
                 if specification["additionalProperties"]:
                     updated = change_dict_values(
-                        specification["additionalProperties"], prefix, version, false
+                        specification["additionalProperties"], prefix, version
                     )
                     specification["additionalProperties"] = updated
 

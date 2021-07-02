@@ -26,10 +26,6 @@ def additional_properties(data):
     except AttributeError:
         return data
 
-def additional_ref_prefix(data):
-    new = {}
-    n
-
 
 def replace_int_or_string(data):
     new = {}
@@ -77,8 +73,7 @@ def allow_null_optional_fields(data, parent=None, grand_parent=None, key=None):
     except AttributeError:
         return data
 
-
-def change_dict_values(d, prefix, version, changed):
+def ovirt_change_array(d, prefix, version, changed):
     new = {}
     try:
         for k, v in iteritems(d):
@@ -86,17 +81,30 @@ def change_dict_values(d, prefix, version, changed):
             if isinstance(v, dict):
                 if "type" in v and v["type"] == "array":
                     if changed == True:
-                        new_v = change_dict_values(v, prefix, version, False)
+                        new_v = ovirt_change_array(v, prefix, version, False)
                     else:
                         new_v = {"type": "object", "properties":{}}
                         if k[len(k)-3:] == "ies":
                             temp = (k[:len(k)-3]+'y')
-                            new_v["properties"] = { temp: change_dict_values(v, prefix, version, True)}
+                            new_v["properties"] = { temp: ovirt_change_array(v, prefix, version, True)}
                         else:
-                            new_v["properties"] = {k[:len(k)-1]: change_dict_values(v, prefix, version, True)}
-                        info("%s" % new_v)
+                            new_v["properties"] = {k[:len(k)-1]: ovirt_change_array(v, prefix, version, True)}
                 else:
-                    new_v = change_dict_values(v, prefix, version, False)
+                    new_v = ovirt_change_array(v, prefix, version, False)
+            else:
+                new_v = v
+            new[k] = new_v
+        return new
+    except AttributeError:
+        return d
+
+def change_dict_values(d, prefix, version, changed):
+    new = {}
+    try:
+        for k, v in iteritems(d):
+            new_v = v
+            if isinstance(v, dict):
+                new_v = change_dict_values(v, prefix, version, False)
             elif isinstance(v, list):
                 new_v = list()
                 for x in v:
